@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="dd7b279c-fee4-4345-8ae6-9cb5f2f8cc8b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:62339/TEECRUDService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TEECRUDService.disco" MetadataType="Disco" ID="1e182b45-7ea5-4eac-b5a7-4207c4b3939f" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?disco" />
+    <MetadataFile FileName="TEECRUDService.xsd" MetadataType="Schema" ID="3933d416-810a-4d36-a9c4-7dc71a7eac3e" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?xsd=xsd2" />
+    <MetadataFile FileName="TEECRUDService1.xsd" MetadataType="Schema" ID="b068e7b5-e450-4a74-bb38-26f7b94766fc" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TEECRUDService2.xsd" MetadataType="Schema" ID="730d214c-75df-492c-9387-9985b8ffcc36" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="b1f8785d-b3f3-4bac-9928-7867d60b12b4" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
