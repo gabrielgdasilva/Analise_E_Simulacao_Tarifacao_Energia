@@ -2436,10 +2436,10 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica> DestalhesDaFabricaAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodasFabricas", ReplyAction="http://tempuri.org/ITEECRUDService/TodasFabricasResponse")]
-        Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica[] TodasFabricas();
+        Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica[] TodasFabricas(int ClienteID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodasFabricas", ReplyAction="http://tempuri.org/ITEECRUDService/TodasFabricasResponse")]
-        System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica[]> TodasFabricasAsync();
+        System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica[]> TodasFabricasAsync(int ClienteID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DeletarFabrica", ReplyAction="http://tempuri.org/ITEECRUDService/DeletarFabricaResponse")]
         bool DeletarFabrica(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica _fabrica);
@@ -2701,12 +2701,12 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
             return base.Channel.DestalhesDaFabricaAsync(id);
         }
         
-        public Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica[] TodasFabricas() {
-            return base.Channel.TodasFabricas();
+        public Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica[] TodasFabricas(int ClienteID) {
+            return base.Channel.TodasFabricas(ClienteID);
         }
         
-        public System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica[]> TodasFabricasAsync() {
-            return base.Channel.TodasFabricasAsync();
+        public System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica[]> TodasFabricasAsync(int ClienteID) {
+            return base.Channel.TodasFabricasAsync(ClienteID);
         }
         
         public bool DeletarFabrica(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica _fabrica) {
