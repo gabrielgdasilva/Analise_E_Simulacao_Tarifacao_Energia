@@ -2549,6 +2549,12 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DestalhesDoUsuario", ReplyAction="http://tempuri.org/ITEECRUDService/DestalhesDoUsuarioResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario> DestalhesDoUsuarioAsync(string email);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/VerificaAutenticacao", ReplyAction="http://tempuri.org/ITEECRUDService/VerificaAutenticacaoResponse")]
+        bool VerificaAutenticacao(string email, string senha);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/VerificaAutenticacao", ReplyAction="http://tempuri.org/ITEECRUDService/VerificaAutenticacaoResponse")]
+        System.Threading.Tasks.Task<bool> VerificaAutenticacaoAsync(string email, string senha);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/AtualizarUsuario", ReplyAction="http://tempuri.org/ITEECRUDService/AtualizarUsuarioResponse")]
         bool AtualizarUsuario(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario _Usuario);
         
@@ -2560,6 +2566,12 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DeletarUsuario", ReplyAction="http://tempuri.org/ITEECRUDService/DeletarUsuarioResponse")]
         System.Threading.Tasks.Task<bool> DeletarUsuarioAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario _Usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/ListarUsuarios", ReplyAction="http://tempuri.org/ITEECRUDService/ListarUsuariosResponse")]
+        Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario[] ListarUsuarios(int ClienteID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/ListarUsuarios", ReplyAction="http://tempuri.org/ITEECRUDService/ListarUsuariosResponse")]
+        System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario[]> ListarUsuariosAsync(int ClienteID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarConta", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarContaResponse")]
         bool CadastrarConta(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta _Conta);
@@ -2853,6 +2865,14 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
             return base.Channel.DestalhesDoUsuarioAsync(email);
         }
         
+        public bool VerificaAutenticacao(string email, string senha) {
+            return base.Channel.VerificaAutenticacao(email, senha);
+        }
+        
+        public System.Threading.Tasks.Task<bool> VerificaAutenticacaoAsync(string email, string senha) {
+            return base.Channel.VerificaAutenticacaoAsync(email, senha);
+        }
+        
         public bool AtualizarUsuario(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario _Usuario) {
             return base.Channel.AtualizarUsuario(_Usuario);
         }
@@ -2867,6 +2887,14 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> DeletarUsuarioAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario _Usuario) {
             return base.Channel.DeletarUsuarioAsync(_Usuario);
+        }
+        
+        public Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario[] ListarUsuarios(int ClienteID) {
+            return base.Channel.ListarUsuarios(ClienteID);
+        }
+        
+        public System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario[]> ListarUsuariosAsync(int ClienteID) {
+            return base.Channel.ListarUsuariosAsync(ClienteID);
         }
         
         public bool CadastrarConta(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta _Conta) {

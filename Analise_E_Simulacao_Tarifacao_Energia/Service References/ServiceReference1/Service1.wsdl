@@ -169,6 +169,12 @@
   <wsdl:message name="ITEECRUDService_DestalhesDoUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:DestalhesDoUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="ITEECRUDService_VerificaAutenticacao_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerificaAutenticacao" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_VerificaAutenticacao_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerificaAutenticacaoResponse" />
+  </wsdl:message>
   <wsdl:message name="ITEECRUDService_AtualizarUsuario_InputMessage">
     <wsdl:part name="parameters" element="tns:AtualizarUsuario" />
   </wsdl:message>
@@ -180,6 +186,12 @@
   </wsdl:message>
   <wsdl:message name="ITEECRUDService_DeletarUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeletarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_ListarUsuarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_ListarUsuarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUsuariosResponse" />
   </wsdl:message>
   <wsdl:message name="ITEECRUDService_CadastrarConta_InputMessage">
     <wsdl:part name="parameters" element="tns:CadastrarConta" />
@@ -338,6 +350,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DestalhesDoUsuario" message="tns:ITEECRUDService_DestalhesDoUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DestalhesDoUsuarioResponse" message="tns:ITEECRUDService_DestalhesDoUsuario_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="VerificaAutenticacao">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/VerificaAutenticacao" message="tns:ITEECRUDService_VerificaAutenticacao_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/VerificaAutenticacaoResponse" message="tns:ITEECRUDService_VerificaAutenticacao_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AtualizarUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/AtualizarUsuario" message="tns:ITEECRUDService_AtualizarUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/AtualizarUsuarioResponse" message="tns:ITEECRUDService_AtualizarUsuario_OutputMessage" />
@@ -345,6 +361,10 @@
     <wsdl:operation name="DeletarUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DeletarUsuario" message="tns:ITEECRUDService_DeletarUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DeletarUsuarioResponse" message="tns:ITEECRUDService_DeletarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/ListarUsuarios" message="tns:ITEECRUDService_ListarUsuarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/ListarUsuariosResponse" message="tns:ITEECRUDService_ListarUsuarios_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CadastrarConta">
       <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarConta" message="tns:ITEECRUDService_CadastrarConta_InputMessage" />
@@ -624,6 +644,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="VerificaAutenticacao">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/VerificaAutenticacao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AtualizarUsuario">
       <soap:operation soapAction="http://tempuri.org/ITEECRUDService/AtualizarUsuario" style="document" />
       <wsdl:input>
@@ -635,6 +664,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeletarUsuario">
       <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DeletarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuarios">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/ListarUsuarios" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

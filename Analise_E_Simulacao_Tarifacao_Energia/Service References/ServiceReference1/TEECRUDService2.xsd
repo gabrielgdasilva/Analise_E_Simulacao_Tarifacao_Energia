@@ -369,6 +369,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="VerificaAutenticacao">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="senha" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerificaAutenticacaoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="VerificaAutenticacaoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AtualizarUsuario">
     <xs:complexType>
       <xs:sequence>
@@ -397,10 +412,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ListarUsuarios">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClienteID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarUsuariosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="ListarUsuariosResult" nillable="true" type="q30:ArrayOfUsuario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CadastrarConta">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="_Conta" nillable="true" type="q30:Conta" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="_Conta" nillable="true" type="q31:Conta" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -422,7 +451,7 @@
   <xs:element name="DestalhesDaContaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="DestalhesDaContaResult" nillable="true" type="q31:Conta" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="DestalhesDaContaResult" nillable="true" type="q32:Conta" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -436,7 +465,7 @@
   <xs:element name="TodasContasResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="TodasContasResult" nillable="true" type="q32:ArrayOfConta" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="TodasContasResult" nillable="true" type="q33:ArrayOfConta" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -452,14 +481,14 @@
   <xs:element name="ConsultaEntreDatasResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="ConsultaEntreDatasResult" nillable="true" type="q33:ArrayOfConta" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="ConsultaEntreDatasResult" nillable="true" type="q34:ArrayOfConta" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AtualizarConta">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="_Conta" nillable="true" type="q34:Conta" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="_Conta" nillable="true" type="q35:Conta" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -473,7 +502,7 @@
   <xs:element name="DeletarConta">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="_Conta" nillable="true" type="q35:Conta" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="_Conta" nillable="true" type="q36:Conta" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -508,7 +537,7 @@
   <xs:element name="DadosParaGraficoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="DadosParaGraficoResult" nillable="true" type="q36:ArrayOfGrafico" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" minOccurs="0" name="DadosParaGraficoResult" nillable="true" type="q37:ArrayOfGrafico" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

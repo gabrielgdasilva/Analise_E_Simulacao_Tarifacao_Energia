@@ -386,6 +386,15 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Utilities
             return usuario;
         }
 
+        internal static ServiceReference1.Usuario AutenticaUsuario(UsuarioModel usuario)
+        {
+            ServiceReference1.Usuario usuarioSaida = new ServiceReference1.Usuario();
+            usuarioSaida.Email = usuario.Email;
+            usuarioSaida.Senha = usuario.Senha;
+
+            return usuarioSaida;
+        }
+
         internal static ServiceReference1.Usuario NovoUsuario(UsuarioModel usuario)
         {
             ServiceReference1.Usuario usuarioSaida = new ServiceReference1.Usuario();
@@ -429,6 +438,23 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Utilities
             usuarioSaida.Tipo = usuario.Tipo;
 
             return usuarioSaida;
+        }
+
+        internal static List<UsuarioModel> ListarUsuarios(List<ServiceReference1.Usuario> _ListaUsuario)
+        {
+            List<UsuarioModel> lista = new List<UsuarioModel>();
+            foreach (var item in _ListaUsuario)
+            {
+                UsuarioModel usuario = new UsuarioModel();
+                usuario.Email = item.Email;
+                usuario.Nome = item.Nome;
+                usuario.Cpf = item.Cpf;
+                usuario.DataRegistro = item.DataRegistro;
+                usuario.Ativo = item.Ativo;
+                usuario.Tipo = item.Tipo;
+                lista.Add(usuario);
+            }
+            return lista;
         }
 
         //----------------------------Contas---------------------------------------------------------------------

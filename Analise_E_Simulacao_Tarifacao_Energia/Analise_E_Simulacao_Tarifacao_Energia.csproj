@@ -77,6 +77,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -150,7 +158,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\ContaController.cs" />
+    <Compile Include="Controllers\FabricaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeLogadaController.cs" />
+    <Compile Include="Controllers\SimulacaoController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,6 +190,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -251,6 +266,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Usuario\Create.cshtml" />
+    <Content Include="Views\Usuario\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutPageLogada.cshtml" />
+    <Content Include="Views\HomeLogada\Index.cshtml" />
     <None Include="Service References\ServiceReference1\TEECRUDService.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -260,6 +279,24 @@
     <None Include="Service References\ServiceReference1\TEECRUDService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Usuario\SubCreate.cshtml" />
+    <Content Include="Views\Usuario\List.cshtml" />
+    <Content Include="Views\Usuario\Details.cshtml" />
+    <Content Include="Views\Usuario\Edit.cshtml" />
+    <Content Include="Views\Usuario\Delete.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Fabrica\List.cshtml" />
+    <Content Include="Views\Fabrica\Edit.cshtml" />
+    <Content Include="Views\Fabrica\Create.cshtml" />
+    <Content Include="Views\Fabrica\Details.cshtml" />
+    <Content Include="Views\Fabrica\Delete.cshtml" />
+    <Content Include="Views\Conta\List.cshtml" />
+    <Content Include="Views\Conta\Edit.cshtml" />
+    <Content Include="Views\Conta\Delete.cshtml" />
+    <Content Include="Views\Conta\Create.cshtml" />
+    <Content Include="Views\Conta\Details.cshtml" />
+    <Content Include="Views\Simulacao\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

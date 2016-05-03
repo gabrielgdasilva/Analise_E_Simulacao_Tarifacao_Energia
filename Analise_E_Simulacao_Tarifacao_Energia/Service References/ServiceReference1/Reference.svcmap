@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="11e92e9b-2f95-4067-aa00-1cbb106df61b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="18fa7017-3f75-4e97-8117-c2b96a250a02" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:62339/TEECRUDService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TEECRUDService.disco" MetadataType="Disco" ID="c7d250bc-2f98-4e90-baa5-5e3392c7f027" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?disco" />
-    <MetadataFile FileName="TEECRUDService.xsd" MetadataType="Schema" ID="3a0f01ea-ba5a-4491-a100-d8efdcadce3f" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?xsd=xsd2" />
-    <MetadataFile FileName="TEECRUDService1.xsd" MetadataType="Schema" ID="047c5d1f-8459-4bce-bdba-5859a70725ee" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?xsd=xsd1" />
-    <MetadataFile FileName="TEECRUDService2.xsd" MetadataType="Schema" ID="c2c4577a-3bcd-44e4-92a7-456b60d5a63a" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?xsd=xsd0" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="935ebadd-4ad0-40e8-84e1-58f589245c52" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?wsdl" />
+    <MetadataFile FileName="TEECRUDService.disco" MetadataType="Disco" ID="aae64a57-3307-4a5c-8780-a8777d73150a" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?disco" />
+    <MetadataFile FileName="TEECRUDService.xsd" MetadataType="Schema" ID="9fbc0647-4e7f-4302-a943-13d7b8bcb179" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?xsd=xsd2" />
+    <MetadataFile FileName="TEECRUDService1.xsd" MetadataType="Schema" ID="4cbf1d64-85ea-43ad-8318-9aff5fe883ba" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TEECRUDService2.xsd" MetadataType="Schema" ID="8e4f09cb-d068-4efa-a4f6-97c351e56a33" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="66f3516f-cc03-4c15-9f4c-fd7c4ad0a7ba" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
