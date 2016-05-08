@@ -110,21 +110,21 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             List<ServiceReference1.Grafico> graficoReference = new List<ServiceReference1.Grafico>();
             graficoReference.Add(grafico);
 
-            List<GraficoModel> contas = Conversor.DadosGrafico(graficoReference);
-            /*var contas = new List<GraficoModel> {
-                new GraficoModel() { Mes="Jan", Valor=100.2 },
-                new GraficoModel() { Mes="Fev", Valor=200.5 },
-                new GraficoModel() { Mes="Mar", Valor=250 },
-                new GraficoModel() { Mes="Abr", Valor=300 },
-                new GraficoModel() { Mes="Mai", Valor=326.47 },
-                new GraficoModel() { Mes="Jun", Valor=478 },
-                new GraficoModel() { Mes="Jul", Valor=450.48 },
-                new GraficoModel() { Mes="Ago", Valor=300 },
-                new GraficoModel() { Mes="Set", Valor=500 },
-                new GraficoModel() { Mes="Out", Valor=379.26 },
-                new GraficoModel() { Mes="Nov", Valor=200 },
-                new GraficoModel() { Mes="Dez", Valor=300 },
-                };*/
+            //List<GraficoModel> contas = Conversor.DadosGrafico(graficoReference);
+            var contas = new List<GraficoModel> {
+                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/01/2015"), ValorTotal=100.2f },
+                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/02/2015"), ValorTotal=200.5f },
+                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/03/2015"), ValorTotal=250f },
+                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/04/2015"), ValorTotal=300f },
+                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/05/2015"), ValorTotal=326.47f },
+                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/06/2015"), ValorTotal=478f },
+                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/07/2015"), ValorTotal=450.48f },
+                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/08/2015"), ValorTotal=300f },
+                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/09/2015"), ValorTotal=500f },
+                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/10/2015"), ValorTotal=379.26f },
+                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/11/2015"), ValorTotal=200f },
+                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/12/2015"), ValorTotal=300f },
+                };
 
             var xMes = contas.Select(c => c.MesReferencia).ToArray();
             var yValores = contas.Select(c => new object[] { c.ValorTotal }).ToArray();
