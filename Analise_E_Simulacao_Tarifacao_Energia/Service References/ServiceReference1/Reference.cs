@@ -2550,10 +2550,10 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario> DestalhesDoUsuarioAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/VerificaAutenticacao", ReplyAction="http://tempuri.org/ITEECRUDService/VerificaAutenticacaoResponse")]
-        bool VerificaAutenticacao(string email, string senha);
+        Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario VerificaAutenticacao(string email, string senha);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/VerificaAutenticacao", ReplyAction="http://tempuri.org/ITEECRUDService/VerificaAutenticacaoResponse")]
-        System.Threading.Tasks.Task<bool> VerificaAutenticacaoAsync(string email, string senha);
+        System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario> VerificaAutenticacaoAsync(string email, string senha);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/AtualizarUsuario", ReplyAction="http://tempuri.org/ITEECRUDService/AtualizarUsuarioResponse")]
         bool AtualizarUsuario(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario _Usuario);
@@ -2865,11 +2865,11 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
             return base.Channel.DestalhesDoUsuarioAsync(email);
         }
         
-        public bool VerificaAutenticacao(string email, string senha) {
+        public Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario VerificaAutenticacao(string email, string senha) {
             return base.Channel.VerificaAutenticacao(email, senha);
         }
         
-        public System.Threading.Tasks.Task<bool> VerificaAutenticacaoAsync(string email, string senha) {
+        public System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario> VerificaAutenticacaoAsync(string email, string senha) {
             return base.Channel.VerificaAutenticacaoAsync(email, senha);
         }
         
