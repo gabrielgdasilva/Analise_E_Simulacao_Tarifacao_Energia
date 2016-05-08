@@ -1,11 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@using  Analise_E_Simulacao_Tarifacao_Energia.Models
+<!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Análise e Simulação de Tarifação de Energia Elétrica</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -18,15 +21,38 @@
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li class="alert-link ">@Html.ActionLink("Login","Login","Usuario")</li>
-                    
-                </ul>
-            </div>
+           
+            @{ 
+                UsuarioModel usuario = ViewBag.usuarioLogado;
+            }
+              
+                    @if (usuario == null || usuario.ClienteID == 0)
+                    {
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("About", "About", "Home")</li>
+                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                <li class="alert-link ">@Html.ActionLink("Login", "Login", "Usuario")</li>
+
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Home", "Index", "HomeLogada")</li>
+                                <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
+                                <li>@Html.ActionLink("Detalhes da Empresa", "Index", "Cliente")</li>
+                                <li>@Html.ActionLink("Fabricas", "Index", "Fabricas")</li>
+                                <li>@Html.ActionLink("Sair", "Logout", "Home")</li>
+                            </ul>
+                        </div>
+                    }
+                
+            
+            
         </div>
     </div>
     <div class="container body-content">

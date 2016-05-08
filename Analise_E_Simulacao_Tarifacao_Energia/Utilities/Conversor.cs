@@ -390,8 +390,13 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Utilities
         {
             ServiceReference1.Usuario usuarioSaida = new ServiceReference1.Usuario();
             usuarioSaida.Email = usuario.Email;
+            usuarioSaida.ClienteID = usuario.ClienteID;
+            usuarioSaida.Cpf = usuario.Cpf;
+            usuarioSaida.Nome = usuario.Nome;
             usuarioSaida.Senha = usuario.Senha;
-
+            usuarioSaida.Ativo = usuario.Ativo;
+            usuarioSaida.DataRegistro = usuario.DataRegistro;
+            usuarioSaida.Tipo = usuario.Tipo;
             return usuarioSaida;
         }
 

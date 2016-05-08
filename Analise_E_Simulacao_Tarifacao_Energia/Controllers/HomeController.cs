@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Analise_E_Simulacao_Tarifacao_Energia.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,11 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(UsuarioModel usuario)
         {
-            return View();
+            ViewBag.usuarioLogado = usuario;
+
+            return View(usuario);
         }
 
         public ActionResult About()
@@ -25,6 +28,11 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult Logout()
+        {
+            ViewBag.usuarioLogado = null;
+            return View("Index");
         }
     }
 }

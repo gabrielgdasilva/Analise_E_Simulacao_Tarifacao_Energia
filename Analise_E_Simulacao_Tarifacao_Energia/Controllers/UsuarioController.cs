@@ -26,27 +26,28 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                 {
                     ServiceReference1.Usuario usuario = Conversor.AutenticaUsuario(modeloUsuario);
-                    bool resultado = client.VerificaAutenticacao(usuario.Email, usuario.Senha);
-                    if (resultado)
+                    UsuarioModel resultado = Conversor.UsuarioRecebido(client.VerificaAutenticacao(usuario.Email, usuario.Senha));
+                    if (resultado!=null)
                     {
                         TempData["AutenticaUsuario"] = true;
-                        return RedirectToAction("HomeLogada", usuario);
+                        ViewBag.usuarioLogado = resultado;
+                        return RedirectToAction("Index", "Home", resultado);
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, "Usuario ou Senha invalidos!");
-                        return View(modeloUsuario);
+                        throw new InvalidOperationException("O Serviço não pode Logar o usuario");
                     }
                 }
             }
             catch (Exception)
             {
-                throw;
+
+                throw new InvalidOperationException("O Serviço não pode Logar o usuario"); 
             }
         }
 
         //GET: Usuario/List
-        public ActionResult List(int id)
+        public ActionResult List(int id, UsuarioModel usuarioLogado)
         {
             List<UsuarioModel> listaUsuarios = new List<UsuarioModel>();
             using (ServiceReference1.TEECRUDServiceClient client =new ServiceReference1.TEECRUDServiceClient())
@@ -59,7 +60,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
         
         // GET: Usuario/Details/5
-        public ActionResult Details(string email)
+        public ActionResult Details(string email, UsuarioModel usuarioLogado)
         {
             UsuarioModel usuarioModelo = new UsuarioModel();
             using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
@@ -145,20 +146,20 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Usuario/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, string email, UsuarioModel usuarioLogado)
         {
             UsuarioModel usuarioModelo = new UsuarioModel();
             using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
             {
-                //ServiceReference1.Usuario usuarioEntrada = client.DestalhesDoUsuario(email);
-                //usuarioModelo = Conversor.UsuarioRecebido(usuarioEntrada);
+                ServiceReference1.Usuario usuarioEntrada = client.DestalhesDoUsuario(email);
+                usuarioModelo = Conversor.UsuarioRecebido(usuarioEntrada);
             }
             return View(usuarioModelo);
         }
 
         // POST: Usuario/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, UsuarioModel modeloUsuario)
+        public ActionResult Edit(int id, UsuarioModel modeloUsuario, UsuarioModel usuarioLogado)
         {
             try
             {
@@ -188,7 +189,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Usuario/Delete/5
-        public ActionResult Delete(int id,string email)
+        public ActionResult Delete(int id,string email, UsuarioModel usuarioLogado)
         {
             UsuarioModel usuarioModelo = new UsuarioModel();
 
@@ -202,7 +203,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
         // POST: Usuario/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, UsuarioModel modeloUsuario)
+        public ActionResult Delete(int id, UsuarioModel modeloUsuario, UsuarioModel usuarioLogado)
         {
             try
             {
