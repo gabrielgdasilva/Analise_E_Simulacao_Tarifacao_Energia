@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace Analise_E_Simulacao_Tarifacao_Energia.Models
 {
@@ -55,5 +56,9 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Models
         public float SubTotal { get; set; }
         public float ValorTotal { get; set; }
         public int TipoContratoDestinoID { get; set; }
+        public String MesReferencia
+        {
+            get { return DataReferencia.ToString("MMMM", CultureInfo.InvariantCulture); }
+        }
     }
 }
