@@ -34,13 +34,13 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     }
                     else
                     {
-                        throw new InvalidOperationException("O Serviço não pode Logar o usuario");
+                        ModelState.AddModelError(string.Empty, "Usuario ou Senha invalidos!");
+                        return View(modeloUsuario);
                     }
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -150,8 +150,8 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             UsuarioModel usuarioModelo = new UsuarioModel();
             using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
             {
-                ServiceReference1.Usuario usuarioEntrada = client.DestalhesDoUsuario(email);
-                usuarioModelo = Conversor.UsuarioRecebido(usuarioEntrada);
+                //ServiceReference1.Usuario usuarioEntrada = client.DestalhesDoUsuario(email);
+                //usuarioModelo = Conversor.UsuarioRecebido(usuarioEntrada);
             }
             return View(usuarioModelo);
         }
