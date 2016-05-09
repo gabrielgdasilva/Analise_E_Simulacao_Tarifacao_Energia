@@ -163,7 +163,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
-    <Compile Include="Utilities\ContaController.cs" />
+    <Compile Include="Models\ContaViewModel.cs" />
+    <Compile Include="Models\Mes.cs" />
+    <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\FabricaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeLogadaController.cs" />
@@ -190,6 +192,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Calendario.cs" />
     <Compile Include="Utilities\Conversor.cs" />
   </ItemGroup>
   <ItemGroup>
