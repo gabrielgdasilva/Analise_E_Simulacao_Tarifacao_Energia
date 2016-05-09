@@ -31,11 +31,12 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     {
                         TempData["AutenticaUsuario"] = true;
                         ViewBag.usuarioLogado = resultado;
-                        return RedirectToAction("Index", "Home", resultado);
+                        return RedirectToAction("List", "Fabrica", resultado);
                     }
                     else
                     {
-                        throw new InvalidOperationException("O Serviço não pode Logar o usuario");
+                        ModelState.AddModelError(string.Empty, "Usuario ou Senha invalidos!");
+                        return View(modeloUsuario);
                     }
                 }
             }

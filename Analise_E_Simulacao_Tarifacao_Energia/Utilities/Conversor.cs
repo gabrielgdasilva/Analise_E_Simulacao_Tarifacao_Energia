@@ -373,17 +373,24 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Utilities
 
         internal static UsuarioModel UsuarioRecebido(ServiceReference1.Usuario _Usuario)
         {
-            UsuarioModel usuario = new UsuarioModel();
-            usuario.Email = _Usuario.Email;
-            usuario.ClienteID = _Usuario.ClienteID;
-            usuario.Cpf = _Usuario.Cpf;
-            usuario.Nome = _Usuario.Nome;
-            usuario.Senha = _Usuario.Senha;
-            usuario.Ativo = _Usuario.Ativo;
-            usuario.DataRegistro = _Usuario.DataRegistro;
-            usuario.Tipo = _Usuario.Tipo;
+            if(_Usuario != null)
+            {
+                UsuarioModel usuario = new UsuarioModel();
+                usuario.Email = _Usuario.Email;
+                usuario.ClienteID = _Usuario.ClienteID;
+                usuario.Cpf = _Usuario.Cpf;
+                usuario.Nome = _Usuario.Nome;
+                usuario.Senha = _Usuario.Senha;
+                usuario.Ativo = _Usuario.Ativo;
+                usuario.DataRegistro = _Usuario.DataRegistro;
+                usuario.Tipo = _Usuario.Tipo;
 
-            return usuario;
+                return usuario;
+           }
+           else
+           {
+                return null;
+           }
         }
 
         internal static ServiceReference1.Usuario AutenticaUsuario(UsuarioModel usuario)

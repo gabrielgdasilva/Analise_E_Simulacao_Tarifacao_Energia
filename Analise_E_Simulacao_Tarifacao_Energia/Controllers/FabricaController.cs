@@ -13,13 +13,17 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
     public class FabricaController : Controller
     {
         // GET: Fabrica
-        public ActionResult List(int id)
+        public ActionResult List(UsuarioModel usuario)
         {
             List<FabricaModel> ListaFabrica = new List<FabricaModel>();
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+
+            if (usuario != null)
             {
-                List<ServiceReference1.Fabrica> listaDeEntrada = client.TodasFabricas(id).ToList();
-                ListaFabrica = Conversor.ListaFabricas(listaDeEntrada);
+                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                {
+                    List<ServiceReference1.Fabrica> listaDeEntrada = client.TodasFabricas(usuario.ClienteID).ToList();
+                    ListaFabrica = Conversor.ListaFabricas(listaDeEntrada);
+                }
             }
             return View(ListaFabrica);
         }

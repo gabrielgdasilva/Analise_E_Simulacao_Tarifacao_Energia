@@ -7,273 +7,80 @@
 <h2>List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Cadastrar Nova", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.dataReferencia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TarifaID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FabricaID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DistribuidoraID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoContratoID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoSubGrupoID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoNaPontaTUSD_Registrado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoForaPontaTUSD_Registrado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoNaPontaTE_Registrado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoForaPontaTE_Registrado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoUltrapassagemNaPonta_Registrado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoUltrapassagemForaPonta_Registrado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DemandaTUSD_Registrado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoNaPontaTUSD_Contratado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoForaPontaTUSD_Contratado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoNaPontaTE_Contratado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoForaPontaTE_Contratado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DemandaTUSD_Contratado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoNaPontaTUSD_Faturado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoForaPontaTUSD_Faturado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoNaPontaTE_Faturado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoForaPontaTE_Faturado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoUltrapassagemNaPonta_Faturado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoUltrapassagemForaPonta_Faturado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DemandaTUSD_Faturado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoNaPontaTUSD_TarifaPreco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoForaPontaTUSD_TarifaPreco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoNaPontaTE_TarifaPreco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoForaPontaTE_TarifaPreco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoUltrapassagemNaPonta_TarifaPreco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoUltrapassagemForaPonta_TarifaPreco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DemandaTUSD_TarifaPreco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoNaPontaTUSD_Valor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoForaPontaTUSD_Valor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoNaPontaTE_Valor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoForaPontaTE_Valor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoUltrapassagemNaPonta_Valor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConsumoUltrapassagemForaPonta_Valor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DemandaTUSD_Valor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SubTotal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ValorTotal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BandeiraID)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.dataReferencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TarifaID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FabricaID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DistribuidoraID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoContratoID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoSubGrupoID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoNaPontaTUSD_Registrado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoForaPontaTUSD_Registrado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoNaPontaTE_Registrado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoForaPontaTE_Registrado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoUltrapassagemNaPonta_Registrado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoUltrapassagemForaPonta_Registrado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DemandaTUSD_Registrado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoNaPontaTUSD_Contratado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoForaPontaTUSD_Contratado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoNaPontaTE_Contratado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoForaPontaTE_Contratado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DemandaTUSD_Contratado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoNaPontaTUSD_Faturado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoForaPontaTUSD_Faturado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoNaPontaTE_Faturado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoForaPontaTE_Faturado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoUltrapassagemNaPonta_Faturado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoUltrapassagemForaPonta_Faturado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DemandaTUSD_Faturado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoNaPontaTUSD_TarifaPreco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoForaPontaTUSD_TarifaPreco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoNaPontaTE_TarifaPreco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoForaPontaTE_TarifaPreco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoUltrapassagemNaPonta_TarifaPreco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoUltrapassagemForaPonta_TarifaPreco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DemandaTUSD_TarifaPreco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoNaPontaTUSD_Valor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoForaPontaTUSD_Valor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoNaPontaTE_Valor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoForaPontaTE_Valor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoUltrapassagemNaPonta_Valor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConsumoUltrapassagemForaPonta_Valor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DemandaTUSD_Valor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SubTotal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ValorTotal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BandeiraID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+@if (Model.Count() != 0)
+{
+    foreach (var item in Model)
+    {
+        <h4>@item.MesReferencia</h4>
+        <table>
+            <tr>
+                <th>Desrição Da Conta</th>
+                <th>Registrado</th>
+                <th>Contratado</th>
+                <th>Faturado</th>
+                <th>Tarifa/Preço</th>
+                <th>Valor (R$)</th>
+            </tr>
+            <tr>
+                <th>Consumo Ponta (Kw) - TUSD</th>
+                <th>@item.ConsumoNaPontaTUSD_Registrado</th>
+                <th>@item.ConsumoNaPontaTUSD_Contratado</th>
+                <th>@item.ConsumoNaPontaTUSD_Faturado</th>
+                <th>@item.ConsumoNaPontaTUSD_TarifaPreco</th>
+                <th>@item.ConsumoNaPontaTUSD_Valor</th>
+                </tr>
+            <tr>
+                <th>Consumo Fora Ponta (Kw) - TUSD</th>
+                <th>@item.ConsumoForaPontaTUSD_Registrado</th>
+                <th>@item.ConsumoForaPontaTUSD_Contratado</th>
+                <th>@item.ConsumoForaPontaTUSD_Faturado</th>
+                <th>@item.ConsumoForaPontaTUSD_TarifaPreco</th>
+                <th>@item.ConsumoForaPontaTUSD_Valor</th>
+            </tr>
+            <tr>
+                <th>Consumo Ponta Bandeira Verde TE</th>
+                <th>@item.ConsumoNaPontaTE_Registrado</th>
+                <th>@item.ConsumoNaPontaTE_Contratado</th>
+                <th>@item.ConsumoNaPontaTE_Faturado</th>
+                <th>@item.ConsumoNaPontaTE_TarifaPreco</th>
+                <th>@item.ConsumoNaPontaTE_Valor</th>
+            </tr>
+            <tr>
+                <th>Consumo Fora Ponta Bandeira Verde TE</th>
+                <th>@item.ConsumoForaPontaTE_Registrado</th>
+                <th>@item.ConsumoForaPontaTE_Contratado</th>
+                <th>@item.ConsumoForaPontaTE_Faturado</th>
+                <th>@item.ConsumoForaPontaTE_TarifaPreco</th>
+                <th>@item.ConsumoForaPontaTE_Valor</th>
+            </tr>
+            <tr>
+                <th>Ultrapassagem Na Ponta</th>
+                <th>@item.ConsumoUltrapassagemNaPonta_Registrado</th>
+                <th></th>
+                <th>@item.ConsumoUltrapassagemNaPonta_Faturado</th>
+                <th>@item.ConsumoUltrapassagemNaPonta_TarifaPreco</th>
+                <th>@item.ConsumoUltrapassagemNaPonta_Valor</th>
+            </tr>
+            <tr>
+                <th>Ultrapassagem Na Ponta</th>
+                <th>@item.ConsumoUltrapassagemForaPonta_Registrado</th>
+                <th></th>
+                <th>@item.ConsumoUltrapassagemForaPonta_Faturado</th>
+                <th>@item.ConsumoUltrapassagemForaPonta_TarifaPreco</th>
+                <th>@item.ConsumoUltrapassagemForaPonta_Valor</th>
+            </tr>
+            <tr>
+                <th>Total Pago</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>@item.ValorTotal</th>
+            </tr>
+        </table>
+    }
+    
 }
-
-</table>

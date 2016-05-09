@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Analise_E_Simulacao_Tarifacao_Energia.Models.FabricaModel>
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Lista de Fabricas";
 }
 
 <h2>List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Cadastrar Nova", "Create")
 </p>
 <table class="table">
     <tr>
@@ -41,9 +41,10 @@
             @Html.DisplayFor(modelItem => item.DistribuidoraID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Ver contas", "List", "Conta", new { id=item.FabricaID }, null) |
+            @Html.ActionLink("Editar", "Edit", new { id = item.FabricaID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id = item.FabricaID }) |
+            @Html.ActionLink("Excluir", "Delete", new { id = item.FabricaID })
         </td>
     </tr>
 }

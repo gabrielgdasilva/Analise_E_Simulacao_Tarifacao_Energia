@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -49,5 +50,9 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Models
         public float SubTotal { get; set; }
         public float ValorTotal { get; set; }
         public int BandeiraID { get; set; }
+        public String MesReferencia
+        {
+            get { return dataReferencia.ToString("MMM/yyyy", CultureInfo.CurrentCulture); }
+        }
     }
 }
