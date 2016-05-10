@@ -28,6 +28,23 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             return View(ListaFabrica);
         }
 
+        //GET: Fabrica
+        public ActionResult ListFabrica(FabricaModel fabrica)
+        {
+            List<FabricaModel> ListaFabrica = new List<FabricaModel>();
+
+            if (fabrica != null)
+            {
+                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                {
+                    List<ServiceReference1.Fabrica> listaDeEntrada = client.TodasFabricas(fabrica.ClienteID).ToList();
+                    ListaFabrica = Conversor.ListaFabricas(listaDeEntrada);
+                }
+            }
+            UsuarioModel usuario = ViewBag.usuarioLogado;
+            return List(usuario);
+        }
+
         // GET: Fabrica/Details/5
         public ActionResult Details(int id)
         {
@@ -61,7 +78,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     if (resultado)
                     {
                         TempData["CadastrarFabrica"] = true;
-                        return RedirectToAction("List");
+                        return RedirectToAction("ListFabrica",fabrica);
                     }
                     else
                     {

@@ -25,16 +25,22 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Simulacao/Create
-        public ActionResult Create()
+        public ActionResult Create(int? _FabricaID)
         {
+            
             SimulacaoModel simulacaoModelo = new SimulacaoModel();
+            simulacaoModelo.FabricaID = (int)_FabricaID;
             return View(simulacaoModelo);
         }
 
         // POST: Simulacao/Create
         [HttpPost]
-        public ActionResult Create(FabricaModel modeloFabrica)
+        public ActionResult Create(SimulacaoModel simulacaoModelo)
         {
+
+            FabricaModel modeloFabrica = new FabricaModel();
+            modeloFabrica.FabricaID = simulacaoModelo.FabricaID;
+           
             try
             {
                 using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
