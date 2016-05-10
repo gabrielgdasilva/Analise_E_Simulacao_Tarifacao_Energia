@@ -38,8 +38,31 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         // GET: Conta/Create
         public ActionResult Create()
         {
-            ContaModel contaModelo = new ContaModel();
-            return View(contaModelo);
+            List<TarifaModel> tarifas = new List<TarifaModel>();
+            List<Mes> meses = Calendario.ListaDeMeses().ToList();
+            List<TipoContratoModel> contratos = new List<TipoContratoModel>();
+            List<TipoSubGrupoModel> grupos = new List<TipoSubGrupoModel>();
+            List<BandeiraModel> bandeiras = new List<BandeiraModel>();
+
+            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+            {
+                List<ServiceReference1.Tarifa> listaDeTarifas = client.TodasTarifas().ToList();
+                tarifas = Conversor.TodasTarifas(listaDeTarifas);
+
+                List<ServiceReference1.TipoContrato> listaDeContratos = client.TodosContratos().ToList();
+                contratos = Conversor.ListaContratos(listaDeContratos);
+
+                List<ServiceReference1.TipoSubGrupo> listaDeGrupos = client.TodosSubGrupos().ToList();
+                grupos = Conversor.ListaSubGrupos(listaDeGrupos);
+
+                List<ServiceReference1.Bandeira> listaDeBandeiras = client.TodasBandeiras().ToList();
+                bandeiras = Conversor.ListaBandeira(listaDeBandeiras);
+
+            }
+
+            ContaViewModel cvm = new ContaViewModel(null, bandeiras, meses, tarifas, contratos, grupos);
+
+            return View(cvm);
         }
 
         // POST: Conta/Create

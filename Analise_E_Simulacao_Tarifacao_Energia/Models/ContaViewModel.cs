@@ -32,7 +32,11 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Models
                 Ano = conta.dataReferencia.ToString("yyyy");
                 Mes = conta.dataReferencia.ToString("MM");
             }
-
+            else
+            {
+                conta = new ContaModel();
+            }
+            
             bandeiras = new List<BandeiraModel>(_bandeiras);
             meses = new List<Mes>(_meses);
             tarifas = new List<TarifaModel>(_tarifas);
