@@ -19,7 +19,10 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 List<ServiceReference1.Conta> listaDeEntrada = client.TodasContas(id).ToList();
                 listaConta = Conversor.ListaContas(listaDeEntrada);
             }
-            return View(listaConta);
+
+            ContaViewModel cvm = new ContaViewModel(id, listaConta);
+
+            return View(cvm);
         }
 
         // GET: Conta/Details/5
@@ -36,9 +39,9 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Conta/Create
-        public ActionResult Create()
+        public ActionResult CreateConta(ContaViewModel contaViewModel)
         {
-            List<TarifaModel> tarifas = new List<TarifaModel>();
+            List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
             List<Mes> meses = Calendario.ListaDeMeses().ToList();
             List<TipoContratoModel> contratos = new List<TipoContratoModel>();
             List<TipoSubGrupoModel> grupos = new List<TipoSubGrupoModel>();
@@ -46,8 +49,8 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
             using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
             {
-                List<ServiceReference1.Tarifa> listaDeTarifas = client.TodasTarifas().ToList();
-                tarifas = Conversor.TodasTarifas(listaDeTarifas);
+                List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
+                distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
 
                 List<ServiceReference1.TipoContrato> listaDeContratos = client.TodosContratos().ToList();
                 contratos = Conversor.ListaContratos(listaDeContratos);
@@ -60,17 +63,29 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
             }
 
-            ContaViewModel cvm = new ContaViewModel(null, bandeiras, meses, tarifas, contratos, grupos);
-
+            ContaViewModel cvm = new ContaViewModel(null, bandeiras, meses, distribuidoras, contratos, grupos);
+            cvm.conta.FabricaID = contaViewModel.conta.FabricaID;
             return View(cvm);
         }
 
         // POST: Conta/Create
         [HttpPost]
-        public ActionResult Create(ContaModel contaModelo)
+        public ActionResult Create(ContaViewModel cvm)
         {
             try
             {
+                List<TarifaModel> tarifas = new List<TarifaModel>();
+
+                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                {
+                    List<ServiceReference1.Tarifa> listaDeTarifas = client.TodasTarifas().ToList();
+                    tarifas = Conversor.TodasTarifas(listaDeTarifas);
+                }
+
+                ContaModel contaModelo = cvm.ObterConta();
+                contaModelo.TarifaID = tarifas.Where(x => x.TipoContratoID == contaModelo.TipoContratoID && x.TipoSubGrupoID == contaModelo.TipoSubGrupoID && x.BandeiraID == contaModelo.BandeiraID).Select(x => x.TarifaID).FirstOrDefault();
+                contaModelo.FabricaID = ViewBag.IdFabrica;
+
                 using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                 {
                     ServiceReference1.Conta conta = Conversor.CadastrarConta(contaModelo);

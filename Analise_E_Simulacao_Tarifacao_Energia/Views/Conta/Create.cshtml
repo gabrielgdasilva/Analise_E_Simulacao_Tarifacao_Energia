@@ -9,355 +9,130 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
     <div class="form-horizontal">
         <h4>ContaModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.conta.dataReferencia, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.dataReferencia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.dataReferencia, "", new { @class = "text-danger" })
+                <label>Mês e ano de referência: </label>
+                @Html.DropDownListFor(model => model.Mes, Model.meses, "", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Ano)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.conta.TarifaID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.TarifaID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.TarifaID, "", new { @class = "text-danger" })
+                <label>Bandeira: </label>
+                @Html.DropDownListFor(model => model.conta.DistribuidoraID, Model.distribuidoras, "", new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.conta.FabricaID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.FabricaID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.FabricaID, "", new { @class = "text-danger" })
+                <label>Bandeira: </label>
+                @Html.DropDownListFor(model => model.conta.BandeiraID, Model.bandeiras, "", new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.conta.DistribuidoraID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.DistribuidoraID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.DistribuidoraID, "", new { @class = "text-danger" })
+                <label>Contrato: </label>
+                @Html.DropDownListFor(model => model.conta.TipoContratoID, Model.tiposContrato, "", new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.conta.TipoContratoID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.TipoContratoID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.TipoContratoID, "", new { @class = "text-danger" })
+                <label>Sub Grupo: </label>
+                @Html.DropDownListFor(model => model.conta.TipoSubGrupoID, Model.tiposSubGrupo, "", new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.TipoSubGrupoID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.TipoSubGrupoID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.TipoSubGrupoID, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoNaPontaTUSD_Registrado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoNaPontaTUSD_Registrado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoNaPontaTUSD_Registrado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoForaPontaTUSD_Registrado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoForaPontaTUSD_Registrado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoForaPontaTUSD_Registrado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoNaPontaTE_Registrado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoNaPontaTE_Registrado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoNaPontaTE_Registrado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoForaPontaTE_Registrado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoForaPontaTE_Registrado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoForaPontaTE_Registrado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoUltrapassagemNaPonta_Registrado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoUltrapassagemNaPonta_Registrado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoUltrapassagemNaPonta_Registrado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoUltrapassagemForaPonta_Registrado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoUltrapassagemForaPonta_Registrado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoUltrapassagemForaPonta_Registrado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.DemandaTUSD_Registrado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.DemandaTUSD_Registrado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.DemandaTUSD_Registrado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoNaPontaTUSD_Contratado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoNaPontaTUSD_Contratado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoNaPontaTUSD_Contratado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoForaPontaTUSD_Contratado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoForaPontaTUSD_Contratado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoForaPontaTUSD_Contratado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoNaPontaTE_Contratado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoNaPontaTE_Contratado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoNaPontaTE_Contratado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoForaPontaTE_Contratado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoForaPontaTE_Contratado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoForaPontaTE_Contratado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.DemandaTUSD_Contratado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.DemandaTUSD_Contratado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.DemandaTUSD_Contratado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoNaPontaTUSD_Faturado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoNaPontaTUSD_Faturado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoNaPontaTUSD_Faturado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoForaPontaTUSD_Faturado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoForaPontaTUSD_Faturado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoForaPontaTUSD_Faturado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoNaPontaTE_Faturado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoNaPontaTE_Faturado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoNaPontaTE_Faturado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoForaPontaTE_Faturado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoForaPontaTE_Faturado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoForaPontaTE_Faturado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoUltrapassagemNaPonta_Faturado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoUltrapassagemNaPonta_Faturado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoUltrapassagemNaPonta_Faturado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoUltrapassagemForaPonta_Faturado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoUltrapassagemForaPonta_Faturado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoUltrapassagemForaPonta_Faturado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.DemandaTUSD_Faturado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.DemandaTUSD_Faturado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.DemandaTUSD_Faturado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoNaPontaTUSD_TarifaPreco, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoNaPontaTUSD_TarifaPreco, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoNaPontaTUSD_TarifaPreco, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoForaPontaTUSD_TarifaPreco, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoForaPontaTUSD_TarifaPreco, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoForaPontaTUSD_TarifaPreco, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoNaPontaTE_TarifaPreco, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoNaPontaTE_TarifaPreco, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoNaPontaTE_TarifaPreco, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoForaPontaTE_TarifaPreco, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoForaPontaTE_TarifaPreco, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoForaPontaTE_TarifaPreco, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoUltrapassagemNaPonta_TarifaPreco, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoUltrapassagemNaPonta_TarifaPreco, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoUltrapassagemNaPonta_TarifaPreco, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoUltrapassagemForaPonta_TarifaPreco, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoUltrapassagemForaPonta_TarifaPreco, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoUltrapassagemForaPonta_TarifaPreco, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.DemandaTUSD_TarifaPreco, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.DemandaTUSD_TarifaPreco, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.DemandaTUSD_TarifaPreco, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoNaPontaTUSD_Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoNaPontaTUSD_Valor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoNaPontaTUSD_Valor, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoForaPontaTUSD_Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoForaPontaTUSD_Valor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoForaPontaTUSD_Valor, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoNaPontaTE_Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoNaPontaTE_Valor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoNaPontaTE_Valor, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoForaPontaTE_Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoForaPontaTE_Valor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoForaPontaTE_Valor, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoUltrapassagemNaPonta_Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoUltrapassagemNaPonta_Valor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoUltrapassagemNaPonta_Valor, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ConsumoUltrapassagemForaPonta_Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ConsumoUltrapassagemForaPonta_Valor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ConsumoUltrapassagemForaPonta_Valor, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.DemandaTUSD_Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.DemandaTUSD_Valor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.DemandaTUSD_Valor, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.SubTotal, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.SubTotal, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.SubTotal, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.ValorTotal, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.ValorTotal, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.ValorTotal, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.conta.BandeiraID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta.BandeiraID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.conta.BandeiraID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <table>
+            <tr>
+                <th>Desrição Da Conta</th>
+                <th>Registrado</th>
+                <th>Contratado</th>
+                <th>Faturado</th>
+                <th>Tarifa/Preço</th>
+                <th>Valor (R$)</th>
+            </tr>
+            <tr>
+                <th>Consumo Ponta (Kw) - TUSD</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoNaPontaTUSD_Registrado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoNaPontaTUSD_Contratado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoNaPontaTUSD_Faturado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoNaPontaTUSD_TarifaPreco)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoNaPontaTUSD_Valor)</th>
+            </tr>
+            <tr>
+                <th>Consumo Fora Ponta (Kw) - TUSD</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoForaPontaTUSD_Registrado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoForaPontaTUSD_Contratado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoForaPontaTUSD_Faturado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoForaPontaTUSD_TarifaPreco)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoForaPontaTUSD_Valor)</th>
+            </tr>
+            <tr>
+                <th>Consumo Ponta Bandeira Verde TE</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoNaPontaTE_Registrado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoNaPontaTE_Contratado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoNaPontaTE_Faturado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoNaPontaTE_TarifaPreco)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoNaPontaTE_Valor)</th>
+            </tr>
+            <tr>
+                <th>Consumo Fora Ponta Bandeira Verde TE</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoForaPontaTE_Registrado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoForaPontaTE_Contratado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoForaPontaTE_Faturado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoForaPontaTE_TarifaPreco)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoForaPontaTE_Valor)</th>
+            </tr>
+            <tr>
+                <th>Ultrapassagem Na Ponta</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoUltrapassagemNaPonta_Registrado)</th>
+                <th>&nbsp;</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoUltrapassagemNaPonta_Faturado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoUltrapassagemNaPonta_TarifaPreco)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoUltrapassagemNaPonta_Valor)</th>
+            </tr>
+            <tr>
+                <th>Ultrapassagem Na Ponta</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoUltrapassagemForaPonta_Registrado)</th>
+                <th>&nbsp;</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoUltrapassagemForaPonta_Faturado)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoUltrapassagemForaPonta_TarifaPreco)</th>
+                <th>@Html.EditorFor(model => model.conta.ConsumoUltrapassagemForaPonta_Valor)</th>
+            </tr>
+            <tr>
+                <th>Demanda TUSD</th>
+                <th>@Html.EditorFor(model => model.conta.DemandaTUSD_Registrado)</th>
+                <th>@Html.EditorFor(model => model.conta.DemandaTUSD_Contratado)</th>
+                <th>@Html.EditorFor(model => model.conta.DemandaTUSD_Faturado)</th>
+                <th>@Html.EditorFor(model => model.conta.DemandaTUSD_TarifaPreco)</th>
+                <th>@Html.EditorFor(model => model.conta.DemandaTUSD_Valor)</th>
+            </tr>
+            <tr>
+                <th>Total Pago</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+                <th>@Html.EditorFor(model => model.conta.ValorTotal)</th>
+            </tr>
+        </table>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Cadastrar" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "Index")
 </div>
