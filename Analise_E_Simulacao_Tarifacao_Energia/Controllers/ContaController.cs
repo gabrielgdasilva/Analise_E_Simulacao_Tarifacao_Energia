@@ -11,18 +11,19 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
     public class ContaController : Controller
     {
         // GET: Conta
-        public ActionResult List(int id)
+        [VerificaAutenticacao]
+        public ActionResult List(int? id)
         {
             List<ContaModel> listaConta = new List<ContaModel>();
             using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
             {
-                List<ServiceReference1.Conta> listaDeEntrada = client.TodasContas(id).ToList();
+                List<ServiceReference1.Conta> listaDeEntrada = client.TodasContas((int)id).ToList();
                 listaConta = Conversor.ListaContas(listaDeEntrada);
             }
 
-            ContaViewModel cvm = new ContaViewModel(id, listaConta);
+            Session["IdFabrica"] = id;
 
-            return View(cvm);
+            return View(listaConta);
         }
 
         // GET: Conta/Details/5
@@ -39,7 +40,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Conta/Create
-        public ActionResult CreateConta(ContaViewModel contaViewModel)
+        public ActionResult Create()
         {
             List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
             List<Mes> meses = Calendario.ListaDeMeses().ToList();
@@ -64,7 +65,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
 
             ContaViewModel cvm = new ContaViewModel(null, bandeiras, meses, distribuidoras, contratos, grupos);
-            cvm.conta.FabricaID = contaViewModel.conta.FabricaID;
+            
             return View(cvm);
         }
 
@@ -84,7 +85,8 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 ContaModel contaModelo = cvm.ObterConta();
                 contaModelo.TarifaID = tarifas.Where(x => x.TipoContratoID == contaModelo.TipoContratoID && x.TipoSubGrupoID == contaModelo.TipoSubGrupoID && x.BandeiraID == contaModelo.BandeiraID).Select(x => x.TarifaID).FirstOrDefault();
-                contaModelo.FabricaID = ViewBag.IdFabrica;
+                int? fabricaID = Session["IdFabrica"] as int?;
+                contaModelo.FabricaID = (fabricaID != null) ? (int)fabricaID : 0;
 
                 using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                 {
@@ -93,7 +95,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     if (resultado)
                     {
                         TempData["CadastrarConta"] = true;
-                        return RedirectToAction("List");
+                        return RedirectToAction("List", new { id = conta.FabricaID });
                     }
                     else
                     {
@@ -111,6 +113,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Conta/Edit/5
+        [VerificaAutenticacao]
         public ActionResult Edit(DateTime dataReferencia, int id)
         {
             ContaModel contaModelo = new ContaModel();
@@ -154,6 +157,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Conta/Delete/5
+        [VerificaAutenticacao]
         public ActionResult Delete(DateTime dataReferencia, int id)
         {
             ContaModel contaModelo = new ContaModel();

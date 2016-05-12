@@ -163,6 +163,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Models\Autenticacao.cs" />
     <Compile Include="Models\ContaViewModel.cs" />
     <Compile Include="Models\Mes.cs" />
     <Compile Include="Controllers\ContaController.cs" />
@@ -194,6 +195,7 @@
     </Compile>
     <Compile Include="Utilities\Calendario.cs" />
     <Compile Include="Utilities\Conversor.cs" />
+    <Compile Include="Utilities\VerificaAutenticacao.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

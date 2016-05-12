@@ -11,6 +11,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
     public class ClienteController : Controller
     {
         // GET: Cliente
+        [VerificaAutenticacao]
         public ActionResult Index(int id)
         {
             using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
@@ -24,12 +25,14 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Cliente/Details/5
+        [VerificaAutenticacao]
         public ActionResult Details(int id)
         {
             return View();
         }
 
         // GET: Cliente/Create
+        [VerificaAutenticacao]
         public ActionResult Create()
         {
             return View();
@@ -52,6 +55,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Cliente/Edit/5
+        [VerificaAutenticacao]
         public ActionResult Edit(int id)
         {
             using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
@@ -94,6 +98,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Cliente/Delete/5
+        [VerificaAutenticacao]
         public ActionResult Delete(int id)
         {
             return View();

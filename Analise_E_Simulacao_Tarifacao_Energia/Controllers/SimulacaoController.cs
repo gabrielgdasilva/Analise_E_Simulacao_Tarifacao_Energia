@@ -12,12 +12,14 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
     public class SimulacaoController : Controller
     {
         // GET: Simulacao
+        [VerificaAutenticacao]
         public ActionResult Index()
         {
             return View();
         }
 
         // GET: Simulacao/Details/5
+        [VerificaAutenticacao]
         public ActionResult Details(int id)
         {
             SimulacaoModel simulacaoModelo = new SimulacaoModel();
@@ -25,6 +27,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Simulacao/Create
+        [VerificaAutenticacao]
         public ActionResult Create()
         {
             SimulacaoModel simulacaoModelo = new SimulacaoModel();
@@ -33,7 +36,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
         // POST: Simulacao/Create
         [HttpPost]
-        public ActionResult Create(FabricaModel modeloFabrica)
+        public ActionResult GerarSimulacao(FabricaModel modeloFabrica)
         {
             try
             {
@@ -61,6 +64,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Simulacao/Edit/5
+        [VerificaAutenticacao]
         public ActionResult Edit(int id)
         {
             return View();
@@ -83,6 +87,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Simulacao/Delete/5
+        [VerificaAutenticacao]
         public ActionResult Delete(int id)
         {
             return View();
@@ -104,6 +109,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
         }
 
+        [VerificaAutenticacao]
         public ActionResult Chart()
         {
             ServiceReference1.Grafico grafico = new ServiceReference1.Grafico();

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Web.Security;
 
 namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 {
@@ -29,9 +30,9 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     UsuarioModel resultado = Conversor.UsuarioRecebido(client.VerificaAutenticacao(usuario.Email, usuario.Senha));
                     if (resultado!=null)
                     {
-                        TempData["AutenticaUsuario"] = true;
-                        ViewBag.usuarioLogado = resultado;
-                        return RedirectToAction("List", "Fabrica", resultado);
+                        Session["usuario"] = resultado;
+                        FormsAuthentication.SetAuthCookie(resultado.Nome, false);
+                        return RedirectToAction("List", "Fabrica");
                     }
                     else
                     {
@@ -47,7 +48,15 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
         }
 
+        public ActionResult Logout()
+        {
+            Session["usuario"] = null;
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
         //GET: Usuario/List
+        [VerificaAutenticacao]
         public ActionResult List(int id, UsuarioModel usuarioLogado)
         {
             List<UsuarioModel> listaUsuarios = new List<UsuarioModel>();
@@ -59,8 +68,9 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
             return View(listaUsuarios);
         }
-        
+
         // GET: Usuario/Details/5
+        [VerificaAutenticacao]
         public ActionResult Details(string email, UsuarioModel usuarioLogado)
         {
             UsuarioModel usuarioModelo = new UsuarioModel();
@@ -73,6 +83,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Usuario/Create
+        [VerificaAutenticacao]
         public ActionResult Create()
         {
             UsuarioModel usuarioModelo = new UsuarioModel();
@@ -110,6 +121,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Usuario/Create
+        [VerificaAutenticacao]
         public ActionResult SubCreate(UsuarioModel usuarioAdmin, int clienteID)
         {   
             return View();
@@ -147,6 +159,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Usuario/Edit/5
+        [VerificaAutenticacao]
         public ActionResult Edit(int id, string email, UsuarioModel usuarioLogado)
         {
             UsuarioModel usuarioModelo = new UsuarioModel();
@@ -190,6 +203,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Usuario/Delete/5
+        [VerificaAutenticacao]
         public ActionResult Delete(int id,string email, UsuarioModel usuarioLogado)
         {
             UsuarioModel usuarioModelo = new UsuarioModel();

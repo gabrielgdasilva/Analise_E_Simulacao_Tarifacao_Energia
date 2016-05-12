@@ -13,10 +13,12 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
     public class FabricaController : Controller
     {
         // GET: Fabrica
-        public ActionResult List(UsuarioModel usuario)
+        [VerificaAutenticacao]
+        public ActionResult List()
         {
             List<FabricaModel> ListaFabrica = new List<FabricaModel>();
-
+            UsuarioModel usuario = Session["usuario"] as UsuarioModel;
+            Session["IdFabrica"] = null;
             if (usuario != null)
             {
                 using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
@@ -29,6 +31,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Fabrica/Details/5
+        [VerificaAutenticacao]
         public ActionResult Details(int id)
         {
             FabricaModel fabricaModelo = new FabricaModel();
@@ -42,6 +45,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Fabrica/Create
+        [VerificaAutenticacao]
         public ActionResult Create()
         {
             FabricaModel fabricaModelo = new FabricaModel();
@@ -78,6 +82,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Fabrica/Edit/5
+        [VerificaAutenticacao]
         public ActionResult Edit(int id)
         {
             FabricaModel fabricaModelo = new FabricaModel();
@@ -120,6 +125,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         }
 
         // GET: Fabrica/Delete/5
+        [VerificaAutenticacao]
         public ActionResult Delete(int id)
         {
             FabricaModel fabricaModelo = new FabricaModel();

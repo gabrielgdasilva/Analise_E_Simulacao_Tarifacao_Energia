@@ -37,15 +37,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Models
             distribuidoras = new List<SelectListItem>();
             tiposContrato = new List<SelectListItem>();
             tiposSubGrupo = new List<SelectListItem>();
-            contas = new List<ContaModel>();
 
-        }
-
-        public ContaViewModel(int fabricaID, IEnumerable<ContaModel> _contas)
-        {
-            conta = new ContaModel();
-            conta.FabricaID = fabricaID;
-            contas = new List<ContaModel>(_contas);
         }
 
         public ContaViewModel(

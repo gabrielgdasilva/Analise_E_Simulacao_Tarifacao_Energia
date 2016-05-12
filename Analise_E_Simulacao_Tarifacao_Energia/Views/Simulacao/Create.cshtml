@@ -6,7 +6,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("GerarSimulacao")) 
 {
     @Html.AntiForgeryToken()
     
@@ -18,14 +18,12 @@
             <h3>Gerar Simulação</h3>
             <hr />
 
+            <div><p>Será gerada uma nova simulação, deseja continuar?</p></div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Gerar" class="btn btn-default" />
+                    <input type="submit" value="Cancelar" class="btn btn-cancel" onclick="window.history.back()"/>
                 </div>
             </div>
         </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

@@ -25,7 +25,7 @@
             </div>
            
             @{ 
-                UsuarioModel usuario = ViewBag.usuarioLogado;
+                UsuarioModel usuario = Session["usuario"] as UsuarioModel;
             }
               
                     @if (usuario == null || usuario.ClienteID == 0)
@@ -47,8 +47,8 @@
                                 <li>@Html.ActionLink("Home", "Index", "HomeLogada")</li>
                                 <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
                                 <li>@Html.ActionLink("Detalhes da Empresa", "Index", "Cliente")</li>
-                                <li>@Html.ActionLink("Fabricas", "Index", "Fabricas")</li>
-                                <li>@Html.ActionLink("Sair", "Logout", "Home")</li>
+                                <li>@Html.ActionLink("Fabricas", "List", "Fabrica")</li>
+                                <li>@Html.ActionLink("Sair", "Logout", "Usuario")</li>
                             </ul>
                         </div>
                     }
