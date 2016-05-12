@@ -117,37 +117,32 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             List<ContaModel> listaConta = new List<ContaModel>();
             List<TipoContratoModel> contratos = new List<TipoContratoModel>();
             List<TipoSubGrupoModel> grupos = new List<TipoSubGrupoModel>();
+            List<GraficoModel> graficoModel = new List<GraficoModel>();
 
             using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
             {
-                var graficoReferente = client.DadosParaGrafico(auxFabricaID);
+                var graficoReferente = client.DadosParaGrafico(auxFabricaID).ToList();
                 var listaDeEntrada = client.TodasContas(auxFabricaID).ToList();
                 var contratoRef = client.TodosContratos().ToList();
                 var gruposRef = client.TodosSubGrupos().ToList();
+
+                graficoModel = Conversor.DadosGrafico(graficoReferente);
                 listaConta = Conversor.ListaContas(listaDeEntrada);
                 contratos = Conversor.ListaContratos(contratoRef);
                 grupos = Conversor.ListaSubGrupos(gruposRef);
             }
-
-
-            ServiceReference1.Grafico grafico = new ServiceReference1.Grafico();
-            List<ServiceReference1.Grafico> graficoReference = new List<ServiceReference1.Grafico>();
-            graficoReference.Add(grafico);
-
-            var graficoModel = Conversor.DadosGrafico(graficoReference);
-
-            var count = listaConta.Count + graficoReference.Count;
+            
             var series = new HC.Options.Series[2];
             var serieName = "Consumo atual";
-            var eixoY = listaConta.Select(c => new object[] { c.ValorTotal }).ToArray();
+            var eixoY = listaConta.Select(c => new object[] { Convert.ToDouble(c.ValorTotal) }).ToArray();
 
             series[0] = new HC.Options.Series { Name = serieName, Data = new HC.Helpers.Data(eixoY)};
 
             var exemplo = graficoModel.FirstOrDefault();
-            var strContrato = contratos.Where(x => x.TipoContratoID == exemplo.TipoContratoID).Select(x => x.TipoContratoString).ToString();
-            var strGrupo = grupos.Where(x => x.TipoSubGrupoID == exemplo.TipoSubGrupoID).Select(x => x.TipoSubGrupoString).ToString();
-            serieName = strGrupo + " " + strGrupo;
-            eixoY = graficoModel.Select(c => new object[] { c.ValorTotal }).ToArray();
+            string strContrato = contratos.Where(x => x.TipoContratoID == exemplo.TipoContratoID).Select(x => x.TipoContratoString).ToString();
+            string strGrupo = grupos.Where(x => x.TipoSubGrupoID == exemplo.TipoSubGrupoID).Select(x => x.TipoSubGrupoString).ToString();
+            serieName = "Contrato simulado";//strGrupo + " " + strGrupo;
+            eixoY = graficoModel.Select(c => new object[] { Convert.ToDouble(c.ValorTotal) }).ToArray();
 
             series[1] = new HC.Options.Series { Name = serieName, Data = new HC.Helpers.Data(eixoY) };
 
@@ -169,9 +164,15 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             var xMes = listaConta.Select(c => c.MesReferencia).Distinct().ToArray();
             //var yValores = contas.Select(c => new object[] { c.ValorTotal }).ToArray();
 
+            HC.Highcharts chart = new HC.Highcharts("chart")
+                    .SetXAxis(new HC.Options.XAxis { Categories = xMes })
+                    .SetYAxis(new HC.Options.YAxis { Title = new HC.Options.YAxisTitle { Text = "Valores" } })
+                    .SetSeries(series)
+                    .SetTitle(new HC.Options.Title { Text = "Consumo de energia" })
+                    .InitChart(new DotNet.Highcharts.Options.Chart { DefaultSeriesType = DotNet.Highcharts.Enums.ChartTypes.Line });
 
 
-            var chart = new HC.Highcharts("chart")
+            /*var chart = new HC.Highcharts("chart")
                 //Tipo do grafico
                 .InitChart(new HC.Options.Chart { DefaultSeriesType = HC.Enums.ChartTypes.Line })
                 //Titulo
@@ -197,7 +198,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                         EnableMouseTracking = false
                     }
                 })
-                .SetSeries(series);
+                .SetSeries(series);*/
                 /*.SetSeries(new HC.Options.Series[]
                 {
                     new HC.Options.Series { Name = "Valor $", Data = new HC.Helpers.Data(yValores) }

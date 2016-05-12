@@ -52,7 +52,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Models
         public int BandeiraID { get; set; }
         public String MesReferencia
         {
-            get { return dataReferencia.ToString("MMM/yyyy", CultureInfo.CurrentCulture); }
+            get { return dataReferencia.ToString("MMM yyyy", CultureInfo.CurrentCulture); }
         }
     }
 }
