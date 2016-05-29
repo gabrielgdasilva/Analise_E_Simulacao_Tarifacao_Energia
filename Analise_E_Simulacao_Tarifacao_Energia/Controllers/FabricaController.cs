@@ -86,28 +86,41 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         public ActionResult Edit(int id)
         {
             FabricaModel fabricaModelo = new FabricaModel();
+            List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
+
             using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
             {
                 ServiceReference1.Fabrica fabricaEntrada = client.DestalhesDaFabrica(id);
                 fabricaModelo = Conversor.FabricaRecebida(fabricaEntrada);
 
+                List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
+                distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
             }
-            return View(fabricaModelo);
+
+            FabricaViewModel fabricaViewModel = new FabricaViewModel(fabricaModelo, distribuidoras);
+
+            return View(fabricaViewModel);
         }
 
         // POST: Fabrica/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FabricaModel modeloFabrica)
+        public ActionResult Edit(FabricaViewModel fabricaViewModel)
         {
             try
             {
+                FabricaModel fabricaModelo = new FabricaModel();
+                fabricaModelo.FabricaID = fabricaViewModel.FabricaID;
+                fabricaModelo.ClienteID = fabricaViewModel.ClienteID;
+                fabricaModelo.Cnpj = fabricaViewModel.Cnpj;
+                fabricaModelo.DistribuidoraID = fabricaViewModel.DistribuidoraID;
+                fabricaModelo.Endereco = fabricaViewModel.Endereco;
+
                 using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                 {
-                    ServiceReference1.Fabrica fabrica = Conversor.AlterarFabrica(modeloFabrica);
+                    ServiceReference1.Fabrica fabrica = Conversor.AlterarFabrica(fabricaModelo);
                     bool resultado = client.AtualizarFabrica(fabrica);
                     if (resultado)
                     {
-                        TempData["AtualizarFabrica"] = true;
                         return RedirectToAction("List");
                     }
                     else
@@ -118,7 +131,6 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.AtualizarFabrica = false;
                 ViewBag.ErroAtualizarFabrica = ex.Message;
                 return View();
             }
