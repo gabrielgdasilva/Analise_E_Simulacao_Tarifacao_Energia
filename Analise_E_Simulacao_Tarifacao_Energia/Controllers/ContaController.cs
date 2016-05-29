@@ -1,5 +1,6 @@
 ﻿using Analise_E_Simulacao_Tarifacao_Energia.Models;
 using Analise_E_Simulacao_Tarifacao_Energia.Utilities;
+using Analise_E_Simulacao_Tarifacao_Energia.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

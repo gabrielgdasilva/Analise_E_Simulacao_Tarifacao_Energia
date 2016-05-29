@@ -12,9 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ClienteID)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Cnpj)
         </th>
         <th>
@@ -29,9 +26,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ClienteID)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Cnpj)
         </td>
         <td>
@@ -43,7 +37,7 @@
         <td>
             @Html.ActionLink("Ver contas", "List", "Conta", new { id=item.FabricaID }, null) |
             @Html.ActionLink("Editar", "Edit", new { id = item.FabricaID }) |
-            @Html.ActionLink("Detalhes", "Details", new { id = item.FabricaID }) |
+            @*@Html.ActionLink("Detalhes", "Details", new { id = item.FabricaID }) |*@
             @Html.ActionLink("Excluir", "Delete", new { id = item.FabricaID })
         </td>
     </tr>

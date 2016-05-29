@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Analise_E_Simulacao_Tarifacao_Energia.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Analise_E_Simulacao_Tarifacao_Energia.Models
+namespace Analise_E_Simulacao_Tarifacao_Energia.ViewModels
 {
     public class ContaViewModel
     {

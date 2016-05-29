@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
-
+using Analise_E_Simulacao_Tarifacao_Energia.ViewModels;
 
 namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 {
@@ -128,25 +128,20 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         [VerificaAutenticacao]
         public ActionResult Delete(int id)
         {
-            FabricaModel fabricaModelo = new FabricaModel();
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
-            {
-                ServiceReference1.Fabrica fabricaEntrada = client.DestalhesDaFabrica(id);
-                fabricaModelo = Conversor.FabricaRecebida(fabricaEntrada);
-
-            }
-            return View(fabricaModelo);
+            FabricaViewModel fabricaViewModel = new FabricaViewModel();
+            fabricaViewModel.FabricaID = id;
+            return View(fabricaViewModel);
         }
 
         // POST: Fabrica/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FabricaModel modeloFabrica)
+        public ActionResult Delete(FabricaViewModel fabricaViewModel)
         {
             try
             {
                 using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                 {
-                    ServiceReference1.Fabrica fabrica = Conversor.ExcluirFabrica(modeloFabrica);
+                    ServiceReference1.Fabrica fabrica = client.DestalhesDaFabrica(fabricaViewModel.FabricaID);
                     bool resultado = client.DeletarFabrica(fabrica);
                     if (resultado)
                     {
