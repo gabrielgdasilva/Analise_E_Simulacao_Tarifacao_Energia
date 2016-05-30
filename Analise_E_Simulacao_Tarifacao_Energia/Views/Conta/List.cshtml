@@ -1,95 +1,31 @@
 ﻿@model IEnumerable<Analise_E_Simulacao_Tarifacao_Energia.Models.ContaModel>
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Contas";
 }
 
-<h2>List</h2>
+<h2>Contas</h2>
 
 <p>
-    @Html.ActionLink("Cadastrar Nova", "Create")
-    @Html.ActionLink("Gerar Simulação", "Create", "Simulacao")
-</p>
+    @Html.ActionLink("Nova Conta", "Create")
 
-@if (Model.Count() != 0)
-{
-    foreach (var item in Model.OrderByDescending(x => x.dataReferencia))
+</p>
+<table class="table">
+    <tr>
+        <th>Mês Referencia</th>
+        <th>&nbsp;</th>
+    </tr>
+
+    @foreach (var item in Model.OrderByDescending(x => x.dataReferencia))
     {
-        <h4>@item.MesReferencia</h4>
-        <table>
-            <tr>
-                <th>Desrição Da Conta</th>
-                <th>Registrado</th>
-                <th>Contratado</th>
-                <th>Faturado</th>
-                <th>Tarifa/Preço</th>
-                <th>Valor (R$)</th>
-            </tr>
-            <tr>
-                <th>Consumo Ponta (Kw) - TUSD</th>
-                <th>@item.ConsumoNaPontaTUSD_Registrado</th>
-                <th>@item.ConsumoNaPontaTUSD_Contratado</th>
-                <th>@item.ConsumoNaPontaTUSD_Faturado</th>
-                <th>@item.ConsumoNaPontaTUSD_TarifaPreco</th>
-                <th>@item.ConsumoNaPontaTUSD_Valor</th>
-                </tr>
-            <tr>
-                <th>Consumo Fora Ponta (Kw) - TUSD</th>
-                <th>@item.ConsumoForaPontaTUSD_Registrado</th>
-                <th>@item.ConsumoForaPontaTUSD_Contratado</th>
-                <th>@item.ConsumoForaPontaTUSD_Faturado</th>
-                <th>@item.ConsumoForaPontaTUSD_TarifaPreco</th>
-                <th>@item.ConsumoForaPontaTUSD_Valor</th>
-            </tr>
-            <tr>
-                <th>Consumo Ponta Bandeira Verde TE</th>
-                <th>@item.ConsumoNaPontaTE_Registrado</th>
-                <th>@item.ConsumoNaPontaTE_Contratado</th>
-                <th>@item.ConsumoNaPontaTE_Faturado</th>
-                <th>@item.ConsumoNaPontaTE_TarifaPreco</th>
-                <th>@item.ConsumoNaPontaTE_Valor</th>
-            </tr>
-            <tr>
-                <th>Consumo Fora Ponta Bandeira Verde TE</th>
-                <th>@item.ConsumoForaPontaTE_Registrado</th>
-                <th>@item.ConsumoForaPontaTE_Contratado</th>
-                <th>@item.ConsumoForaPontaTE_Faturado</th>
-                <th>@item.ConsumoForaPontaTE_TarifaPreco</th>
-                <th>@item.ConsumoForaPontaTE_Valor</th>
-            </tr>
-            <tr>
-                <th>Ultrapassagem Na Ponta</th>
-                <th>@item.ConsumoUltrapassagemNaPonta_Registrado</th>
-                <th>&nbsp;</th>
-                <th>@item.ConsumoUltrapassagemNaPonta_Faturado</th>
-                <th>@item.ConsumoUltrapassagemNaPonta_TarifaPreco</th>
-                <th>@item.ConsumoUltrapassagemNaPonta_Valor</th>
-            </tr>
-            <tr>
-                <th>Ultrapassagem Fora Ponta</th>
-                <th>@item.ConsumoUltrapassagemForaPonta_Registrado</th>
-                <th>&nbsp;</th>
-                <th>@item.ConsumoUltrapassagemForaPonta_Faturado</th>
-                <th>@item.ConsumoUltrapassagemForaPonta_TarifaPreco</th>
-                <th>@item.ConsumoUltrapassagemForaPonta_Valor</th>
-            </tr>
-            <tr>
-                <th>Demanda TUSD</th>
-                <th>@item.DemandaTUSD_Registrado</th>
-                <th>@item.DemandaTUSD_Contratado</th>
-                <th>@item.DemandaTUSD_Faturado</th>
-                <th>@item.DemandaTUSD_TarifaPreco</th>
-                <th>@item.DemandaTUSD_Valor</th>
-            </tr>
-            <tr>
-                <th>Total Pago</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-                <th>@item.ValorTotal</th>
-            </tr>
-        </table>
+        <tr>
+            <td>@item.MesReferencia</td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { data = item.dataReferencia }) |
+                @Html.ActionLink("Editar", "Edit", new { data = item.dataReferencia }) |
+                @Html.ActionLink("Excluir", "Delete", new { data = item.dataReferencia })
+            </td>
+        </tr>
     }
-    
-}
+
+</table>

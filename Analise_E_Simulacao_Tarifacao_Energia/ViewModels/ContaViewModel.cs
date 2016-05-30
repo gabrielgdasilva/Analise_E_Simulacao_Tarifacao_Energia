@@ -121,7 +121,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ViewModels
 
         public ContaModel ObterConta()
         {
-            conta.dataReferencia = (!string.IsNullOrWhiteSpace(Mes) && !string.IsNullOrWhiteSpace(Ano)) ? Convert.ToDateTime("01/" + Mes + "/" + Ano) : DateTime.MinValue;
+            if(!string.IsNullOrWhiteSpace(Mes) && !string.IsNullOrWhiteSpace(Ano)) conta.dataReferencia = Convert.ToDateTime("01/" + Mes + "/" + Ano);
             //conta.TarifaID = tarifas.Where(x => x.TipoContratoID == conta.TipoContratoID && x.TipoSubGrupoID == conta.TipoSubGrupoID && x.BandeiraID == conta.BandeiraID).Select(x => x.TarifaID).FirstOrDefault();
             //conta.BandeiraID = (!string.IsNullOrWhiteSpace(bandeiraID)) ? Convert.ToInt32(bandeiraID) : 0;
             //conta.TarifaID = (!string.IsNullOrWhiteSpace(tarifaID)) ? Convert.ToInt32(tarifaID) : 0;

@@ -15,32 +15,47 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         [VerificaAutenticacao]
         public ActionResult List(int? id)
         {
+            int fabricaID = 0;
+
+            if (id != null)
+            {
+                fabricaID = (int)id;
+            }
+            else if (Session["IdFabrica"] != null)
+            {
+                fabricaID = (int)Session["IdFabrica"];
+            }
+
             List<ContaModel> listaConta = new List<ContaModel>();
             using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
             {
-                List<ServiceReference1.Conta> listaDeEntrada = client.TodasContas((int)id).ToList();
+                List<ServiceReference1.Conta> listaDeEntrada = client.TodasContas(fabricaID).ToList();
                 listaConta = Conversor.ListaContas(listaDeEntrada);
             }
 
-            Session["IdFabrica"] = id;
+            Session["IdFabrica"] = fabricaID;
 
             return View(listaConta);
         }
 
         // GET: Conta/Details/5
-        public ActionResult Details(DateTime dataReferencia, int id)
+        [VerificaAutenticacao]
+        public ActionResult Details(DateTime data)
         {
             ContaModel contaModelo = new ContaModel();
+            int fabricaID = (int)Session["IdFabrica"];
+
             using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
             {
-                ServiceReference1.Conta contaEntrada = client.DestalhesDaConta(dataReferencia, id);
+                ServiceReference1.Conta contaEntrada = client.DestalhesDaConta(data, fabricaID);
                 contaModelo = Conversor.ContaRecebida(contaEntrada);
-
             }
+            
             return View(contaModelo);
         }
 
         // GET: Conta/Create
+        [VerificaAutenticacao]
         public ActionResult Create()
         {
             List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
@@ -95,7 +110,6 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     bool resultado = client.CadastrarConta(conta);
                     if (resultado)
                     {
-                        TempData["CadastrarConta"] = true;
                         return RedirectToAction("List", new { id = conta.FabricaID });
                     }
                     else
@@ -115,32 +129,64 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
         // GET: Conta/Edit/5
         [VerificaAutenticacao]
-        public ActionResult Edit(DateTime dataReferencia, int id)
+        public ActionResult Edit(DateTime data)
         {
             ContaModel contaModelo = new ContaModel();
+            List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
+            List<Mes> meses = Calendario.ListaDeMeses().ToList();
+            List<TipoContratoModel> contratos = new List<TipoContratoModel>();
+            List<TipoSubGrupoModel> grupos = new List<TipoSubGrupoModel>();
+            List<BandeiraModel> bandeiras = new List<BandeiraModel>();
+            int fabricaID = (int)Session["IdFabrica"];
+
             using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
             {
-                ServiceReference1.Conta contaEntrada = client.DestalhesDaConta(dataReferencia, id);
+                ServiceReference1.Conta contaEntrada = client.DestalhesDaConta(data, fabricaID);
                 contaModelo = Conversor.ContaRecebida(contaEntrada);
 
+                List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
+                distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
+
+                List<ServiceReference1.TipoContrato> listaDeContratos = client.TodosContratos().ToList();
+                contratos = Conversor.ListaContratos(listaDeContratos);
+
+                List<ServiceReference1.TipoSubGrupo> listaDeGrupos = client.TodosSubGrupos().ToList();
+                grupos = Conversor.ListaSubGrupos(listaDeGrupos);
+
+                List<ServiceReference1.Bandeira> listaDeBandeiras = client.TodasBandeiras().ToList();
+                bandeiras = Conversor.ListaBandeira(listaDeBandeiras);
+
             }
-            return View(contaModelo);
+
+            ContaViewModel cvm = new ContaViewModel(contaModelo, bandeiras, meses, distribuidoras, contratos, grupos);
+
+            return View(cvm);
         }
 
         // POST: Conta/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, ContaModel contaModelo)
+        public ActionResult Edit(ContaViewModel cvm)
         {
             try
             {
+                List<TarifaModel> tarifas = new List<TarifaModel>();
+
+                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                {
+                    List<ServiceReference1.Tarifa> listaDeTarifas = client.TodasTarifas().ToList();
+                    tarifas = Conversor.TodasTarifas(listaDeTarifas);
+                }
+
+                ContaModel contaModelo = cvm.ObterConta();
+                contaModelo.TarifaID = tarifas.Where(x => x.TipoContratoID == contaModelo.TipoContratoID && x.TipoSubGrupoID == contaModelo.TipoSubGrupoID && x.BandeiraID == contaModelo.BandeiraID).Select(x => x.TarifaID).FirstOrDefault();
+
                 using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                 {
                     ServiceReference1.Conta conta = Conversor.AtualizarConta(contaModelo);
                     bool resultado = client.AtualizarConta(conta);
                     if (resultado)
                     {
-                        TempData["AtualizarConta"] = true;
-                        return RedirectToAction("List");
+                        return RedirectToAction("List", new { id = contaModelo.FabricaID });
                     }
                     else
                     {
@@ -151,7 +197,6 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.AtualizarConta = false;
                 ViewBag.ErroAtualizarConta = ex.Message;
                 return View();
             }
@@ -159,31 +204,31 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
         // GET: Conta/Delete/5
         [VerificaAutenticacao]
-        public ActionResult Delete(DateTime dataReferencia, int id)
+        public ActionResult Delete(DateTime data)
         {
-            ContaModel contaModelo = new ContaModel();
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
-            {
-                ServiceReference1.Conta contaEntrada = client.DestalhesDaConta(dataReferencia, id);
-                contaModelo = Conversor.ContaRecebida(contaEntrada);
-
-            }
-            return View(contaModelo);
+            ContaViewModel cvm = new ContaViewModel();
+            cvm.conta.dataReferencia = data;
+            return View(cvm);
         }
 
         // POST: Conta/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, ContaModel contaModelo)
+        public ActionResult ConfirmaDelete(ContaViewModel cvm)
         {
             try
             {
+                ContaModel contaModelo = new ContaModel();
+                int fabricaID = (int)Session["IdFabrica"];
+
                 using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                 {
+                    ServiceReference1.Conta contaEntrada = client.DestalhesDaConta(cvm.conta.dataReferencia, fabricaID);
+                    contaModelo = Conversor.ContaRecebida(contaEntrada);
+
                     ServiceReference1.Conta conta = Conversor.ExcluirConta(contaModelo);
                     bool resultado = client.DeletarConta(conta);
                     if (resultado)
                     {
-                        TempData["DeletarConta"] = true;
                         return RedirectToAction("List");
                     }
                     else
@@ -195,7 +240,6 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.DeletarConta = false;
                 ViewBag.ErroDeletarConta = ex.Message;
                 return View();
             }
