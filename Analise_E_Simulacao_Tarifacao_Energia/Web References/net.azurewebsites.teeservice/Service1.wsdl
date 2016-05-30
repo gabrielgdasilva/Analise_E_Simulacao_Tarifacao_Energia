@@ -1,0 +1,1144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpsBinding_ITEECRUDService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://teeservice.azurewebsites.net/TEECRUDService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://teeservice.azurewebsites.net/TEECRUDService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://teeservice.azurewebsites.net/TEECRUDService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITEECRUDService_DetalhesBandeira_InputMessage">
+    <wsdl:part name="parameters" element="tns:DetalhesBandeira" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DetalhesBandeira_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DetalhesBandeiraResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarBandeira_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarBandeira" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarBandeira_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarBandeiraResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodasBandeiras_InputMessage">
+    <wsdl:part name="parameters" element="tns:TodasBandeiras" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodasBandeiras_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TodasBandeirasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DetalhesCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:DetalhesCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DetalhesCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DetalhesClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_AtualizarCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_AtualizarCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarFabrica_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarFabrica" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarFabrica_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarFabricaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DestalhesDaFabrica_InputMessage">
+    <wsdl:part name="parameters" element="tns:DestalhesDaFabrica" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DestalhesDaFabrica_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DestalhesDaFabricaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodasFabricas_InputMessage">
+    <wsdl:part name="parameters" element="tns:TodasFabricas" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodasFabricas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TodasFabricasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DeletarFabrica_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletarFabrica" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DeletarFabrica_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletarFabricaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_AtualizarFabrica_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarFabrica" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_AtualizarFabrica_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarFabricaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarContrato_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarContrato" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarContrato_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarContratoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DetalhesContrato_InputMessage">
+    <wsdl:part name="parameters" element="tns:DetalhesContrato" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DetalhesContrato_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DetalhesContratoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodosContratos_InputMessage">
+    <wsdl:part name="parameters" element="tns:TodosContratos" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodosContratos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TodosContratosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarDistribuidora_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarDistribuidora" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarDistribuidora_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarDistribuidoraResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DetalhesDistribuidora_InputMessage">
+    <wsdl:part name="parameters" element="tns:DetalhesDistribuidora" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DetalhesDistribuidora_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DetalhesDistribuidoraResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodasDistribuidoras_InputMessage">
+    <wsdl:part name="parameters" element="tns:TodasDistribuidoras" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodasDistribuidoras_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TodasDistribuidorasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarSubGrupo_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarSubGrupo" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarSubGrupo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarSubGrupoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DetalhesSubGrupo_InputMessage">
+    <wsdl:part name="parameters" element="tns:DetalhesSubGrupo" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DetalhesSubGrupo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DetalhesSubGrupoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodosSubGrupos_InputMessage">
+    <wsdl:part name="parameters" element="tns:TodosSubGrupos" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodosSubGrupos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TodosSubGruposResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarTarifa_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarTarifa" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarTarifa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarTarifaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DestalhesDaTarifa_InputMessage">
+    <wsdl:part name="parameters" element="tns:DestalhesDaTarifa" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DestalhesDaTarifa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DestalhesDaTarifaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodasTarifas_InputMessage">
+    <wsdl:part name="parameters" element="tns:TodasTarifas" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodasTarifas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TodasTarifasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_AtualizarTarifa_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarTarifa" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_AtualizarTarifa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarTarifaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DeletarTarifa_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletarTarifa" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DeletarTarifa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletarTarifaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DestalhesDoUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:DestalhesDoUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DestalhesDoUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DestalhesDoUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_VerificaAutenticacao_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerificaAutenticacao" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_VerificaAutenticacao_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerificaAutenticacaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_AtualizarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_AtualizarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DeletarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DeletarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_ListarUsuarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_ListarUsuarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarConta_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarConta" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_CadastrarConta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarContaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DestalhesDaConta_InputMessage">
+    <wsdl:part name="parameters" element="tns:DestalhesDaConta" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DestalhesDaConta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DestalhesDaContaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodasContas_InputMessage">
+    <wsdl:part name="parameters" element="tns:TodasContas" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_TodasContas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TodasContasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_ConsultaEntreDatas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaEntreDatas" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_ConsultaEntreDatas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaEntreDatasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_AtualizarConta_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarConta" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_AtualizarConta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarContaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DeletarConta_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletarConta" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DeletarConta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletarContaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_GerarSimulacao_InputMessage">
+    <wsdl:part name="parameters" element="tns:GerarSimulacao" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_GerarSimulacao_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GerarSimulacaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DadosParaGrafico_InputMessage">
+    <wsdl:part name="parameters" element="tns:DadosParaGrafico" />
+  </wsdl:message>
+  <wsdl:message name="ITEECRUDService_DadosParaGrafico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DadosParaGraficoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ITEECRUDService">
+    <wsdl:operation name="DetalhesBandeira">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DetalhesBandeira" message="tns:ITEECRUDService_DetalhesBandeira_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DetalhesBandeiraResponse" message="tns:ITEECRUDService_DetalhesBandeira_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarBandeira">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarBandeira" message="tns:ITEECRUDService_CadastrarBandeira_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarBandeiraResponse" message="tns:ITEECRUDService_CadastrarBandeira_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TodasBandeiras">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/TodasBandeiras" message="tns:ITEECRUDService_TodasBandeiras_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/TodasBandeirasResponse" message="tns:ITEECRUDService_TodasBandeiras_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DetalhesCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DetalhesCliente" message="tns:ITEECRUDService_DetalhesCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DetalhesClienteResponse" message="tns:ITEECRUDService_DetalhesCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarCliente" message="tns:ITEECRUDService_CadastrarCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarClienteResponse" message="tns:ITEECRUDService_CadastrarCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/AtualizarCliente" message="tns:ITEECRUDService_AtualizarCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/AtualizarClienteResponse" message="tns:ITEECRUDService_AtualizarCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarFabrica">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarFabrica" message="tns:ITEECRUDService_CadastrarFabrica_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarFabricaResponse" message="tns:ITEECRUDService_CadastrarFabrica_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DestalhesDaFabrica">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DestalhesDaFabrica" message="tns:ITEECRUDService_DestalhesDaFabrica_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DestalhesDaFabricaResponse" message="tns:ITEECRUDService_DestalhesDaFabrica_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TodasFabricas">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/TodasFabricas" message="tns:ITEECRUDService_TodasFabricas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/TodasFabricasResponse" message="tns:ITEECRUDService_TodasFabricas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletarFabrica">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DeletarFabrica" message="tns:ITEECRUDService_DeletarFabrica_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DeletarFabricaResponse" message="tns:ITEECRUDService_DeletarFabrica_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarFabrica">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/AtualizarFabrica" message="tns:ITEECRUDService_AtualizarFabrica_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/AtualizarFabricaResponse" message="tns:ITEECRUDService_AtualizarFabrica_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarContrato">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarContrato" message="tns:ITEECRUDService_CadastrarContrato_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarContratoResponse" message="tns:ITEECRUDService_CadastrarContrato_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DetalhesContrato">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DetalhesContrato" message="tns:ITEECRUDService_DetalhesContrato_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DetalhesContratoResponse" message="tns:ITEECRUDService_DetalhesContrato_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TodosContratos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/TodosContratos" message="tns:ITEECRUDService_TodosContratos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/TodosContratosResponse" message="tns:ITEECRUDService_TodosContratos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarDistribuidora">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarDistribuidora" message="tns:ITEECRUDService_CadastrarDistribuidora_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarDistribuidoraResponse" message="tns:ITEECRUDService_CadastrarDistribuidora_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DetalhesDistribuidora">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DetalhesDistribuidora" message="tns:ITEECRUDService_DetalhesDistribuidora_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DetalhesDistribuidoraResponse" message="tns:ITEECRUDService_DetalhesDistribuidora_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TodasDistribuidoras">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/TodasDistribuidoras" message="tns:ITEECRUDService_TodasDistribuidoras_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/TodasDistribuidorasResponse" message="tns:ITEECRUDService_TodasDistribuidoras_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarSubGrupo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarSubGrupo" message="tns:ITEECRUDService_CadastrarSubGrupo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarSubGrupoResponse" message="tns:ITEECRUDService_CadastrarSubGrupo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DetalhesSubGrupo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DetalhesSubGrupo" message="tns:ITEECRUDService_DetalhesSubGrupo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DetalhesSubGrupoResponse" message="tns:ITEECRUDService_DetalhesSubGrupo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TodosSubGrupos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/TodosSubGrupos" message="tns:ITEECRUDService_TodosSubGrupos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/TodosSubGruposResponse" message="tns:ITEECRUDService_TodosSubGrupos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarTarifa">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarTarifa" message="tns:ITEECRUDService_CadastrarTarifa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarTarifaResponse" message="tns:ITEECRUDService_CadastrarTarifa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DestalhesDaTarifa">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DestalhesDaTarifa" message="tns:ITEECRUDService_DestalhesDaTarifa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DestalhesDaTarifaResponse" message="tns:ITEECRUDService_DestalhesDaTarifa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TodasTarifas">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/TodasTarifas" message="tns:ITEECRUDService_TodasTarifas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/TodasTarifasResponse" message="tns:ITEECRUDService_TodasTarifas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarTarifa">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/AtualizarTarifa" message="tns:ITEECRUDService_AtualizarTarifa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/AtualizarTarifaResponse" message="tns:ITEECRUDService_AtualizarTarifa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletarTarifa">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DeletarTarifa" message="tns:ITEECRUDService_DeletarTarifa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DeletarTarifaResponse" message="tns:ITEECRUDService_DeletarTarifa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarUsuario" message="tns:ITEECRUDService_CadastrarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarUsuarioResponse" message="tns:ITEECRUDService_CadastrarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DestalhesDoUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DestalhesDoUsuario" message="tns:ITEECRUDService_DestalhesDoUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DestalhesDoUsuarioResponse" message="tns:ITEECRUDService_DestalhesDoUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificaAutenticacao">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/VerificaAutenticacao" message="tns:ITEECRUDService_VerificaAutenticacao_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/VerificaAutenticacaoResponse" message="tns:ITEECRUDService_VerificaAutenticacao_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/AtualizarUsuario" message="tns:ITEECRUDService_AtualizarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/AtualizarUsuarioResponse" message="tns:ITEECRUDService_AtualizarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DeletarUsuario" message="tns:ITEECRUDService_DeletarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DeletarUsuarioResponse" message="tns:ITEECRUDService_DeletarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/ListarUsuarios" message="tns:ITEECRUDService_ListarUsuarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/ListarUsuariosResponse" message="tns:ITEECRUDService_ListarUsuarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarConta">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarConta" message="tns:ITEECRUDService_CadastrarConta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/CadastrarContaResponse" message="tns:ITEECRUDService_CadastrarConta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DestalhesDaConta">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DestalhesDaConta" message="tns:ITEECRUDService_DestalhesDaConta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DestalhesDaContaResponse" message="tns:ITEECRUDService_DestalhesDaConta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TodasContas">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/TodasContas" message="tns:ITEECRUDService_TodasContas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/TodasContasResponse" message="tns:ITEECRUDService_TodasContas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEntreDatas">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/ConsultaEntreDatas" message="tns:ITEECRUDService_ConsultaEntreDatas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/ConsultaEntreDatasResponse" message="tns:ITEECRUDService_ConsultaEntreDatas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarConta">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/AtualizarConta" message="tns:ITEECRUDService_AtualizarConta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/AtualizarContaResponse" message="tns:ITEECRUDService_AtualizarConta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletarConta">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DeletarConta" message="tns:ITEECRUDService_DeletarConta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DeletarContaResponse" message="tns:ITEECRUDService_DeletarConta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GerarSimulacao">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/GerarSimulacao" message="tns:ITEECRUDService_GerarSimulacao_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/GerarSimulacaoResponse" message="tns:ITEECRUDService_GerarSimulacao_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DadosParaGrafico">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITEECRUDService/DadosParaGrafico" message="tns:ITEECRUDService_DadosParaGrafico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITEECRUDService/DadosParaGraficoResponse" message="tns:ITEECRUDService_DadosParaGrafico_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ITEECRUDService" type="tns:ITEECRUDService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DetalhesBandeira">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DetalhesBandeira" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarBandeira">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarBandeira" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodasBandeiras">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodasBandeiras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetalhesCliente">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DetalhesCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarCliente">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarCliente">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/AtualizarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarFabrica">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarFabrica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DestalhesDaFabrica">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DestalhesDaFabrica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodasFabricas">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodasFabricas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletarFabrica">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DeletarFabrica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarFabrica">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/AtualizarFabrica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarContrato">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarContrato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetalhesContrato">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DetalhesContrato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodosContratos">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodosContratos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarDistribuidora">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarDistribuidora" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetalhesDistribuidora">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DetalhesDistribuidora" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodasDistribuidoras">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodasDistribuidoras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarSubGrupo">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarSubGrupo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetalhesSubGrupo">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DetalhesSubGrupo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodosSubGrupos">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodosSubGrupos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarTarifa">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarTarifa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DestalhesDaTarifa">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DestalhesDaTarifa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodasTarifas">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodasTarifas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarTarifa">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/AtualizarTarifa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletarTarifa">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DeletarTarifa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DestalhesDoUsuario">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DestalhesDoUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificaAutenticacao">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/VerificaAutenticacao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/AtualizarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DeletarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuarios">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/ListarUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarConta">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarConta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DestalhesDaConta">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DestalhesDaConta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodasContas">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodasContas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEntreDatas">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/ConsultaEntreDatas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarConta">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/AtualizarConta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletarConta">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DeletarConta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerarSimulacao">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/GerarSimulacao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DadosParaGrafico">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DadosParaGrafico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpsBinding_ITEECRUDService" type="tns:ITEECRUDService">
+    <wsp:PolicyReference URI="#BasicHttpsBinding_ITEECRUDService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DetalhesBandeira">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DetalhesBandeira" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarBandeira">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarBandeira" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodasBandeiras">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodasBandeiras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetalhesCliente">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DetalhesCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarCliente">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarCliente">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/AtualizarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarFabrica">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarFabrica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DestalhesDaFabrica">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DestalhesDaFabrica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodasFabricas">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodasFabricas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletarFabrica">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DeletarFabrica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarFabrica">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/AtualizarFabrica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarContrato">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarContrato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetalhesContrato">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DetalhesContrato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodosContratos">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodosContratos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarDistribuidora">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarDistribuidora" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetalhesDistribuidora">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DetalhesDistribuidora" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodasDistribuidoras">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodasDistribuidoras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarSubGrupo">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarSubGrupo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetalhesSubGrupo">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DetalhesSubGrupo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodosSubGrupos">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodosSubGrupos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarTarifa">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarTarifa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DestalhesDaTarifa">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DestalhesDaTarifa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodasTarifas">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodasTarifas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarTarifa">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/AtualizarTarifa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletarTarifa">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DeletarTarifa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DestalhesDoUsuario">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DestalhesDoUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificaAutenticacao">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/VerificaAutenticacao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/AtualizarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DeletarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuarios">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/ListarUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarConta">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/CadastrarConta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DestalhesDaConta">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DestalhesDaConta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodasContas">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/TodasContas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEntreDatas">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/ConsultaEntreDatas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarConta">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/AtualizarConta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletarConta">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DeletarConta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerarSimulacao">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/GerarSimulacao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DadosParaGrafico">
+      <soap:operation soapAction="http://tempuri.org/ITEECRUDService/DadosParaGrafico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_ITEECRUDService" binding="tns:BasicHttpBinding_ITEECRUDService">
+      <soap:address location="http://teeservice.azurewebsites.net/TEECRUDService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpsBinding_ITEECRUDService" binding="tns:BasicHttpsBinding_ITEECRUDService">
+      <soap:address location="https://teeservice.azurewebsites.net/TEECRUDService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

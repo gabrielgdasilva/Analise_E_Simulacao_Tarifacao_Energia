@@ -1,10 +1,10 @@
 ﻿@model Analise_E_Simulacao_Tarifacao_Energia.ViewModels.FabricaViewModel
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Excluir Fabrica";
 }
 
-<h2>Delete</h2>
+<h2>Confirmar exclusão</h2>
 
 <h3>Certeza que deseja excluir esse registro?</h3>
 
@@ -12,9 +12,9 @@
 {
     @Html.AntiForgeryToken() //prevenção contra CSRF
     @Html.ValidationSummary(true)
-
+    @Html.HiddenFor(model => model.FabricaID)
     <div class="form-actions no-color">
-        <input type="submit" value="Gerar" class="btn btn-default" />
+        <input type="submit" value="Confirma" class="btn btn-default" />
         <input type="submit" value="Cancelar" class="btn btn-cancel" onclick="window.history.back()" />
     </div>
 }

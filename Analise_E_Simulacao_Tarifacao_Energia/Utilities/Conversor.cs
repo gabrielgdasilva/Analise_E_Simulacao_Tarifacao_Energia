@@ -143,6 +143,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Utilities
             fabricaSaida.Cnpj = fabrica.Cnpj;
             fabricaSaida.Endereco = fabrica.Endereco;
             fabricaSaida.DistribuidoraID = fabrica.DistribuidoraID;
+            fabricaSaida.FabricaID = fabrica.FabricaID;
 
             return fabricaSaida;
         }

@@ -17,5 +17,9 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Models
         [ScaffoldColumn(false)]
         public DateTime DataRegistro { get; set; }
         public int Tipo { get; set; }
+        public string MascaraCPF
+        {
+            get { return Convert.ToUInt64(Cpf).ToString(@"000\.000\.000\-00"); }
+        }
     }
 }

@@ -164,6 +164,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Models\Autenticacao.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\ContaViewModel.cs" />
     <Compile Include="Models\Mes.cs" />
     <Compile Include="Controllers\ContaController.cs" />
@@ -197,6 +202,11 @@
     <Compile Include="Utilities\Calendario.cs" />
     <Compile Include="Utilities\Conversor.cs" />
     <Compile Include="Utilities\VerificaAutenticacao.cs" />
+    <Compile Include="Web References\net.azurewebsites.teeservice\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -214,6 +224,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -264,6 +278,33 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Web References\net.azurewebsites.teeservice\Bandeira.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.azurewebsites.teeservice\Cliente.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.azurewebsites.teeservice\Conta.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.azurewebsites.teeservice\Distribuidora.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.azurewebsites.teeservice\Fabrica.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.azurewebsites.teeservice\Grafico.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.azurewebsites.teeservice\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\net.azurewebsites.teeservice\Service1.wsdl" />
+    <Content Include="Web References\net.azurewebsites.teeservice\Tarifa.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\net.azurewebsites.teeservice\TEECRUDService.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -309,6 +350,24 @@
     <None Include="Service References\ServiceReference1\TEECRUDService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Web References\net.azurewebsites.teeservice\TEECRUDService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\net.azurewebsites.teeservice\TEECRUDService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\net.azurewebsites.teeservice\TEECRUDService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Web References\net.azurewebsites.teeservice\TipoContrato.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.azurewebsites.teeservice\TipoSubGrupo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.azurewebsites.teeservice\Usuario.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -326,6 +385,22 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://teeservice.azurewebsites.net/TEECRUDService.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\net.azurewebsites.teeservice\</RelPath>
+      <UpdateFromURL>http://teeservice.azurewebsites.net/TEECRUDService.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Analise_E_Simulacao_Tarifacao_Energia_net_azurewebsites_teeservice_Service1</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

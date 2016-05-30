@@ -17,22 +17,16 @@
         <th>
             @Html.DisplayNameFor(model => model.Endereco)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DistribuidoraID)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Cnpj)
+            @Html.DisplayFor(modelItem => item.MascaraCNPJ)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Endereco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DistribuidoraID)
         </td>
         <td>
             @Html.ActionLink("Ver contas", "List", "Conta", new { id=item.FabricaID }, null) |

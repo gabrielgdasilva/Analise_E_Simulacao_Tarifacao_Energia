@@ -48,23 +48,40 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         [VerificaAutenticacao]
         public ActionResult Create()
         {
-            FabricaModel fabricaModelo = new FabricaModel();
-            return View(fabricaModelo);
+            List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
+
+            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+            {
+                List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
+                distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
+            }
+
+            UsuarioModel usuario = Session["usuario"] as UsuarioModel;
+            FabricaViewModel fabricaViewModel = new FabricaViewModel(null, distribuidoras);
+            fabricaViewModel.ClienteID = usuario.ClienteID;
+
+            return View(fabricaViewModel);
         }
 
         // POST: Fabrica/Create
         [HttpPost]
-        public ActionResult Create(FabricaModel modeloFabrica)
+        public ActionResult Create(FabricaViewModel fabricaViewModel)
         {
             try
             {
+                FabricaModel fabricaModelo = new FabricaModel();
+                fabricaModelo.FabricaID = fabricaViewModel.FabricaID;
+                fabricaModelo.ClienteID = fabricaViewModel.ClienteID;
+                fabricaModelo.Cnpj = fabricaViewModel.Cnpj;
+                fabricaModelo.DistribuidoraID = fabricaViewModel.DistribuidoraID;
+                fabricaModelo.Endereco = fabricaViewModel.Endereco;
+
                 using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                 {
-                    ServiceReference1.Fabrica fabrica = Conversor.NovaFabrica(modeloFabrica);
+                    ServiceReference1.Fabrica fabrica = Conversor.NovaFabrica(fabricaModelo);
                     bool resultado = client.CadastrarFabrica(fabrica);
                     if (resultado)
                     {
-                        TempData["CadastrarFabrica"] = true;
                         return RedirectToAction("List");
                     }
                     else
@@ -75,7 +92,6 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
             catch(Exception ex)
             {
-                ViewBag.CadastrarFabrica = false;
                 ViewBag.ErroCadastrarFabrica = ex.Message;
                 return View();
             }
@@ -157,7 +173,6 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     bool resultado = client.DeletarFabrica(fabrica);
                     if (resultado)
                     {
-                        TempData["DeletarFabrica"] = true;
                         return RedirectToAction("List");
                     }
                     else

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TEEService.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Bandeira">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BandeiraID" type="xs:int" />
+      <xs:element minOccurs="0" name="BandeiraString" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Bandeira" nillable="true" type="tns:Bandeira" />
+  <xs:complexType name="ArrayOfBandeira">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Bandeira" nillable="true" type="tns:Bandeira" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBandeira" nillable="true" type="tns:ArrayOfBandeira" />
+  <xs:complexType name="Cliente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClienteID" type="xs:int" />
+      <xs:element minOccurs="0" name="Cnpj" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Endereco" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RazaoSocial" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cliente" nillable="true" type="tns:Cliente" />
+  <xs:complexType name="Fabrica">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClienteID" type="xs:int" />
+      <xs:element minOccurs="0" name="Cnpj" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DistribuidoraID" type="xs:int" />
+      <xs:element minOccurs="0" name="Endereco" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FabricaID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Fabrica" nillable="true" type="tns:Fabrica" />
+  <xs:complexType name="ArrayOfFabrica">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Fabrica" nillable="true" type="tns:Fabrica" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFabrica" nillable="true" type="tns:ArrayOfFabrica" />
+  <xs:complexType name="TipoContrato">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TipoContratoID" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoContratoString" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoContrato" nillable="true" type="tns:TipoContrato" />
+  <xs:complexType name="ArrayOfTipoContrato">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TipoContrato" nillable="true" type="tns:TipoContrato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTipoContrato" nillable="true" type="tns:ArrayOfTipoContrato" />
+  <xs:complexType name="Distribuidora">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cnpj" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DistribuidoraID" type="xs:int" />
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Distribuidora" nillable="true" type="tns:Distribuidora" />
+  <xs:complexType name="ArrayOfDistribuidora">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Distribuidora" nillable="true" type="tns:Distribuidora" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDistribuidora" nillable="true" type="tns:ArrayOfDistribuidora" />
+  <xs:complexType name="TipoSubGrupo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TipoSubGrupoID" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoSubGrupoString" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoSubGrupo" nillable="true" type="tns:TipoSubGrupo" />
+  <xs:complexType name="ArrayOfTipoSubGrupo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TipoSubGrupo" nillable="true" type="tns:TipoSubGrupo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTipoSubGrupo" nillable="true" type="tns:ArrayOfTipoSubGrupo" />
+  <xs:complexType name="Tarifa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BandeiraID" type="xs:int" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTE_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTUSD_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTE_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTUSD_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemForaPonta_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemNaPonta_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="DataReferencia" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DemandaTUSD_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="DistribuidoraID" type="xs:int" />
+      <xs:element minOccurs="0" name="PotenciaMax" type="xs:float" />
+      <xs:element minOccurs="0" name="PotenciaMin" type="xs:float" />
+      <xs:element minOccurs="0" name="TarifaID" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoContratoID" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoSubGrupoID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tarifa" nillable="true" type="tns:Tarifa" />
+  <xs:complexType name="ArrayOfTarifa">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tarifa" nillable="true" type="tns:Tarifa" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTarifa" nillable="true" type="tns:ArrayOfTarifa" />
+  <xs:complexType name="Usuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Ativo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ClienteID" type="xs:int" />
+      <xs:element minOccurs="0" name="Cpf" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataRegistro" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Senha" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Usuario" nillable="true" type="tns:Usuario" />
+  <xs:complexType name="ArrayOfUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Usuario" nillable="true" type="tns:Usuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUsuario" nillable="true" type="tns:ArrayOfUsuario" />
+  <xs:complexType name="Conta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BandeiraID" type="xs:int" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTE_Contratado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTE_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTE_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTE_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTE_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTUSD_Contratado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTUSD_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTUSD_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTUSD_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTUSD_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTE_Contratado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTE_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTE_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTE_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTE_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTUSD_Contratado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTUSD_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTUSD_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTUSD_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTUSD_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemForaPonta_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemForaPonta_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemForaPonta_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemForaPonta_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemNaPonta_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemNaPonta_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemNaPonta_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemNaPonta_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="DemandaTUSD_Contratado" type="xs:float" />
+      <xs:element minOccurs="0" name="DemandaTUSD_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="DemandaTUSD_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="DemandaTUSD_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="DemandaTUSD_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="DistribuidoraID" type="xs:int" />
+      <xs:element minOccurs="0" name="FabricaID" type="xs:int" />
+      <xs:element minOccurs="0" name="SubTotal" type="xs:float" />
+      <xs:element minOccurs="0" name="TarifaID" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoContratoID" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoSubGrupoID" type="xs:int" />
+      <xs:element minOccurs="0" name="ValorTotal" type="xs:float" />
+      <xs:element minOccurs="0" name="dataReferencia" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Conta" nillable="true" type="tns:Conta" />
+  <xs:complexType name="ArrayOfConta">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Conta" nillable="true" type="tns:Conta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConta" nillable="true" type="tns:ArrayOfConta" />
+  <xs:complexType name="ArrayOfGrafico">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Grafico" nillable="true" type="tns:Grafico" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGrafico" nillable="true" type="tns:ArrayOfGrafico" />
+  <xs:complexType name="Grafico">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BandeiraID" type="xs:int" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTE_Contratado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTE_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTE_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTE_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTE_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTUSD_Contratado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTUSD_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTUSD_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTUSD_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoForaPontaTUSD_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTE_Contratado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTE_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTE_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTE_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTE_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTUSD_Contratado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTUSD_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTUSD_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTUSD_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoNaPontaTUSD_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemForaPonta_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemForaPonta_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemForaPonta_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemForaPonta_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemNaPonta_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemNaPonta_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemNaPonta_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="ConsumoUltrapassagemNaPonta_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="DataDaSimulacao" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataReferencia" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DemandaTUSD_Contratado" type="xs:float" />
+      <xs:element minOccurs="0" name="DemandaTUSD_Faturado" type="xs:float" />
+      <xs:element minOccurs="0" name="DemandaTUSD_Registrado" type="xs:float" />
+      <xs:element minOccurs="0" name="DemandaTUSD_TarifaPreco" type="xs:float" />
+      <xs:element minOccurs="0" name="DemandaTUSD_Valor" type="xs:float" />
+      <xs:element minOccurs="0" name="DistribuidoraID" type="xs:int" />
+      <xs:element minOccurs="0" name="FabricaID" type="xs:int" />
+      <xs:element minOccurs="0" name="SimulacaoID" type="xs:int" />
+      <xs:element minOccurs="0" name="SubTotal" type="xs:float" />
+      <xs:element minOccurs="0" name="TarifaDestinoID" type="xs:int" />
+      <xs:element minOccurs="0" name="TarifaOrigemID" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoContratoDestinoID" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoContratoID" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoSubGrupoID" type="xs:int" />
+      <xs:element minOccurs="0" name="ValorTotal" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Grafico" nillable="true" type="tns:Grafico" />
+</xs:schema>
