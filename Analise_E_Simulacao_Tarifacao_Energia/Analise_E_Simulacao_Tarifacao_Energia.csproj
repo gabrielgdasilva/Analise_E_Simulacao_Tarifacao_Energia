@@ -169,6 +169,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Senha.cs" />
     <Compile Include="ViewModels\ContaViewModel.cs" />
     <Compile Include="Models\Mes.cs" />
     <Compile Include="Controllers\ContaController.cs" />
@@ -300,6 +301,7 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\Usuario\Created.cshtml" />
     <None Include="Web References\net.azurewebsites.teeservice\Service1.wsdl" />
     <Content Include="Web References\net.azurewebsites.teeservice\Tarifa.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -324,7 +326,6 @@
     <Content Include="Views\Shared\_LayoutPageLogada.cshtml" />
     <Content Include="Views\HomeLogada\Index.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
-    <Content Include="Views\Usuario\SubCreate.cshtml" />
     <Content Include="Views\Usuario\List.cshtml" />
     <Content Include="Views\Usuario\Details.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />

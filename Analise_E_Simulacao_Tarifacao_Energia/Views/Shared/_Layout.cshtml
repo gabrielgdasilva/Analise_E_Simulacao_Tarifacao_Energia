@@ -43,7 +43,11 @@
                     {
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
+                                @if (usuario.Tipo == 1)
+                                {
+                                    <li>@Html.ActionLink("Usuarios", "List", "Usuario")</li>
+                                }
+                                <li>@Html.ActionLink("Meu perfil", "Details", "Usuario")</li>
                                 <li>@Html.ActionLink("Detalhes da Empresa", "Index", "Cliente")</li>
                                 <li>@Html.ActionLink("Fabricas", "List", "Fabrica")</li>
                                 <li>@Html.ActionLink("Sair", "Logout", "Usuario")</li>

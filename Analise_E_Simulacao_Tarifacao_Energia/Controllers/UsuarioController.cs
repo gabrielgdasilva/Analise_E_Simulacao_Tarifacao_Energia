@@ -32,7 +32,11 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     {
                         Session["usuario"] = resultado;
                         FormsAuthentication.SetAuthCookie(resultado.Nome, false);
-                        return RedirectToAction("List", "Fabrica");
+
+                        if (string.IsNullOrWhiteSpace(resultado.Nome))
+                            return RedirectToAction("Edit");
+                        else
+                            return RedirectToAction("List", "Fabrica");
                     }
                     else
                     {
@@ -48,6 +52,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
         }
 
+        [VerificaAutenticacao]
         public ActionResult Logout()
         {
             Session["usuario"] = null;
@@ -57,29 +62,36 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
         //GET: Usuario/List
         [VerificaAutenticacao]
-        public ActionResult List(int id, UsuarioModel usuarioLogado)
+        public ActionResult List()
         {
             List<UsuarioModel> listaUsuarios = new List<UsuarioModel>();
+            List<UsuarioModel> listaFiltrados = new List<UsuarioModel>();
+            UsuarioModel usuario = Session["usuario"] as UsuarioModel;
+            int clienteID = usuario.ClienteID;
+
             using (ServiceReference1.TEECRUDServiceClient client =new ServiceReference1.TEECRUDServiceClient())
             {
-                List<ServiceReference1.Usuario> ListaDeEntrada = client.ListarUsuarios(id).ToList();
+                List<ServiceReference1.Usuario> ListaDeEntrada = client.ListarUsuarios(clienteID).ToList();
                 listaUsuarios = Conversor.ListarUsuarios(ListaDeEntrada);
+                foreach(var u in listaUsuarios)
+                {
+                    if (u.Email != usuario.Email)
+                    {
+                        listaFiltrados.Add(u);
+                    }
+                }
 
             }
-            return View(listaUsuarios);
+            return View(listaFiltrados);
         }
 
         // GET: Usuario/Details/5
         [VerificaAutenticacao]
-        public ActionResult Details(string email, UsuarioModel usuarioLogado)
+        public ActionResult Details()
         {
-            UsuarioModel usuarioModelo = new UsuarioModel();
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
-            {
-                ServiceReference1.Usuario usuarioEntrada = client.DestalhesDoUsuario(email);
-                usuarioModelo = Conversor.UsuarioRecebido(usuarioEntrada);
-            }
-            return View(usuarioModelo);
+            UsuarioModel login = Session["usuario"] as UsuarioModel;
+            
+            return View(login);
         }
 
         // GET: Usuario/Create
@@ -87,7 +99,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         public ActionResult Create()
         {
             UsuarioModel usuarioModelo = new UsuarioModel();
-            return View();
+            return View(usuarioModelo);
         }
 
         // POST: Usuario/Create
@@ -96,14 +108,18 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         {
             try
             {
+                UsuarioModel login = Session["usuario"] as UsuarioModel;
+                modeloUsuario.ClienteID = login.ClienteID;
+                modeloUsuario.Senha = Senha.Generate();
+                modeloUsuario.Ativo = true;
+
                 using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                 {
                     ServiceReference1.Usuario usuario = Conversor.NovoUsuario(modeloUsuario);
                     bool resultado = client.CadastrarUsuario(usuario);
                     if (resultado)
                     {
-                        TempData["CadastrarUsuario"] = true;
-                        return View("HomeLogada");
+                        return RedirectToAction("List");
                     }
                     else
                     {
@@ -120,60 +136,24 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
         }
 
-        // GET: Usuario/Create
         [VerificaAutenticacao]
-        public ActionResult SubCreate(UsuarioModel usuarioAdmin, int clienteID)
-        {   
-            return View();
-        }
-
-        // POST: Usuario/Create
-        [HttpPost]
-        public ActionResult SubCreate(UsuarioModel modeloUsuario)
+        public ActionResult Created(UsuarioModel usuario)
         {
-            try
-            {
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
-                {
-                    ServiceReference1.Usuario usuario = Conversor.NovoUsuario(modeloUsuario);
-                    bool resultado = client.CadastrarUsuario(usuario);
-                    if (resultado)
-                    {
-                        TempData["CadastrarUsuario"] = true;
-                        return View("HomeLogada");
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
-                    }
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                ViewBag.CadastrarUsuario = false;
-                ViewBag.ErroNovoUsuario = ex.Message;
-                return View();
-            }
+            return View(usuario);
         }
 
         // GET: Usuario/Edit/5
         [VerificaAutenticacao]
-        public ActionResult Edit(int id, string email, UsuarioModel usuarioLogado)
+        public ActionResult Edit()
         {
-            UsuarioModel usuarioModelo = new UsuarioModel();
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
-            {
-                ServiceReference1.Usuario usuarioEntrada = client.DestalhesDoUsuario(email);
-                usuarioModelo = Conversor.UsuarioRecebido(usuarioEntrada);
-            }
-            return View(usuarioModelo);
+            UsuarioModel login = Session["usuario"] as UsuarioModel;
+
+            return View(login);
         }
 
         // POST: Usuario/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, UsuarioModel modeloUsuario, UsuarioModel usuarioLogado)
+        public ActionResult Edit(UsuarioModel modeloUsuario)
         {
             try
             {
@@ -183,8 +163,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     bool resultado = client.AtualizarUsuario(usuario);
                     if (resultado)
                     {
-                        TempData["AtualizarUsuario"] = true;
-                        return View("HomeLogada");
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
@@ -204,7 +183,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
         // GET: Usuario/Delete/5
         [VerificaAutenticacao]
-        public ActionResult Delete(int id,string email, UsuarioModel usuarioLogado)
+        public ActionResult Delete(string email)
         {
             UsuarioModel usuarioModelo = new UsuarioModel();
 
@@ -218,18 +197,18 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
         // POST: Usuario/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, UsuarioModel modeloUsuario, UsuarioModel usuarioLogado)
+        public ActionResult Delete(UsuarioModel modeloUsuario)
         {
             try
             {
                 using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                 {
                     ServiceReference1.Usuario usuario = Conversor.ExcluirUsuario(modeloUsuario);
+                    usuario.Ativo = !usuario.Ativo;
                     bool resultado = client.DeletarUsuario(usuario);
                     if (resultado)
                     {
-                        TempData["DeletarUsuario"] = true;
-                        return View("HomeLogada");
+                        return RedirectToAction("List");
                     }
                     else
                     {

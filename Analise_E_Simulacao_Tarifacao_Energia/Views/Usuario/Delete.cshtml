@@ -1,72 +1,29 @@
 ﻿@model Analise_E_Simulacao_Tarifacao_Energia.Models.UsuarioModel
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Ativa/Desativa";
 }
 
-<h2>Delete</h2>
+@if (Model.Ativo)
+{
+    <h2>Deseja realmente desativar esse usuario?</h2>
+}
+else
+{
+    <h2>Deseja realmente ativar esse usuario?</h2>
+}
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>UsuarioModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ClienteID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ClienteID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cpf)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cpf)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.Ativo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ativo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tipo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tipo)
-        </dd>
-
-    </dl>
+   
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
-
+        @Html.HiddenFor(model => model.Email)
+        @Html.HiddenFor(model => model.Ativo)
+        
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Confirma" class="btn btn-default" />
+            <input type="submit" value="Cancelar" class="btn btn-cancel" onclick="window.history.back()" />
         </div>
     }
 </div>

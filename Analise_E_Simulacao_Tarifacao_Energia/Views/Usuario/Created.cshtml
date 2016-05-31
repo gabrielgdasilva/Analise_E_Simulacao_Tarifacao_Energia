@@ -1,0 +1,22 @@
+﻿@model Analise_E_Simulacao_Tarifacao_Energia.Models.UsuarioModel
+
+@{
+    ViewBag.Title = "Usuario";
+}
+
+<h2>Usuario craido com sucesso!</h2>
+
+<div>
+    <h4>Seguem informações de login e senha para o usuario:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Email</dt>
+        <dd>@Html.DisplayFor(model => model.Email)</dd>
+
+        <dt>Senha</dt>
+        <dd>@Html.DisplayFor(model => model.Senha)</dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Voltar a lista", "List")
+</p>
