@@ -95,7 +95,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Validacoes
 
                 }
 
-                if (u != null)
+                if (u.Email == usuario.Email)
                     validacoes.Add(new Validacao(
                                     _entidade: entidade
                                     , _tipo: tipo
@@ -120,7 +120,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Validacoes
             {
                 foreach(var v in validacoes)
                 {
-                    mensagem += Environment.NewLine + v.tipo + ": " + v.mensagem;
+                    mensagem += Environment.NewLine + v.mensagem;
                 }
             }
 

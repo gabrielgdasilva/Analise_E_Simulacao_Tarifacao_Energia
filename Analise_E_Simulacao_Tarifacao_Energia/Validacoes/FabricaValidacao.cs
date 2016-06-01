@@ -65,12 +65,12 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Validacoes
                                     , _tipo: tipo
                                     , _mensagem: "CNPJ deve conter 14 digitos."
                                     ));
-                else if (!ValidaFormatoCNPJ(cnpj))
+                /*else if (!ValidaFormatoCNPJ(cnpj))
                     validacoes.Add(new Validacao(
                                     _entidade: entidade
                                     , _tipo: tipo
                                     , _mensagem: "Formato de CNPJ invalido."
-                                    ));
+                                    ));*/
             }
         }
 
@@ -174,7 +174,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Validacoes
             {
                 foreach (var v in validacoes)
                 {
-                    mensagem += Environment.NewLine + v.tipo + ": " + v.mensagem;
+                    mensagem += Environment.NewLine + v.mensagem;
                 }
             }
 

@@ -17,51 +17,73 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         [VerificaAutenticacao]
         public ActionResult List()
         {
-            List<FabricaModel> ListaFabrica = new List<FabricaModel>();
-            UsuarioModel usuario = Session["usuario"] as UsuarioModel;
-            Session["IdFabrica"] = null;
-            if (usuario != null)
+            try
             {
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                List<FabricaModel> ListaFabrica = new List<FabricaModel>();
+                UsuarioModel usuario = Session["usuario"] as UsuarioModel;
+                Session["IdFabrica"] = null;
+                if (usuario != null)
                 {
-                    List<ServiceReference1.Fabrica> listaDeEntrada = client.TodasFabricas(usuario.ClienteID).ToList();
-                    ListaFabrica = Conversor.ListaFabricas(listaDeEntrada);
+                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    {
+                        List<ServiceReference1.Fabrica> listaDeEntrada = client.TodasFabricas(usuario.ClienteID).ToList();
+                        ListaFabrica = Conversor.ListaFabricas(listaDeEntrada);
+                    }
                 }
+                return View(ListaFabrica);
             }
-            return View(ListaFabrica);
+            catch(Exception ex)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
         }
 
         // GET: Fabrica/Details/5
         [VerificaAutenticacao]
         public ActionResult Details(int id)
         {
-            FabricaModel fabricaModelo = new FabricaModel();
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+            try
             {
-                ServiceReference1.Fabrica fabricaEntrada = client.DestalhesDaFabrica(id);
-                fabricaModelo = Conversor.FabricaRecebida(fabricaEntrada);
+                FabricaModel fabricaModelo = new FabricaModel();
+                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                {
+                    ServiceReference1.Fabrica fabricaEntrada = client.DestalhesDaFabrica(id);
+                    fabricaModelo = Conversor.FabricaRecebida(fabricaEntrada);
 
+                }
+
+                return View(fabricaModelo);
             }
-            return View(fabricaModelo);
+            catch(Exception ex)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
         }
 
         // GET: Fabrica/Create
         [VerificaAutenticacao]
         public ActionResult Create()
         {
-            List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
-
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+            try
             {
-                List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
-                distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
+                List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
+
+                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                {
+                    List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
+                    distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
+                }
+
+                UsuarioModel usuario = Session["usuario"] as UsuarioModel;
+                FabricaViewModel fabricaViewModel = new FabricaViewModel(null, distribuidoras);
+                fabricaViewModel.ClienteID = usuario.ClienteID;
+
+                return View(fabricaViewModel);
             }
-
-            UsuarioModel usuario = Session["usuario"] as UsuarioModel;
-            FabricaViewModel fabricaViewModel = new FabricaViewModel(null, distribuidoras);
-            fabricaViewModel.ClienteID = usuario.ClienteID;
-
-            return View(fabricaViewModel);
+            catch(Exception ex)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
         }
 
         // POST: Fabrica/Create
@@ -91,20 +113,29 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                         }
                         else
                         {
-                            throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                            return RedirectToAction("Index", "Erro", new { area = "" });
                         }
                     }
                 }
                 else
                 {
                     ModelState.AddModelError(string.Empty, FabricaValidacao.ObterMensagem());
+                    List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
+
+                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    {
+                        List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
+                        distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
+                    }
+
+                    fabricaViewModel = new FabricaViewModel(fabricaModelo, distribuidoras);
+
                     return View(fabricaViewModel);
                 }
             }
             catch(Exception ex)
             {
-                ViewBag.ErroCadastrarFabrica = ex.Message;
-                return View();
+                return RedirectToAction("Index", "Erro", new { area = "" });
             }
         }
 
@@ -112,21 +143,28 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         [VerificaAutenticacao]
         public ActionResult Edit(int id)
         {
-            FabricaModel fabricaModelo = new FabricaModel();
-            List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
-
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+            try
             {
-                ServiceReference1.Fabrica fabricaEntrada = client.DestalhesDaFabrica(id);
-                fabricaModelo = Conversor.FabricaRecebida(fabricaEntrada);
+                FabricaModel fabricaModelo = new FabricaModel();
+                List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
 
-                List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
-                distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
+                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                {
+                    ServiceReference1.Fabrica fabricaEntrada = client.DestalhesDaFabrica(id);
+                    fabricaModelo = Conversor.FabricaRecebida(fabricaEntrada);
+
+                    List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
+                    distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
+                }
+
+                FabricaViewModel fabricaViewModel = new FabricaViewModel(fabricaModelo, distribuidoras);
+
+                return View(fabricaViewModel);
             }
-
-            FabricaViewModel fabricaViewModel = new FabricaViewModel(fabricaModelo, distribuidoras);
-
-            return View(fabricaViewModel);
+            catch(Exception ex)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
         }
 
         // POST: Fabrica/Edit/5
@@ -156,20 +194,30 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                         }
                         else
                         {
-                            throw new InvalidOperationException("O Serviço não pode atualizar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                            return RedirectToAction("Index", "Erro", new { area = "" });
                         }
                     }
                 }
                 else
                 {
                     ModelState.AddModelError(string.Empty, FabricaValidacao.ObterMensagem());
+
+                    List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
+
+                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    {
+                        List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
+                        distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
+                    }
+
+                    fabricaViewModel = new FabricaViewModel(fabricaModelo, distribuidoras);
+
                     return View(fabricaViewModel);
                 }
             }
             catch (Exception ex)
             {
-                ViewBag.ErroAtualizarFabrica = ex.Message;
-                return View();
+                return RedirectToAction("Index", "Erro", new { area = "" });
             }
         }
 
@@ -198,15 +246,13 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     }
                     else
                     {
-                        throw new InvalidOperationException("O Serviço não pode Excluir o Objeto");
+                        return RedirectToAction("Index", "Erro", new { area = "" });
                     }
                 }
             }
             catch(Exception ex)
             {
-                ViewBag.DeletarFabrica = false;
-                ViewBag.ErroDeletarFabrica = ex.Message;
-                return View();
+                return RedirectToAction("Index", "Erro", new { area = "" });
             }
         }
     }

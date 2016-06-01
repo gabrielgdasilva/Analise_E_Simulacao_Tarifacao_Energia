@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using PagedList;
 using System.Web.Security;
 using Analise_E_Simulacao_Tarifacao_Energia.Validacoes;
+using System.Web.Routing;
 
 namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 {
@@ -48,8 +49,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
             catch (Exception)
             {
-
-                throw new InvalidOperationException("O Serviço não pode Logar o usuario"); 
+                return RedirectToAction("Index", "Erro", new { area = "" });
             }
         }
 
@@ -65,25 +65,32 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         [VerificaAutenticacao]
         public ActionResult List()
         {
-            List<UsuarioModel> listaUsuarios = new List<UsuarioModel>();
-            List<UsuarioModel> listaFiltrados = new List<UsuarioModel>();
-            UsuarioModel usuario = Session["usuario"] as UsuarioModel;
-            int clienteID = usuario.ClienteID;
-
-            using (ServiceReference1.TEECRUDServiceClient client =new ServiceReference1.TEECRUDServiceClient())
+            try
             {
-                List<ServiceReference1.Usuario> ListaDeEntrada = client.ListarUsuarios(clienteID).ToList();
-                listaUsuarios = Conversor.ListarUsuarios(ListaDeEntrada);
-                foreach(var u in listaUsuarios)
-                {
-                    if (u.Email != usuario.Email)
-                    {
-                        listaFiltrados.Add(u);
-                    }
-                }
+                List<UsuarioModel> listaUsuarios = new List<UsuarioModel>();
+                List<UsuarioModel> listaFiltrados = new List<UsuarioModel>();
+                UsuarioModel usuario = Session["usuario"] as UsuarioModel;
+                int clienteID = usuario.ClienteID;
 
+                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                {
+                    List<ServiceReference1.Usuario> ListaDeEntrada = client.ListarUsuarios(clienteID).ToList();
+                    listaUsuarios = Conversor.ListarUsuarios(ListaDeEntrada);
+                    foreach (var u in listaUsuarios)
+                    {
+                        if (u.Email != usuario.Email)
+                        {
+                            listaFiltrados.Add(u);
+                        }
+                    }
+
+                }
+                return View(listaFiltrados);
             }
-            return View(listaFiltrados);
+            catch(Exception ex)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
         }
 
         // GET: Usuario/Details/5
@@ -124,11 +131,12 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                         bool resultado = client.CadastrarUsuario(usuario);
                         if (resultado)
                         {
-                            return RedirectToAction("List");
+                            Session["UsuarioCriado"] = modeloUsuario;
+                            return RedirectToAction("Created");
                         }
                         else
                         {
-                            throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                            return RedirectToAction("Index", "Erro", new { area = "" });
                         }
                     }
                 }
@@ -140,16 +148,16 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
             catch(Exception ex)
             {
-                ViewBag.CadastrarUsuario = false;
-                ViewBag.ErroCadastrarUsuario = ex.Message;
-                return View();
+                return RedirectToAction("Index", "Erro", new { area = "" });
             }
         }
 
         [VerificaAutenticacao]
-        public ActionResult Created(UsuarioModel usuario)
+        public ActionResult Created()
         {
-            return View(usuario);
+            UsuarioModel u = Session["UsuarioCriado"] as UsuarioModel;
+            Session["UsuarioCriado"] = null;
+            return View(u);
         }
 
         // GET: Usuario/Edit/5
@@ -181,7 +189,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                         }
                         else
                         {
-                            throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                            return RedirectToAction("Index", "Erro", new { area = "" });
                         }
                     }
                 }
@@ -193,9 +201,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.AtualizarUsuario = false;
-                ViewBag.ErroAtualizarUsuario = ex.Message;
-                return View();
+                return RedirectToAction("Index", "Erro", new { area = "" });
             }
         }
 
@@ -203,14 +209,21 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         [VerificaAutenticacao]
         public ActionResult Delete(string email)
         {
-            UsuarioModel usuarioModelo = new UsuarioModel();
-
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+            try
             {
-                ServiceReference1.Usuario usuarioEntrada = client.DestalhesDoUsuario(email);
-                usuarioModelo = Conversor.UsuarioRecebido(usuarioEntrada);
+                UsuarioModel usuarioModelo = new UsuarioModel();
+
+                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                {
+                    ServiceReference1.Usuario usuarioEntrada = client.DestalhesDoUsuario(email);
+                    usuarioModelo = Conversor.UsuarioRecebido(usuarioEntrada);
+                }
+                return View(usuarioModelo);
             }
-            return View(usuarioModelo);
+            catch(Exception ex)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
         }
 
         // POST: Usuario/Delete/5
@@ -230,7 +243,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     }
                     else
                     {
-                        throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                        return RedirectToAction("Index", "Erro", new { area = "" });
                     }
                 }
 
@@ -238,9 +251,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.DeletarUsuario = false;
-                ViewBag.ErroDeletarUsuario = ex.Message;
-                return View();
+                return RedirectToAction("Index", "Erro", new { area = "" });
             }
         }
     }

@@ -50,15 +50,13 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     }
                     else
                     {
-                        throw new InvalidOperationException("O Serviço não pode solicitar a Ação. Verifique se o mesmo encontra-se preenchido corretamente");
+                        return RedirectToAction("Index", "Erro", new { area = "" });
                     }
                 }
             }
             catch(Exception ex)
             {
-                ViewBag.GerarSimulacao = false;
-                ViewBag.ErroGerarSimulacao = ex.Message;
-                return View();
+                return RedirectToAction("Index", "Erro", new { area = "" });
             }
         }
 
@@ -111,101 +109,93 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         [VerificaAutenticacao]
         public ActionResult Chart()
         {
-            int? fabricaID = Session["IdFabrica"] as int?;
-            int auxFabricaID = (fabricaID != null) ? (int)fabricaID : 0;
-
-            List<ContaModel> listaConta = new List<ContaModel>();
-            List<TipoContratoModel> contratos = new List<TipoContratoModel>();
-            List<TipoSubGrupoModel> grupos = new List<TipoSubGrupoModel>();
-            List<GraficoModel> graficoModel = new List<GraficoModel>();
-
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+            try
             {
-                var graficoReferente = client.DadosParaGrafico(auxFabricaID).ToList();
-                var listaDeEntrada = client.TodasContas(auxFabricaID).ToList();
-                var contratoRef = client.TodosContratos().ToList();
-                var gruposRef = client.TodosSubGrupos().ToList();
+                int? fabricaID = Session["IdFabrica"] as int?;
+                int auxFabricaID = (fabricaID != null) ? (int)fabricaID : 0;
 
-                graficoModel = Conversor.DadosGrafico(graficoReferente);
-                listaConta = Conversor.ListaContas(listaDeEntrada);
-                contratos = Conversor.ListaContratos(contratoRef);
-                grupos = Conversor.ListaSubGrupos(gruposRef);
-            }
-            
-            var series = new HC.Options.Series[2];
-            var serieName = "Consumo atual";
-            var eixoY = listaConta.Select(c => new object[] { Convert.ToDouble(c.ValorTotal) }).ToArray();
+                List<ContaModel> listaConta = new List<ContaModel>();
+                List<TipoContratoModel> contratos = new List<TipoContratoModel>();
+                List<TipoSubGrupoModel> grupos = new List<TipoSubGrupoModel>();
+                List<GraficoModel> graficoModel = new List<GraficoModel>();
 
-            series[0] = new HC.Options.Series { Name = serieName, Data = new HC.Helpers.Data(eixoY)};
+                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                {
+                    var graficoReferente = client.DadosParaGrafico(auxFabricaID).ToList();
+                    var listaDeEntrada = client.TodasContas(auxFabricaID).ToList();
+                    var contratoRef = client.TodosContratos().ToList();
+                    var gruposRef = client.TodosSubGrupos().ToList();
 
-            var exemplo = graficoModel.FirstOrDefault();
-            string strContrato = contratos.Where(x => x.TipoContratoID == exemplo.TipoContratoID).Select(x => x.TipoContratoString).ToString();
-            string strGrupo = grupos.Where(x => x.TipoSubGrupoID == exemplo.TipoSubGrupoID).Select(x => x.TipoSubGrupoString).ToString();
-            serieName = "Contrato simulado";//strGrupo + " " + strGrupo;
-            eixoY = graficoModel.Select(c => new object[] { Convert.ToDouble(c.ValorTotal) }).ToArray();
+                    graficoModel = Conversor.DadosGrafico(graficoReferente);
+                    listaConta = Conversor.ListaContas(listaDeEntrada);
+                    contratos = Conversor.ListaContratos(contratoRef);
+                    grupos = Conversor.ListaSubGrupos(gruposRef);
+                }
 
-            series[1] = new HC.Options.Series { Name = serieName, Data = new HC.Helpers.Data(eixoY) };
+                var series = new HC.Options.Series[2];
+                var serieName = "Consumo atual";
+                var eixoY = listaConta.Select(c => new object[] { Convert.ToDouble(c.ValorTotal) }).ToArray();
 
-            /*var contas = new List<GraficoModel> {
-                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/01/2015"), ValorTotal=100.2f },
-                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/02/2015"), ValorTotal=200.5f },
-                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/03/2015"), ValorTotal=250f },
-                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/04/2015"), ValorTotal=300f },
-                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/05/2015"), ValorTotal=326.47f },
-                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/06/2015"), ValorTotal=478f },
-                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/07/2015"), ValorTotal=450.48f },
-                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/08/2015"), ValorTotal=300f },
-                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/09/2015"), ValorTotal=500f },
-                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/10/2015"), ValorTotal=379.26f },
-                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/11/2015"), ValorTotal=200f },
-                new GraficoModel() { DataReferencia = Convert.ToDateTime("01/12/2015"), ValorTotal=300f },
-                };*/
+                series[0] = new HC.Options.Series { Name = serieName, Data = new HC.Helpers.Data(eixoY) };
 
-            var xMes = listaConta.Select(c => c.MesReferencia).Distinct().ToArray();
-            //var yValores = contas.Select(c => new object[] { c.ValorTotal }).ToArray();
+                var exemplo = graficoModel.FirstOrDefault();
+                string strContrato = contratos.Where(x => x.TipoContratoID == exemplo.TipoContratoID).Select(x => x.TipoContratoString).ToString();
+                string strGrupo = grupos.Where(x => x.TipoSubGrupoID == exemplo.TipoSubGrupoID).Select(x => x.TipoSubGrupoString).ToString();
+                serieName = "Contrato simulado";//strGrupo + " " + strGrupo;
+                eixoY = graficoModel.Select(c => new object[] { Convert.ToDouble(c.ValorTotal) }).ToArray();
 
-            HC.Highcharts chart = new HC.Highcharts("chart")
-                    .SetXAxis(new HC.Options.XAxis { Categories = xMes })
-                    .SetYAxis(new HC.Options.YAxis { Title = new HC.Options.YAxisTitle { Text = "Valores" } })
-                    .SetSeries(series)
+                series[1] = new HC.Options.Series { Name = serieName, Data = new HC.Helpers.Data(eixoY) };
+
+                var xMes = listaConta.Select(c => c.MesReferencia).Distinct().ToArray();
+                //var yValores = contas.Select(c => new object[] { c.ValorTotal }).ToArray();
+
+                HC.Highcharts chart = new HC.Highcharts("chart")
+                        .SetXAxis(new HC.Options.XAxis { Categories = xMes })
+                        .SetYAxis(new HC.Options.YAxis { Title = new HC.Options.YAxisTitle { Text = "Valores" } })
+                        .SetSeries(series)
+                        .SetTitle(new HC.Options.Title { Text = "Consumo de energia" })
+                        .InitChart(new DotNet.Highcharts.Options.Chart { DefaultSeriesType = DotNet.Highcharts.Enums.ChartTypes.Line });
+
+
+                /*var chart = new HC.Highcharts("chart")
+                    //Tipo do grafico
+                    .InitChart(new HC.Options.Chart { DefaultSeriesType = HC.Enums.ChartTypes.Line })
+                    //Titulo
                     .SetTitle(new HC.Options.Title { Text = "Consumo de energia" })
-                    .InitChart(new DotNet.Highcharts.Options.Chart { DefaultSeriesType = DotNet.Highcharts.Enums.ChartTypes.Line });
-
-
-            /*var chart = new HC.Highcharts("chart")
-                //Tipo do grafico
-                .InitChart(new HC.Options.Chart { DefaultSeriesType = HC.Enums.ChartTypes.Line })
-                //Titulo
-                .SetTitle(new HC.Options.Title { Text = "Consumo de energia" })
-                .SetSubtitle(new HC.Options.Subtitle { Text = "Historico" })
-                //Valores eixo x
-                .SetXAxis(new HC.Options.XAxis { Categories = xMes })
-                //Valores eixo y
-                .SetYAxis(new HC.Options.YAxis { Title = new HC.Options.YAxisTitle { Text = "Valores" } })
-                .SetTooltip(new HC.Options.Tooltip
-                {
-                    Enabled = true,
-                    Formatter = @"function() { return '<b>'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y; }"
-                })
-                .SetPlotOptions(new HC.Options.PlotOptions
-                {
-                    Line = new HC.Options.PlotOptionsLine
+                    .SetSubtitle(new HC.Options.Subtitle { Text = "Historico" })
+                    //Valores eixo x
+                    .SetXAxis(new HC.Options.XAxis { Categories = xMes })
+                    //Valores eixo y
+                    .SetYAxis(new HC.Options.YAxis { Title = new HC.Options.YAxisTitle { Text = "Valores" } })
+                    .SetTooltip(new HC.Options.Tooltip
                     {
-                        DataLabels = new HC.Options.PlotOptionsLineDataLabels
+                        Enabled = true,
+                        Formatter = @"function() { return '<b>'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y; }"
+                    })
+                    .SetPlotOptions(new HC.Options.PlotOptions
+                    {
+                        Line = new HC.Options.PlotOptionsLine
                         {
-                            Enabled = true
-                        },
-                        EnableMouseTracking = false
-                    }
-                })
-                .SetSeries(series);*/
+                            DataLabels = new HC.Options.PlotOptionsLineDataLabels
+                            {
+                                Enabled = true
+                            },
+                            EnableMouseTracking = false
+                        }
+                    })
+                    .SetSeries(series);*/
                 /*.SetSeries(new HC.Options.Series[]
                 {
                     new HC.Options.Series { Name = "Valor $", Data = new HC.Helpers.Data(yValores) }
                     //,new HC.Options.Series { Name = "Outra liha", Data = new HC.Helpers.Data(valores) }
                 });*/
 
-            return View(chart);
+                return View(chart);
+            }
+            catch(Exception ex)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
         }
     }
 }

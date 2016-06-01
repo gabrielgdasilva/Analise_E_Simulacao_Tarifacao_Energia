@@ -46,44 +46,58 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             ContaModel contaModelo = new ContaModel();
             int fabricaID = (int)Session["IdFabrica"];
 
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+            try
             {
-                ServiceReference1.Conta contaEntrada = client.DestalhesDaConta(data, fabricaID);
-                contaModelo = Conversor.ContaRecebida(contaEntrada);
+                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                {
+                    ServiceReference1.Conta contaEntrada = client.DestalhesDaConta(data, fabricaID);
+                    contaModelo = Conversor.ContaRecebida(contaEntrada);
+                }
+
+                return View(contaModelo);
             }
-            
-            return View(contaModelo);
+            catch(Exception ex)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
         }
 
         // GET: Conta/Create
         [VerificaAutenticacao]
         public ActionResult Create()
         {
-            List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
-            List<Mes> meses = Calendario.ListaDeMeses().ToList();
-            List<TipoContratoModel> contratos = new List<TipoContratoModel>();
-            List<TipoSubGrupoModel> grupos = new List<TipoSubGrupoModel>();
-            List<BandeiraModel> bandeiras = new List<BandeiraModel>();
-
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+            try
             {
-                List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
-                distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
+                List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
+                List<Mes> meses = Calendario.ListaDeMeses().ToList();
+                List<TipoContratoModel> contratos = new List<TipoContratoModel>();
+                List<TipoSubGrupoModel> grupos = new List<TipoSubGrupoModel>();
+                List<BandeiraModel> bandeiras = new List<BandeiraModel>();
 
-                List<ServiceReference1.TipoContrato> listaDeContratos = client.TodosContratos().ToList();
-                contratos = Conversor.ListaContratos(listaDeContratos);
+                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                {
+                    List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
+                    distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
 
-                List<ServiceReference1.TipoSubGrupo> listaDeGrupos = client.TodosSubGrupos().ToList();
-                grupos = Conversor.ListaSubGrupos(listaDeGrupos);
+                    List<ServiceReference1.TipoContrato> listaDeContratos = client.TodosContratos().ToList();
+                    contratos = Conversor.ListaContratos(listaDeContratos);
 
-                List<ServiceReference1.Bandeira> listaDeBandeiras = client.TodasBandeiras().ToList();
-                bandeiras = Conversor.ListaBandeira(listaDeBandeiras);
+                    List<ServiceReference1.TipoSubGrupo> listaDeGrupos = client.TodosSubGrupos().ToList();
+                    grupos = Conversor.ListaSubGrupos(listaDeGrupos);
 
+                    List<ServiceReference1.Bandeira> listaDeBandeiras = client.TodasBandeiras().ToList();
+                    bandeiras = Conversor.ListaBandeira(listaDeBandeiras);
+
+                }
+
+                ContaViewModel cvm = new ContaViewModel(null, bandeiras, meses, distribuidoras, contratos, grupos);
+
+                return View(cvm);
             }
-
-            ContaViewModel cvm = new ContaViewModel(null, bandeiras, meses, distribuidoras, contratos, grupos);
-            
-            return View(cvm);
+            catch(Exception ex)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
         }
 
         // POST: Conta/Create
@@ -120,22 +134,45 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                         }
                         else
                         {
-                            throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                            return RedirectToAction("Index", "Erro", new { area = "" });
                         }
                     }
                 }
                 else
                 {
                     ModelState.AddModelError(string.Empty, ContaValidacao.ObterMensagem());
+
+                    List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
+                    List<Mes> meses = Calendario.ListaDeMeses().ToList();
+                    List<TipoContratoModel> contratos = new List<TipoContratoModel>();
+                    List<TipoSubGrupoModel> grupos = new List<TipoSubGrupoModel>();
+                    List<BandeiraModel> bandeiras = new List<BandeiraModel>();
+
+                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    {
+                        List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
+                        distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
+
+                        List<ServiceReference1.TipoContrato> listaDeContratos = client.TodosContratos().ToList();
+                        contratos = Conversor.ListaContratos(listaDeContratos);
+
+                        List<ServiceReference1.TipoSubGrupo> listaDeGrupos = client.TodosSubGrupos().ToList();
+                        grupos = Conversor.ListaSubGrupos(listaDeGrupos);
+
+                        List<ServiceReference1.Bandeira> listaDeBandeiras = client.TodasBandeiras().ToList();
+                        bandeiras = Conversor.ListaBandeira(listaDeBandeiras);
+
+                    }
+
+                    cvm = new ContaViewModel(contaModelo, bandeiras, meses, distribuidoras, contratos, grupos);
+
                     return View(cvm);
                 }
 
             }
             catch(Exception ex)
             {
-                ViewBag.CadastrarConta = false;
-                ViewBag.ErroCadastrarConta = ex.Message;
-                return View();
+                return RedirectToAction("Index", "Erro", new { area = "" });
             }
         }
 
@@ -143,36 +180,43 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         [VerificaAutenticacao]
         public ActionResult Edit(DateTime data)
         {
-            ContaModel contaModelo = new ContaModel();
-            List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
-            List<Mes> meses = Calendario.ListaDeMeses().ToList();
-            List<TipoContratoModel> contratos = new List<TipoContratoModel>();
-            List<TipoSubGrupoModel> grupos = new List<TipoSubGrupoModel>();
-            List<BandeiraModel> bandeiras = new List<BandeiraModel>();
-            int fabricaID = (int)Session["IdFabrica"];
-
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+            try
             {
-                ServiceReference1.Conta contaEntrada = client.DestalhesDaConta(data, fabricaID);
-                contaModelo = Conversor.ContaRecebida(contaEntrada);
+                ContaModel contaModelo = new ContaModel();
+                List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
+                List<Mes> meses = Calendario.ListaDeMeses().ToList();
+                List<TipoContratoModel> contratos = new List<TipoContratoModel>();
+                List<TipoSubGrupoModel> grupos = new List<TipoSubGrupoModel>();
+                List<BandeiraModel> bandeiras = new List<BandeiraModel>();
+                int fabricaID = (int)Session["IdFabrica"];
 
-                List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
-                distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
+                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                {
+                    ServiceReference1.Conta contaEntrada = client.DestalhesDaConta(data, fabricaID);
+                    contaModelo = Conversor.ContaRecebida(contaEntrada);
 
-                List<ServiceReference1.TipoContrato> listaDeContratos = client.TodosContratos().ToList();
-                contratos = Conversor.ListaContratos(listaDeContratos);
+                    List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
+                    distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
 
-                List<ServiceReference1.TipoSubGrupo> listaDeGrupos = client.TodosSubGrupos().ToList();
-                grupos = Conversor.ListaSubGrupos(listaDeGrupos);
+                    List<ServiceReference1.TipoContrato> listaDeContratos = client.TodosContratos().ToList();
+                    contratos = Conversor.ListaContratos(listaDeContratos);
 
-                List<ServiceReference1.Bandeira> listaDeBandeiras = client.TodasBandeiras().ToList();
-                bandeiras = Conversor.ListaBandeira(listaDeBandeiras);
+                    List<ServiceReference1.TipoSubGrupo> listaDeGrupos = client.TodosSubGrupos().ToList();
+                    grupos = Conversor.ListaSubGrupos(listaDeGrupos);
 
+                    List<ServiceReference1.Bandeira> listaDeBandeiras = client.TodasBandeiras().ToList();
+                    bandeiras = Conversor.ListaBandeira(listaDeBandeiras);
+
+                }
+
+                ContaViewModel cvm = new ContaViewModel(contaModelo, bandeiras, meses, distribuidoras, contratos, grupos);
+
+                return View(cvm);
             }
-
-            ContaViewModel cvm = new ContaViewModel(contaModelo, bandeiras, meses, distribuidoras, contratos, grupos);
-
-            return View(cvm);
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
         }
 
         // POST: Conta/Edit/5
@@ -206,7 +250,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                         }
                         else
                         {
-                            throw new InvalidOperationException("O Serviço não pode atualizar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                            return RedirectToAction("Index", "Erro", new { area = "" });
                         }
                     }
                 }
@@ -218,8 +262,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.ErroAtualizarConta = ex.Message;
-                return View();
+                return RedirectToAction("Index", "Erro", new { area = "" });
             }
         }
 
@@ -254,15 +297,14 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     }
                     else
                     {
-                        throw new InvalidOperationException("O Serviço não pode atualizar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                        return RedirectToAction("Index", "Erro", new { area = "" });
                     }
                 }
 
             }
             catch (Exception ex)
             {
-                ViewBag.ErroDeletarConta = ex.Message;
-                return View();
+                return RedirectToAction("Index", "Erro", new { area = "" });
             }
         }
     }

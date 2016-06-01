@@ -22,15 +22,5 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://teeservice.azurewebsites.net/TEECRUDService.svc")]
-        public string Analise_E_Simulacao_Tarifacao_Energia_net_azurewebsites_teeservice_Service1 {
-            get {
-                return ((string)(this["Analise_E_Simulacao_Tarifacao_Energia_net_azurewebsites_teeservice_Service1"]));
-            }
-        }
     }
 }

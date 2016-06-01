@@ -67,7 +67,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Validacoes
 
                 }
 
-                if (c != null)
+                if (c.dataReferencia != DateTime.MinValue)
                     validacoes.Add(new Validacao(
                                     _entidade: entidade
                                     , _tipo: tipo
@@ -92,7 +92,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Validacoes
             {
                 foreach (var v in validacoes)
                 {
-                    mensagem += Environment.NewLine + v.tipo + ": " + v.mensagem;
+                    mensagem += Environment.NewLine + v.mensagem;
                 }
             }
 

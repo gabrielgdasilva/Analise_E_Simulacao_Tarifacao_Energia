@@ -19,7 +19,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Models
         public int Tipo { get; set; }
         public string MascaraCPF
         {
-            get { return Convert.ToUInt64(Cpf).ToString(@"000\.000\.000\-00"); }
+            get { return (!string.IsNullOrWhiteSpace(Cpf)) ? Convert.ToUInt64(Cpf).ToString(@"000\.000\.000\-00") : ""; }
         }
     }
 }
