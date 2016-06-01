@@ -1,0 +1,26 @@
+﻿@model Analise_E_Simulacao_Tarifacao_Energia.Models.ClienteModel
+
+@{
+    ViewBag.Title = "Empresa";
+}
+
+<h2>Dados da empresa</h2>
+
+<div>
+
+    <dl class="dl-horizontal">
+        
+        <dt>Nome</dt>
+        <dd>@Html.DisplayFor(model => model.Nome)</dd>
+
+        <dt>CNPJ</dt>
+        <dd>@Html.DisplayFor(model => model.MascaraCNPJ)</dd>
+
+        <dt>Razao Social</dt>
+        <dd>@Html.DisplayFor(model => model.RazaoSocial)</dd>
+
+        <dt>Endereço</dt>
+        <dd>@Html.DisplayFor(model => model.Endereco)</dd>
+
+    </dl>
+</div>

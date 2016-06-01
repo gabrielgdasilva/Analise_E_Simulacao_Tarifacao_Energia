@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using System.Web.Security;
+using Analise_E_Simulacao_Tarifacao_Energia.Validacoes;
 
 namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 {
@@ -113,20 +114,29 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 modeloUsuario.Senha = Senha.Generate();
                 modeloUsuario.Ativo = true;
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                UsuarioValidacao.ValidaCriacaoUsuario(modeloUsuario);
+
+                if (UsuarioValidacao.Valido())
                 {
-                    ServiceReference1.Usuario usuario = Conversor.NovoUsuario(modeloUsuario);
-                    bool resultado = client.CadastrarUsuario(usuario);
-                    if (resultado)
+                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                     {
-                        return RedirectToAction("List");
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                        ServiceReference1.Usuario usuario = Conversor.NovoUsuario(modeloUsuario);
+                        bool resultado = client.CadastrarUsuario(usuario);
+                        if (resultado)
+                        {
+                            return RedirectToAction("List");
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                        }
                     }
                 }
-
+                else
+                {
+                    ModelState.AddModelError(string.Empty, UsuarioValidacao.ObterMensagem());
+                    return View(modeloUsuario);
+                }
             }
             catch(Exception ex)
             {
@@ -157,21 +167,29 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         {
             try
             {
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                UsuarioValidacao.ValidaAtualizacaoUsuario(modeloUsuario);
+
+                if (UsuarioValidacao.Valido())
                 {
-                    ServiceReference1.Usuario usuario = Conversor.AtualizarUsuario(modeloUsuario);
-                    bool resultado = client.AtualizarUsuario(usuario);
-                    if (resultado)
+                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                     {
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                        ServiceReference1.Usuario usuario = Conversor.AtualizarUsuario(modeloUsuario);
+                        bool resultado = client.AtualizarUsuario(usuario);
+                        if (resultado)
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                        }
                     }
                 }
-
-
+                else
+                {
+                    ModelState.AddModelError(string.Empty, UsuarioValidacao.ObterMensagem());
+                    return View(modeloUsuario);
+                }
             }
             catch (Exception ex)
             {

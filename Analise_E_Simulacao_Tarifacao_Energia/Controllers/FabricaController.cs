@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using Analise_E_Simulacao_Tarifacao_Energia.ViewModels;
+using Analise_E_Simulacao_Tarifacao_Energia.Validacoes;
 
 namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 {
@@ -76,18 +77,28 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 fabricaModelo.DistribuidoraID = fabricaViewModel.DistribuidoraID;
                 fabricaModelo.Endereco = fabricaViewModel.Endereco;
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                FabricaValidacao.ValidaFabrica(fabricaModelo);
+
+                if (FabricaValidacao.Valido())
                 {
-                    ServiceReference1.Fabrica fabrica = Conversor.NovaFabrica(fabricaModelo);
-                    bool resultado = client.CadastrarFabrica(fabrica);
-                    if (resultado)
+                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                     {
-                        return RedirectToAction("List");
+                        ServiceReference1.Fabrica fabrica = Conversor.NovaFabrica(fabricaModelo);
+                        bool resultado = client.CadastrarFabrica(fabrica);
+                        if (resultado)
+                        {
+                            return RedirectToAction("List");
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                        }
                     }
-                    else
-                    {
-                        throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
-                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, FabricaValidacao.ObterMensagem());
+                    return View(fabricaViewModel);
                 }
             }
             catch(Exception ex)
@@ -131,18 +142,28 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 fabricaModelo.DistribuidoraID = fabricaViewModel.DistribuidoraID;
                 fabricaModelo.Endereco = fabricaViewModel.Endereco;
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                FabricaValidacao.ValidaFabrica(fabricaModelo);
+
+                if (FabricaValidacao.Valido())
                 {
-                    ServiceReference1.Fabrica fabrica = Conversor.AlterarFabrica(fabricaModelo);
-                    bool resultado = client.AtualizarFabrica(fabrica);
-                    if (resultado)
+                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                     {
-                        return RedirectToAction("List");
+                        ServiceReference1.Fabrica fabrica = Conversor.AlterarFabrica(fabricaModelo);
+                        bool resultado = client.AtualizarFabrica(fabrica);
+                        if (resultado)
+                        {
+                            return RedirectToAction("List");
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException("O Serviço não pode atualizar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                        }
                     }
-                    else
-                    {
-                        throw new InvalidOperationException("O Serviço não pode atualizar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
-                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, FabricaValidacao.ObterMensagem());
+                    return View(fabricaViewModel);
                 }
             }
             catch (Exception ex)

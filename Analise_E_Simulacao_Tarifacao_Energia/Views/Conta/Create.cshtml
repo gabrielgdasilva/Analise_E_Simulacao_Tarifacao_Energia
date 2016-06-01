@@ -4,14 +4,20 @@
     ViewBag.Title = "Cadastrar Conta";
 }
 
-<h2>Create</h2>
+<h2>Nova Conta</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+
+    if (@ViewBag.Message != null)
+    {
+        <div style="border:1px solid red">
+            @ViewBag.Message
+        </div>
+    }
     <div class="form-horizontal">
-        <h4>Cadastrar Conta</h4>
-        <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             <div class="col-md-10">

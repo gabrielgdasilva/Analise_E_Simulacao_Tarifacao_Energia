@@ -13,6 +13,12 @@
     @Html.HiddenFor(model => model.ClienteID)
     @Html.HiddenFor(model => model.FabricaID)
 
+    if (@ViewBag.Message != null)
+    {
+        <div style="border:1px solid red">
+            @ViewBag.Message
+        </div>
+    }
     <div class="form-horizontal">
         
         <div class="form-group">

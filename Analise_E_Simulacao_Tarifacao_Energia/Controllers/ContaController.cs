@@ -1,5 +1,6 @@
 ﻿using Analise_E_Simulacao_Tarifacao_Energia.Models;
 using Analise_E_Simulacao_Tarifacao_Energia.Utilities;
+using Analise_E_Simulacao_Tarifacao_Energia.Validacoes;
 using Analise_E_Simulacao_Tarifacao_Energia.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -104,18 +105,29 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 int? fabricaID = Session["IdFabrica"] as int?;
                 contaModelo.FabricaID = (fabricaID != null) ? (int)fabricaID : 0;
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                //Validacao de dados
+                ContaValidacao.ValidaCriacaoConta(contaModelo);
+
+                if (ContaValidacao.Valido())
                 {
-                    ServiceReference1.Conta conta = Conversor.CadastrarConta(contaModelo);
-                    bool resultado = client.CadastrarConta(conta);
-                    if (resultado)
+                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                     {
-                        return RedirectToAction("List", new { id = conta.FabricaID });
+                        ServiceReference1.Conta conta = Conversor.CadastrarConta(contaModelo);
+                        bool resultado = client.CadastrarConta(conta);
+                        if (resultado)
+                        {
+                            return RedirectToAction("List", new { id = conta.FabricaID });
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                        }
                     }
-                    else
-                    {
-                        throw new InvalidOperationException("O Serviço não pode cadastrar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
-                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, ContaValidacao.ObterMensagem());
+                    return View(cvm);
                 }
 
             }
@@ -180,20 +192,29 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 ContaModel contaModelo = cvm.ObterConta();
                 contaModelo.TarifaID = tarifas.Where(x => x.TipoContratoID == contaModelo.TipoContratoID && x.TipoSubGrupoID == contaModelo.TipoSubGrupoID && x.BandeiraID == contaModelo.BandeiraID).Select(x => x.TarifaID).FirstOrDefault();
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                ContaValidacao.ValidaAtualizacaoConta(contaModelo);
+
+                if (ContaValidacao.Valido())
                 {
-                    ServiceReference1.Conta conta = Conversor.AtualizarConta(contaModelo);
-                    bool resultado = client.AtualizarConta(conta);
-                    if (resultado)
+                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                     {
-                        return RedirectToAction("List", new { id = contaModelo.FabricaID });
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException("O Serviço não pode atualizar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                        ServiceReference1.Conta conta = Conversor.AtualizarConta(contaModelo);
+                        bool resultado = client.AtualizarConta(conta);
+                        if (resultado)
+                        {
+                            return RedirectToAction("List", new { id = contaModelo.FabricaID });
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException("O Serviço não pode atualizar o Objeto. Verifique se o mesmo encontra-se preenchido corretamente");
+                        }
                     }
                 }
-
+                else
+                {
+                    ModelState.AddModelError(string.Empty, ContaValidacao.ObterMensagem());
+                    return View(cvm);
+                }
             }
             catch (Exception ex)
             {

@@ -26,9 +26,18 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
         // GET: Cliente/Details/5
         [VerificaAutenticacao]
-        public ActionResult Details(int id)
+        public ActionResult Details()
         {
-            return View();
+            UsuarioModel login = Session["usuario"] as UsuarioModel;
+            ClienteModel clienteModelo = new ClienteModel();
+
+            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+            {
+                ServiceReference1.Cliente clienteEntrada = client.DetalhesCliente(login.ClienteID);
+                clienteModelo = Conversor.ClienteRecebido(clienteEntrada);
+            }
+
+            return View(clienteModelo);
         }
 
         // GET: Cliente/Create

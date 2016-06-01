@@ -170,6 +170,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Senha.cs" />
+    <Compile Include="Validacoes\ContaValidacao.cs" />
+    <Compile Include="Validacoes\FabricaValidacao.cs" />
+    <Compile Include="Validacoes\UsuarioValidacao.cs" />
+    <Compile Include="Validacoes\Validacao.cs" />
     <Compile Include="ViewModels\ContaViewModel.cs" />
     <Compile Include="Models\Mes.cs" />
     <Compile Include="Controllers\ContaController.cs" />
@@ -302,6 +306,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
     <Content Include="Views\Usuario\Created.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
     <None Include="Web References\net.azurewebsites.teeservice\Service1.wsdl" />
     <Content Include="Web References\net.azurewebsites.teeservice\Tarifa.datasource">
       <DependentUpon>Reference.map</DependentUpon>

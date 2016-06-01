@@ -14,5 +14,9 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Models
         public string Cnpj { get; set; }
         public string RazaoSocial { get; set; }
         public string Endereco { get; set; }
+        public string MascaraCNPJ
+        {
+            get { return Convert.ToUInt64(Cnpj).ToString(@"00\.000\.000\/0000\-00"); }
+        }
     }
 }
