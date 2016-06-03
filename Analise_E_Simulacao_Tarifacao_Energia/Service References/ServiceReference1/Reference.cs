@@ -2616,10 +2616,10 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
         System.Threading.Tasks.Task<bool> GerarSimulacaoAsync(int fabricaID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DadosParaGrafico", ReplyAction="http://tempuri.org/ITEECRUDService/DadosParaGraficoResponse")]
-        Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Grafico[] DadosParaGrafico(int FabricaID);
+        Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Grafico[] DadosParaGrafico(int FabricaID, int ContratoID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DadosParaGrafico", ReplyAction="http://tempuri.org/ITEECRUDService/DadosParaGraficoResponse")]
-        System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Grafico[]> DadosParaGraficoAsync(int FabricaID);
+        System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Grafico[]> DadosParaGraficoAsync(int FabricaID, int ContratoID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2953,12 +2953,12 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
             return base.Channel.GerarSimulacaoAsync(fabricaID);
         }
         
-        public Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Grafico[] DadosParaGrafico(int FabricaID) {
-            return base.Channel.DadosParaGrafico(FabricaID);
+        public Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Grafico[] DadosParaGrafico(int FabricaID, int ContratoID) {
+            return base.Channel.DadosParaGrafico(FabricaID, ContratoID);
         }
         
-        public System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Grafico[]> DadosParaGraficoAsync(int FabricaID) {
-            return base.Channel.DadosParaGraficoAsync(FabricaID);
+        public System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Grafico[]> DadosParaGraficoAsync(int FabricaID, int ContratoID) {
+            return base.Channel.DadosParaGraficoAsync(FabricaID, ContratoID);
         }
     }
 }
