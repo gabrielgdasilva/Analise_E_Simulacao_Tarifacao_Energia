@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Drawing;
 
 namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 {
@@ -121,6 +122,9 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 List<HC.Options.Series> series = new List<HC.Options.Series>();
                 object[][] eixoY = null;
                 string serieName = "";
+                int contratoAtualID = 0;
+                string nomeContrato = "";
+                Color color = Color.Black;
 
                 using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
                 {
@@ -130,9 +134,21 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     listaConta = Conversor.ListaContas(listaDeEntrada);
                     contratos = Conversor.ListaContratos(contratoRef);
 
+                    contratoAtualID = (listaConta.OrderByDescending(c => c.dataReferencia)).Select(c => c.TipoContratoID).FirstOrDefault();
+                    nomeContrato = contratos.Where(c => c.TipoContratoID == contratoAtualID).Select(c => c.TipoContratoString).FirstOrDefault();
+
+                    if (nomeContrato == "Verde")
+                    {
+                        color = Color.Green;
+                    }
+                    else if(nomeContrato == "Azul")
+                    {
+                        color = Color.Blue;
+                    }
+
                     eixoY = listaConta.Select(c => new object[] { Math.Round(Convert.ToDouble(c.ValorTotal),2) }).ToArray();
-                    serieName = "Tarifa Atual";
-                    series.Add(new HC.Options.Series { Name = serieName, Data = new HC.Helpers.Data(eixoY) });
+                    serieName = "Tarifa " + nomeContrato +  " (Atual)";
+                    series.Add(new HC.Options.Series { Name = serieName, Data = new HC.Helpers.Data(eixoY), Color = color });
 
                     foreach (var c in contratos)
                     {
@@ -142,8 +158,23 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                         {
                             graficoModel = Conversor.DadosGrafico(graficoReferente);
                             eixoY = graficoModel.Select(g => new object[] { Math.Round(Convert.ToDouble(g.ValorTotal),2) }).ToArray();
-                            serieName = "Tarifa " + c.TipoContratoString;
-                            series.Add(new HC.Options.Series { Name = serieName, Data = new HC.Helpers.Data(eixoY) });
+                            nomeContrato = c.TipoContratoString;
+
+                            if (nomeContrato == "Verde")
+                            {
+                                color = Color.Green;
+                            }
+                            else if (nomeContrato == "Azul")
+                            {
+                                color = Color.Blue;
+                            }
+                            else
+                            {
+                                color = Color.Black;
+                            }
+
+                            serieName = "Tarifa " + nomeContrato;
+                            series.Add(new HC.Options.Series { Name = serieName, Data = new HC.Helpers.Data(eixoY), Color = color });
                         }
                     }
                 }
