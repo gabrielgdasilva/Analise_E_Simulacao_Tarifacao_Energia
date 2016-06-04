@@ -142,7 +142,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                         {
                             graficoModel = Conversor.DadosGrafico(graficoReferente);
                             eixoY = graficoModel.Select(g => new object[] { Math.Round(Convert.ToDouble(g.ValorTotal),2) }).ToArray();
-                            serieName = c.TipoContratoString;
+                            serieName = "Tarifa " + c.TipoContratoString;
                             series.Add(new HC.Options.Series { Name = serieName, Data = new HC.Helpers.Data(eixoY) });
                         }
                     }
