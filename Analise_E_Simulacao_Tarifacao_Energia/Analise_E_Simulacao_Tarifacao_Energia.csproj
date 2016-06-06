@@ -180,7 +180,6 @@
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\FabricaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HomeLogadaController.cs" />
     <Compile Include="Controllers\SimulacaoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -298,13 +297,10 @@
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutPageLogada.cshtml" />
-    <Content Include="Views\HomeLogada\Index.cshtml" />
-    <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Usuario\List.cshtml" />
     <Content Include="Views\Usuario\Details.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Usuario\Delete.cshtml" />
-    <Content Include="Views\Cliente\Edit.cshtml" />
     <Content Include="Views\Fabrica\List.cshtml" />
     <Content Include="Views\Fabrica\Edit.cshtml" />
     <Content Include="Views\Fabrica\Create.cshtml" />

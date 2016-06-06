@@ -12,20 +12,6 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 {
     public class SimulacaoController : Controller
     {
-        // GET: Simulacao
-        [VerificaAutenticacao]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: Simulacao/Details/5
-        [VerificaAutenticacao]
-        public ActionResult Details(int id)
-        {
-            SimulacaoModel simulacaoModelo = new SimulacaoModel();
-            return View(simulacaoModelo);
-        }
 
         // GET: Simulacao/Create
         [VerificaAutenticacao]
@@ -58,52 +44,6 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             catch(Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
-            }
-        }
-
-        // GET: Simulacao/Edit/5
-        [VerificaAutenticacao]
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Simulacao/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Simulacao/Delete/5
-        [VerificaAutenticacao]
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Simulacao/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
             }
         }
 
