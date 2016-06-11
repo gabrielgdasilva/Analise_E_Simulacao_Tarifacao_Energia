@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="03d398d7-1072-429c-8103-bc33cea8a684" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0cfbb374-4910-4ae0-bc3e-ea5407927aa7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:62339/TEECRUDService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://teebus.azurewebsites.net/TEE_BUS_Service.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TEECRUDService.disco" MetadataType="Disco" ID="c4956e2d-fcdb-492c-a740-bd7c3a636881" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?disco" />
-    <MetadataFile FileName="TEECRUDService.xsd" MetadataType="Schema" ID="58c5a307-48ff-4fc9-b1a0-6c40cbd698db" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?xsd=xsd2" />
-    <MetadataFile FileName="TEECRUDService1.xsd" MetadataType="Schema" ID="7da5e713-222e-4c4b-bc39-3fe1ba708263" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?xsd=xsd1" />
-    <MetadataFile FileName="TEECRUDService2.xsd" MetadataType="Schema" ID="a9deca3b-9a1a-4175-8d3b-a8ad252d06fd" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?xsd=xsd0" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="c9c28e87-f500-44bd-91ef-1da98112cae2" SourceId="1" SourceUrl="http://localhost:62339/TEECRUDService.svc?wsdl" />
+    <MetadataFile FileName="TEE_BUS_Service.disco" MetadataType="Disco" ID="94062282-70f7-47ac-a399-f6d7469188d7" SourceId="1" SourceUrl="http://teebus.azurewebsites.net/TEE_BUS_Service.svc?disco" />
+    <MetadataFile FileName="TEE_BUS_Service.xsd" MetadataType="Schema" ID="ed83e68b-12d8-4fdc-ba33-a5c897ac765b" SourceId="1" SourceUrl="http://teebus.azurewebsites.net/TEE_BUS_Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="TEE_BUS_Service1.xsd" MetadataType="Schema" ID="6894987f-5711-4e44-b039-bb9c3d15607a" SourceId="1" SourceUrl="http://teebus.azurewebsites.net/TEE_BUS_Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="TEE_BUS_Service2.xsd" MetadataType="Schema" ID="451dab52-93e7-4047-a5de-31a50fc0a8d0" SourceId="1" SourceUrl="http://teebus.azurewebsites.net/TEE_BUS_Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="cd424107-cd85-45e8-86af-bcda7ee149db" SourceId="1" SourceUrl="http://teebus.azurewebsites.net/TEE_BUS_Service.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

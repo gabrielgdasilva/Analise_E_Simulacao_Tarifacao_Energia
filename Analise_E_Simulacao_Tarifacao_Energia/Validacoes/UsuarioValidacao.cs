@@ -89,7 +89,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Validacoes
 
             if (validacoes.Count == 0)
             {
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     u = client.DestalhesDoUsuario(usuario.Email);
 
@@ -116,9 +116,9 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Validacoes
         {
             string mensagem = "";
 
-            if(validacoes != null)
+            if (validacoes != null)
             {
-                foreach(var v in validacoes)
+                foreach (var v in validacoes)
                 {
                     mensagem += Environment.NewLine + v.mensagem;
                 }

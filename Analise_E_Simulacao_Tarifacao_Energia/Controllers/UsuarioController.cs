@@ -26,11 +26,11 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         {
             try
             {
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     ServiceReference1.Usuario usuario = Conversor.AutenticaUsuario(modeloUsuario);
                     UsuarioModel resultado = Conversor.UsuarioRecebido(client.VerificaAutenticacao(usuario.Email, usuario.Senha));
-                    if (resultado!=null)
+                    if (resultado != null)
                     {
                         Session["usuario"] = resultado;
                         FormsAuthentication.SetAuthCookie(resultado.Nome, false);
@@ -72,7 +72,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 UsuarioModel usuario = Session["usuario"] as UsuarioModel;
                 int clienteID = usuario.ClienteID;
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     List<ServiceReference1.Usuario> ListaDeEntrada = client.ListarUsuarios(clienteID).ToList();
                     listaUsuarios = Conversor.ListarUsuarios(ListaDeEntrada);
@@ -87,7 +87,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 }
                 return View(listaFiltrados);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }
@@ -98,7 +98,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         public ActionResult Details()
         {
             UsuarioModel login = Session["usuario"] as UsuarioModel;
-            
+
             return View(login);
         }
 
@@ -125,7 +125,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 if (UsuarioValidacao.Valido())
                 {
-                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                     {
                         ServiceReference1.Usuario usuario = Conversor.NovoUsuario(modeloUsuario);
                         bool resultado = client.CadastrarUsuario(usuario);
@@ -146,7 +146,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     return View(modeloUsuario);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }
@@ -179,7 +179,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 if (UsuarioValidacao.Valido())
                 {
-                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                     {
                         ServiceReference1.Usuario usuario = Conversor.AtualizarUsuario(modeloUsuario);
                         bool resultado = client.AtualizarUsuario(usuario);
@@ -213,14 +213,14 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             {
                 UsuarioModel usuarioModelo = new UsuarioModel();
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     ServiceReference1.Usuario usuarioEntrada = client.DestalhesDoUsuario(email);
                     usuarioModelo = Conversor.UsuarioRecebido(usuarioEntrada);
                 }
                 return View(usuarioModelo);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }
@@ -232,7 +232,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         {
             try
             {
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     ServiceReference1.Usuario usuario = Conversor.ExcluirUsuario(modeloUsuario);
                     usuario.Ativo = !usuario.Ativo;

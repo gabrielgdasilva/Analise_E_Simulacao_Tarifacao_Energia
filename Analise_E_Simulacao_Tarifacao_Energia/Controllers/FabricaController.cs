@@ -24,7 +24,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 Session["IdFabrica"] = null;
                 if (usuario != null)
                 {
-                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                     {
                         List<ServiceReference1.Fabrica> listaDeEntrada = client.TodasFabricas(usuario.ClienteID).ToList();
                         ListaFabrica = Conversor.ListaFabricas(listaDeEntrada);
@@ -32,7 +32,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 }
                 return View(ListaFabrica);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }
@@ -45,7 +45,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             try
             {
                 FabricaModel fabricaModelo = new FabricaModel();
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     ServiceReference1.Fabrica fabricaEntrada = client.DestalhesDaFabrica(id);
                     fabricaModelo = Conversor.FabricaRecebida(fabricaEntrada);
@@ -54,7 +54,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 return View(fabricaModelo);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }
@@ -68,7 +68,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             {
                 List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
                     distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
@@ -80,7 +80,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 return View(fabricaViewModel);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }
@@ -103,7 +103,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 if (FabricaValidacao.Valido())
                 {
-                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                     {
                         ServiceReference1.Fabrica fabrica = Conversor.NovaFabrica(fabricaModelo);
                         bool resultado = client.CadastrarFabrica(fabrica);
@@ -122,7 +122,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     ModelState.AddModelError(string.Empty, FabricaValidacao.ObterMensagem());
                     List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
 
-                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                     {
                         List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
                         distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
@@ -133,7 +133,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     return View(fabricaViewModel);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }
@@ -148,7 +148,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 FabricaModel fabricaModelo = new FabricaModel();
                 List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     ServiceReference1.Fabrica fabricaEntrada = client.DestalhesDaFabrica(id);
                     fabricaModelo = Conversor.FabricaRecebida(fabricaEntrada);
@@ -161,7 +161,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 return View(fabricaViewModel);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }
@@ -184,7 +184,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 if (FabricaValidacao.Valido())
                 {
-                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                     {
                         ServiceReference1.Fabrica fabrica = Conversor.AlterarFabrica(fabricaModelo);
                         bool resultado = client.AtualizarFabrica(fabrica);
@@ -204,7 +204,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                     List<DistribuidoraModel> distribuidoras = new List<DistribuidoraModel>();
 
-                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                     {
                         List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
                         distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
@@ -236,7 +236,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
         {
             try
             {
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     ServiceReference1.Fabrica fabrica = client.DestalhesDaFabrica(fabricaViewModel.FabricaID);
                     bool resultado = client.DeletarFabrica(fabrica);
@@ -250,7 +250,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }

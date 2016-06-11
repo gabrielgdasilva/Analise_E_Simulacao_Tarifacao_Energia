@@ -59,7 +59,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Validacoes
 
             if (!string.IsNullOrWhiteSpace(cnpj))
             {
-                if(cnpj.Length != 14)
+                if (cnpj.Length != 14)
                     validacoes.Add(new Validacao(
                                     _entidade: entidade
                                     , _tipo: tipo
@@ -139,7 +139,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Validacoes
 
             if (validacoes.Count == 0)
             {
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     List<ServiceReference1.Fabrica> listaDeEntrada = client.TodasFabricas(fabrica.ClienteID).ToList();
                     fabricas = Conversor.ListaFabricas(listaDeEntrada);

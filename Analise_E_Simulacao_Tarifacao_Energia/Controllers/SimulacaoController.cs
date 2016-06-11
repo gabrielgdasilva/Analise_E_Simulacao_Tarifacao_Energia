@@ -27,9 +27,9 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             try
             {
                 int? fabricaID = Session["IdFabrica"] as int?;
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
-                    bool resultado = client.GerarSimulacao((fabricaID != null) ? (int) fabricaID : 0);
+                    bool resultado = client.GerarSimulacao((fabricaID != null) ? (int)fabricaID : 0);
                     if (resultado)
                     {
                         TempData["GerarSimulacao"] = true;
@@ -41,7 +41,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }
@@ -66,11 +66,11 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 string nomeContrato = "";
                 Color color = Color.Black;
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     var listaDeEntrada = client.TodasContas(auxFabricaID).ToList();
                     var contratoRef = client.TodosContratos().ToList();
-                    
+
                     listaConta = Conversor.ListaContas(listaDeEntrada);
                     contratos = Conversor.ListaContratos(contratoRef);
 
@@ -81,23 +81,23 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     {
                         color = Color.Green;
                     }
-                    else if(nomeContrato == "Azul")
+                    else if (nomeContrato == "Azul")
                     {
                         color = Color.Blue;
                     }
 
-                    eixoY = listaConta.Select(c => new object[] { Math.Round(Convert.ToDouble(c.ValorTotal),2) }).ToArray();
-                    serieName = "Tarifa " + nomeContrato +  " (Atual)";
+                    eixoY = listaConta.Select(c => new object[] { Math.Round(Convert.ToDouble(c.ValorTotal), 2) }).ToArray();
+                    serieName = "Tarifa " + nomeContrato + " (Atual)";
                     series.Add(new HC.Options.Series { Name = serieName, Data = new HC.Helpers.Data(eixoY), Color = color });
 
                     foreach (var c in contratos)
                     {
                         var graficoReferente = client.DadosParaGrafico(auxFabricaID, c.TipoContratoID).ToList();
 
-                        if (graficoReferente != null && graficoReferente.Count !=0)
+                        if (graficoReferente != null && graficoReferente.Count != 0)
                         {
                             graficoModel = Conversor.DadosGrafico(graficoReferente);
-                            eixoY = graficoModel.Select(g => new object[] { Math.Round(Convert.ToDouble(g.ValorTotal),2) }).ToArray();
+                            eixoY = graficoModel.Select(g => new object[] { Math.Round(Convert.ToDouble(g.ValorTotal), 2) }).ToArray();
                             nomeContrato = c.TipoContratoString;
 
                             if (nomeContrato == "Verde")
@@ -130,7 +130,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 return View(chart);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }

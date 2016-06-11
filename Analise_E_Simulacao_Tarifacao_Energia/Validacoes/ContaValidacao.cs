@@ -19,7 +19,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Validacoes
             conta = _conta;
             validacoes = new List<Validacao>();
 
-            if(conta != null)
+            if (conta != null)
             {
                 ValidaObrigatoriedade();
                 ValidaDuplicidade();
@@ -43,7 +43,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Validacoes
                 validacoes.Add(new Validacao(
                                 _entidade: entidade
                                 , _tipo: tipo
-                                , _mensagem:"O periodo selecionado é invalido."
+                                , _mensagem: "O periodo selecionado é invalido."
                                 ));
 
             if (conta.TarifaID == 0)
@@ -61,7 +61,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Validacoes
 
             if (validacoes.Count == 0)
             {
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     c = client.DestalhesDaConta(conta.dataReferencia, conta.FabricaID);
 

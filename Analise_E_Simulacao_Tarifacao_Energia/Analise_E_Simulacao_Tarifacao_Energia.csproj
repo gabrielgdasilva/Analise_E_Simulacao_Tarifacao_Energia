@@ -170,6 +170,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\Senha.cs" />
     <Compile Include="Validacoes\ContaValidacao.cs" />
     <Compile Include="Validacoes\FabricaValidacao.cs" />
@@ -199,11 +204,6 @@
     <Compile Include="ViewModels\FabricaViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\ServiceReference1\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Utilities\Calendario.cs" />
     <Compile Include="Utilities\Conversor.cs" />
     <Compile Include="Utilities\VerificaAutenticacao.cs" />
@@ -271,7 +271,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\ServiceReference1\Service1.wsdl" />
-    <None Include="Service References\ServiceReference1\TEECRUDService.disco" />
+    <None Include="Service References\ServiceReference1\TEE_BUS_Service.disco" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
     <None Include="Service References\ServiceReference1\Reference.svcmap">
@@ -312,17 +312,17 @@
     <Content Include="Views\Conta\Create.cshtml" />
     <Content Include="Views\Conta\Details.cshtml" />
     <Content Include="Views\Simulacao\Create.cshtml" />
-    <None Include="Service References\ServiceReference1\TEECRUDService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference1\TEECRUDService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference1\TEECRUDService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Erro\Index.cshtml" />
     <Content Include="Views\Simulacao\Chart.cshtml" />
+    <None Include="Service References\ServiceReference1\TEE_BUS_Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\TEE_BUS_Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\TEE_BUS_Service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

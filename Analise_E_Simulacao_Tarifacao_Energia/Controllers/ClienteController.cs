@@ -19,7 +19,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 UsuarioModel login = Session["usuario"] as UsuarioModel;
                 ClienteModel clienteModelo = new ClienteModel();
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     ServiceReference1.Cliente clienteEntrada = client.DetalhesCliente(login.ClienteID);
                     clienteModelo = Conversor.ClienteRecebido(clienteEntrada);
@@ -27,7 +27,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 return View(clienteModelo);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }

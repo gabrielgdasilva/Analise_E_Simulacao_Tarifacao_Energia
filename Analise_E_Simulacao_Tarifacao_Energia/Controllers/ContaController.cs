@@ -28,7 +28,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             }
 
             List<ContaModel> listaConta = new List<ContaModel>();
-            using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+            using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
             {
                 List<ServiceReference1.Conta> listaDeEntrada = client.TodasContas(fabricaID).ToList();
                 listaConta = Conversor.ListaContas(listaDeEntrada);
@@ -48,7 +48,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
             try
             {
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     ServiceReference1.Conta contaEntrada = client.DestalhesDaConta(data, fabricaID);
                     contaModelo = Conversor.ContaRecebida(contaEntrada);
@@ -56,7 +56,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 return View(contaModelo);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }
@@ -74,7 +74,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 List<TipoSubGrupoModel> grupos = new List<TipoSubGrupoModel>();
                 List<BandeiraModel> bandeiras = new List<BandeiraModel>();
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
                     distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
@@ -94,7 +94,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 return View(cvm);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }
@@ -108,7 +108,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             {
                 List<TarifaModel> tarifas = new List<TarifaModel>();
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     List<ServiceReference1.Tarifa> listaDeTarifas = client.TodasTarifas().ToList();
                     tarifas = Conversor.TodasTarifas(listaDeTarifas);
@@ -124,7 +124,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 if (ContaValidacao.Valido())
                 {
-                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                     {
                         ServiceReference1.Conta conta = Conversor.CadastrarConta(contaModelo);
                         bool resultado = client.CadastrarConta(conta);
@@ -148,7 +148,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                     List<TipoSubGrupoModel> grupos = new List<TipoSubGrupoModel>();
                     List<BandeiraModel> bandeiras = new List<BandeiraModel>();
 
-                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                     {
                         List<ServiceReference1.Distribuidora> listaDeDistribuidoras = client.TodasDistribuidoras().ToList();
                         distribuidoras = Conversor.ListaDistribuidoras(listaDeDistribuidoras);
@@ -170,7 +170,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }
@@ -190,7 +190,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 List<BandeiraModel> bandeiras = new List<BandeiraModel>();
                 int fabricaID = (int)Session["IdFabrica"];
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     ServiceReference1.Conta contaEntrada = client.DestalhesDaConta(data, fabricaID);
                     contaModelo = Conversor.ContaRecebida(contaEntrada);
@@ -227,7 +227,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
             {
                 List<TarifaModel> tarifas = new List<TarifaModel>();
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     List<ServiceReference1.Tarifa> listaDeTarifas = client.TodasTarifas().ToList();
                     tarifas = Conversor.TodasTarifas(listaDeTarifas);
@@ -240,7 +240,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
 
                 if (ContaValidacao.Valido())
                 {
-                    using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                    using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                     {
                         ServiceReference1.Conta conta = Conversor.AtualizarConta(contaModelo);
                         bool resultado = client.AtualizarConta(conta);
@@ -284,7 +284,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.Controllers
                 ContaModel contaModelo = new ContaModel();
                 int fabricaID = (int)Session["IdFabrica"];
 
-                using (ServiceReference1.TEECRUDServiceClient client = new ServiceReference1.TEECRUDServiceClient())
+                using (ServiceReference1.TEE_BUS_Service1Client client = new ServiceReference1.TEE_BUS_Service1Client())
                 {
                     ServiceReference1.Conta contaEntrada = client.DestalhesDaConta(cvm.conta.dataReferencia, fabricaID);
                     contaModelo = Conversor.ContaRecebida(contaEntrada);

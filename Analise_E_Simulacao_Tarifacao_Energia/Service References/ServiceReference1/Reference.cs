@@ -15,7 +15,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Bandeira", Namespace="http://schemas.datacontract.org/2004/07/TEEService.DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Bandeira", Namespace="http://schemas.datacontract.org/2004/07/TEE_BUS.DataContracts")]
     [System.SerializableAttribute()]
     public partial class Bandeira : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -76,7 +76,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Cliente", Namespace="http://schemas.datacontract.org/2004/07/TEEService.DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Cliente", Namespace="http://schemas.datacontract.org/2004/07/TEE_BUS.DataContracts")]
     [System.SerializableAttribute()]
     public partial class Cliente : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -185,7 +185,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Fabrica", Namespace="http://schemas.datacontract.org/2004/07/TEEService.DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Fabrica", Namespace="http://schemas.datacontract.org/2004/07/TEE_BUS.DataContracts")]
     [System.SerializableAttribute()]
     public partial class Fabrica : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -294,7 +294,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TipoContrato", Namespace="http://schemas.datacontract.org/2004/07/TEEService.DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoContrato", Namespace="http://schemas.datacontract.org/2004/07/TEE_BUS.DataContracts")]
     [System.SerializableAttribute()]
     public partial class TipoContrato : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -355,7 +355,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Distribuidora", Namespace="http://schemas.datacontract.org/2004/07/TEEService.DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Distribuidora", Namespace="http://schemas.datacontract.org/2004/07/TEE_BUS.DataContracts")]
     [System.SerializableAttribute()]
     public partial class Distribuidora : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -432,7 +432,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TipoSubGrupo", Namespace="http://schemas.datacontract.org/2004/07/TEEService.DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoSubGrupo", Namespace="http://schemas.datacontract.org/2004/07/TEE_BUS.DataContracts")]
     [System.SerializableAttribute()]
     public partial class TipoSubGrupo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -493,7 +493,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Tarifa", Namespace="http://schemas.datacontract.org/2004/07/TEEService.DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Tarifa", Namespace="http://schemas.datacontract.org/2004/07/TEE_BUS.DataContracts")]
     [System.SerializableAttribute()]
     public partial class Tarifa : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -762,7 +762,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Usuario", Namespace="http://schemas.datacontract.org/2004/07/TEEService.DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Usuario", Namespace="http://schemas.datacontract.org/2004/07/TEE_BUS.DataContracts")]
     [System.SerializableAttribute()]
     public partial class Usuario : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -919,7 +919,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Conta", Namespace="http://schemas.datacontract.org/2004/07/TEEService.DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Conta", Namespace="http://schemas.datacontract.org/2004/07/TEE_BUS.DataContracts")]
     [System.SerializableAttribute()]
     public partial class Conta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1620,7 +1620,7 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Grafico", Namespace="http://schemas.datacontract.org/2004/07/TEEService.DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Grafico", Namespace="http://schemas.datacontract.org/2004/07/TEE_BUS.DataContracts")]
     [System.SerializableAttribute()]
     public partial class Grafico : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -2384,268 +2384,268 @@ namespace Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ITEECRUDService")]
-    public interface ITEECRUDService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ITEE_BUS_Service1")]
+    public interface ITEE_BUS_Service1 {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DetalhesBandeira", ReplyAction="http://tempuri.org/ITEECRUDService/DetalhesBandeiraResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DetalhesBandeira", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DetalhesBandeiraResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Bandeira DetalhesBandeira(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DetalhesBandeira", ReplyAction="http://tempuri.org/ITEECRUDService/DetalhesBandeiraResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DetalhesBandeira", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DetalhesBandeiraResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Bandeira> DetalhesBandeiraAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarBandeira", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarBandeiraResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarBandeira", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarBandeiraResponse")]
         bool CadastrarBandeira(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Bandeira bandeira);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarBandeira", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarBandeiraResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarBandeira", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarBandeiraResponse")]
         System.Threading.Tasks.Task<bool> CadastrarBandeiraAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Bandeira bandeira);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodasBandeiras", ReplyAction="http://tempuri.org/ITEECRUDService/TodasBandeirasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodasBandeiras", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodasBandeirasResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Bandeira[] TodasBandeiras();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodasBandeiras", ReplyAction="http://tempuri.org/ITEECRUDService/TodasBandeirasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodasBandeiras", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodasBandeirasResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Bandeira[]> TodasBandeirasAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DetalhesCliente", ReplyAction="http://tempuri.org/ITEECRUDService/DetalhesClienteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DetalhesCliente", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DetalhesClienteResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Cliente DetalhesCliente(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DetalhesCliente", ReplyAction="http://tempuri.org/ITEECRUDService/DetalhesClienteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DetalhesCliente", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DetalhesClienteResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Cliente> DetalhesClienteAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarCliente", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarClienteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarCliente", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarClienteResponse")]
         bool CadastrarCliente(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Cliente cliente);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarCliente", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarClienteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarCliente", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarClienteResponse")]
         System.Threading.Tasks.Task<bool> CadastrarClienteAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Cliente cliente);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/AtualizarCliente", ReplyAction="http://tempuri.org/ITEECRUDService/AtualizarClienteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/AtualizarCliente", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/AtualizarClienteResponse")]
         bool AtualizarCliente(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Cliente cliente);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/AtualizarCliente", ReplyAction="http://tempuri.org/ITEECRUDService/AtualizarClienteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/AtualizarCliente", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/AtualizarClienteResponse")]
         System.Threading.Tasks.Task<bool> AtualizarClienteAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Cliente cliente);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarFabrica", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarFabricaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarFabrica", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarFabricaResponse")]
         bool CadastrarFabrica(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica _fabrica);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarFabrica", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarFabricaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarFabrica", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarFabricaResponse")]
         System.Threading.Tasks.Task<bool> CadastrarFabricaAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica _fabrica);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DestalhesDaFabrica", ReplyAction="http://tempuri.org/ITEECRUDService/DestalhesDaFabricaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DestalhesDaFabrica", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DestalhesDaFabricaResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica DestalhesDaFabrica(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DestalhesDaFabrica", ReplyAction="http://tempuri.org/ITEECRUDService/DestalhesDaFabricaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DestalhesDaFabrica", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DestalhesDaFabricaResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica> DestalhesDaFabricaAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodasFabricas", ReplyAction="http://tempuri.org/ITEECRUDService/TodasFabricasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodasFabricas", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodasFabricasResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica[] TodasFabricas(int ClienteID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodasFabricas", ReplyAction="http://tempuri.org/ITEECRUDService/TodasFabricasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodasFabricas", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodasFabricasResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica[]> TodasFabricasAsync(int ClienteID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DeletarFabrica", ReplyAction="http://tempuri.org/ITEECRUDService/DeletarFabricaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DeletarFabrica", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DeletarFabricaResponse")]
         bool DeletarFabrica(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica _fabrica);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DeletarFabrica", ReplyAction="http://tempuri.org/ITEECRUDService/DeletarFabricaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DeletarFabrica", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DeletarFabricaResponse")]
         System.Threading.Tasks.Task<bool> DeletarFabricaAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica _fabrica);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/AtualizarFabrica", ReplyAction="http://tempuri.org/ITEECRUDService/AtualizarFabricaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/AtualizarFabrica", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/AtualizarFabricaResponse")]
         bool AtualizarFabrica(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica _fabrica);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/AtualizarFabrica", ReplyAction="http://tempuri.org/ITEECRUDService/AtualizarFabricaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/AtualizarFabrica", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/AtualizarFabricaResponse")]
         System.Threading.Tasks.Task<bool> AtualizarFabricaAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Fabrica _fabrica);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarContrato", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarContratoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarContrato", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarContratoResponse")]
         bool CadastrarContrato(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.TipoContrato _TipoContrato);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarContrato", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarContratoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarContrato", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarContratoResponse")]
         System.Threading.Tasks.Task<bool> CadastrarContratoAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.TipoContrato _TipoContrato);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DetalhesContrato", ReplyAction="http://tempuri.org/ITEECRUDService/DetalhesContratoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DetalhesContrato", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DetalhesContratoResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.TipoContrato DetalhesContrato(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DetalhesContrato", ReplyAction="http://tempuri.org/ITEECRUDService/DetalhesContratoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DetalhesContrato", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DetalhesContratoResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.TipoContrato> DetalhesContratoAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodosContratos", ReplyAction="http://tempuri.org/ITEECRUDService/TodosContratosResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodosContratos", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodosContratosResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.TipoContrato[] TodosContratos();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodosContratos", ReplyAction="http://tempuri.org/ITEECRUDService/TodosContratosResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodosContratos", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodosContratosResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.TipoContrato[]> TodosContratosAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarDistribuidora", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarDistribuidoraResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarDistribuidora", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarDistribuidoraResponse")]
         bool CadastrarDistribuidora(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Distribuidora _Distribuidora);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarDistribuidora", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarDistribuidoraResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarDistribuidora", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarDistribuidoraResponse")]
         System.Threading.Tasks.Task<bool> CadastrarDistribuidoraAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Distribuidora _Distribuidora);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DetalhesDistribuidora", ReplyAction="http://tempuri.org/ITEECRUDService/DetalhesDistribuidoraResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DetalhesDistribuidora", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DetalhesDistribuidoraResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Distribuidora DetalhesDistribuidora(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DetalhesDistribuidora", ReplyAction="http://tempuri.org/ITEECRUDService/DetalhesDistribuidoraResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DetalhesDistribuidora", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DetalhesDistribuidoraResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Distribuidora> DetalhesDistribuidoraAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodasDistribuidoras", ReplyAction="http://tempuri.org/ITEECRUDService/TodasDistribuidorasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodasDistribuidoras", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodasDistribuidorasResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Distribuidora[] TodasDistribuidoras();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodasDistribuidoras", ReplyAction="http://tempuri.org/ITEECRUDService/TodasDistribuidorasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodasDistribuidoras", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodasDistribuidorasResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Distribuidora[]> TodasDistribuidorasAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarSubGrupo", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarSubGrupoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarSubGrupo", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarSubGrupoResponse")]
         bool CadastrarSubGrupo(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.TipoSubGrupo _SubGrupo);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarSubGrupo", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarSubGrupoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarSubGrupo", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarSubGrupoResponse")]
         System.Threading.Tasks.Task<bool> CadastrarSubGrupoAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.TipoSubGrupo _SubGrupo);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DetalhesSubGrupo", ReplyAction="http://tempuri.org/ITEECRUDService/DetalhesSubGrupoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DetalhesSubGrupo", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DetalhesSubGrupoResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.TipoSubGrupo DetalhesSubGrupo(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DetalhesSubGrupo", ReplyAction="http://tempuri.org/ITEECRUDService/DetalhesSubGrupoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DetalhesSubGrupo", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DetalhesSubGrupoResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.TipoSubGrupo> DetalhesSubGrupoAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodosSubGrupos", ReplyAction="http://tempuri.org/ITEECRUDService/TodosSubGruposResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodosSubGrupos", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodosSubGruposResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.TipoSubGrupo[] TodosSubGrupos();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodosSubGrupos", ReplyAction="http://tempuri.org/ITEECRUDService/TodosSubGruposResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodosSubGrupos", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodosSubGruposResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.TipoSubGrupo[]> TodosSubGruposAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarTarifa", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarTarifaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarTarifa", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarTarifaResponse")]
         bool CadastrarTarifa(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Tarifa _Tarifa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarTarifa", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarTarifaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarTarifa", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarTarifaResponse")]
         System.Threading.Tasks.Task<bool> CadastrarTarifaAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Tarifa _Tarifa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DestalhesDaTarifa", ReplyAction="http://tempuri.org/ITEECRUDService/DestalhesDaTarifaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DestalhesDaTarifa", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DestalhesDaTarifaResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Tarifa DestalhesDaTarifa(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DestalhesDaTarifa", ReplyAction="http://tempuri.org/ITEECRUDService/DestalhesDaTarifaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DestalhesDaTarifa", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DestalhesDaTarifaResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Tarifa> DestalhesDaTarifaAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodasTarifas", ReplyAction="http://tempuri.org/ITEECRUDService/TodasTarifasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodasTarifas", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodasTarifasResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Tarifa[] TodasTarifas();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodasTarifas", ReplyAction="http://tempuri.org/ITEECRUDService/TodasTarifasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodasTarifas", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodasTarifasResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Tarifa[]> TodasTarifasAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/AtualizarTarifa", ReplyAction="http://tempuri.org/ITEECRUDService/AtualizarTarifaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/AtualizarTarifa", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/AtualizarTarifaResponse")]
         bool AtualizarTarifa(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Tarifa _Tarifa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/AtualizarTarifa", ReplyAction="http://tempuri.org/ITEECRUDService/AtualizarTarifaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/AtualizarTarifa", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/AtualizarTarifaResponse")]
         System.Threading.Tasks.Task<bool> AtualizarTarifaAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Tarifa _Tarifa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DeletarTarifa", ReplyAction="http://tempuri.org/ITEECRUDService/DeletarTarifaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DeletarTarifa", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DeletarTarifaResponse")]
         bool DeletarTarifa(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Tarifa _Tarifa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DeletarTarifa", ReplyAction="http://tempuri.org/ITEECRUDService/DeletarTarifaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DeletarTarifa", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DeletarTarifaResponse")]
         System.Threading.Tasks.Task<bool> DeletarTarifaAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Tarifa _Tarifa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarUsuario", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarUsuarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarUsuario", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarUsuarioResponse")]
         bool CadastrarUsuario(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario _Usuario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarUsuario", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarUsuarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarUsuario", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarUsuarioResponse")]
         System.Threading.Tasks.Task<bool> CadastrarUsuarioAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario _Usuario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DestalhesDoUsuario", ReplyAction="http://tempuri.org/ITEECRUDService/DestalhesDoUsuarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DestalhesDoUsuario", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DestalhesDoUsuarioResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario DestalhesDoUsuario(string email);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DestalhesDoUsuario", ReplyAction="http://tempuri.org/ITEECRUDService/DestalhesDoUsuarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DestalhesDoUsuario", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DestalhesDoUsuarioResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario> DestalhesDoUsuarioAsync(string email);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/VerificaAutenticacao", ReplyAction="http://tempuri.org/ITEECRUDService/VerificaAutenticacaoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/VerificaAutenticacao", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/VerificaAutenticacaoResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario VerificaAutenticacao(string email, string senha);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/VerificaAutenticacao", ReplyAction="http://tempuri.org/ITEECRUDService/VerificaAutenticacaoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/VerificaAutenticacao", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/VerificaAutenticacaoResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario> VerificaAutenticacaoAsync(string email, string senha);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/AtualizarUsuario", ReplyAction="http://tempuri.org/ITEECRUDService/AtualizarUsuarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/AtualizarUsuario", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/AtualizarUsuarioResponse")]
         bool AtualizarUsuario(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario _Usuario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/AtualizarUsuario", ReplyAction="http://tempuri.org/ITEECRUDService/AtualizarUsuarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/AtualizarUsuario", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/AtualizarUsuarioResponse")]
         System.Threading.Tasks.Task<bool> AtualizarUsuarioAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario _Usuario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DeletarUsuario", ReplyAction="http://tempuri.org/ITEECRUDService/DeletarUsuarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DeletarUsuario", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DeletarUsuarioResponse")]
         bool DeletarUsuario(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario _Usuario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DeletarUsuario", ReplyAction="http://tempuri.org/ITEECRUDService/DeletarUsuarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DeletarUsuario", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DeletarUsuarioResponse")]
         System.Threading.Tasks.Task<bool> DeletarUsuarioAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario _Usuario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/ListarUsuarios", ReplyAction="http://tempuri.org/ITEECRUDService/ListarUsuariosResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/ListarUsuarios", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/ListarUsuariosResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario[] ListarUsuarios(int ClienteID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/ListarUsuarios", ReplyAction="http://tempuri.org/ITEECRUDService/ListarUsuariosResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/ListarUsuarios", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/ListarUsuariosResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Usuario[]> ListarUsuariosAsync(int ClienteID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarConta", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarContaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarConta", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarContaResponse")]
         bool CadastrarConta(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta _Conta);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/CadastrarConta", ReplyAction="http://tempuri.org/ITEECRUDService/CadastrarContaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/CadastrarConta", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/CadastrarContaResponse")]
         System.Threading.Tasks.Task<bool> CadastrarContaAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta _Conta);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DestalhesDaConta", ReplyAction="http://tempuri.org/ITEECRUDService/DestalhesDaContaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DestalhesDaConta", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DestalhesDaContaResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta DestalhesDaConta(System.DateTime dataReferencia, int FabricaID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DestalhesDaConta", ReplyAction="http://tempuri.org/ITEECRUDService/DestalhesDaContaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DestalhesDaConta", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DestalhesDaContaResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta> DestalhesDaContaAsync(System.DateTime dataReferencia, int FabricaID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodasContas", ReplyAction="http://tempuri.org/ITEECRUDService/TodasContasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodasContas", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodasContasResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta[] TodasContas(int FabricaID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/TodasContas", ReplyAction="http://tempuri.org/ITEECRUDService/TodasContasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/TodasContas", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/TodasContasResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta[]> TodasContasAsync(int FabricaID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/ConsultaEntreDatas", ReplyAction="http://tempuri.org/ITEECRUDService/ConsultaEntreDatasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/ConsultaEntreDatas", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/ConsultaEntreDatasResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta[] ConsultaEntreDatas(System.DateTime dataReferencia1, System.DateTime dataReferencia2, int FabricaID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/ConsultaEntreDatas", ReplyAction="http://tempuri.org/ITEECRUDService/ConsultaEntreDatasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/ConsultaEntreDatas", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/ConsultaEntreDatasResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta[]> ConsultaEntreDatasAsync(System.DateTime dataReferencia1, System.DateTime dataReferencia2, int FabricaID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/AtualizarConta", ReplyAction="http://tempuri.org/ITEECRUDService/AtualizarContaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/AtualizarConta", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/AtualizarContaResponse")]
         bool AtualizarConta(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta _Conta);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/AtualizarConta", ReplyAction="http://tempuri.org/ITEECRUDService/AtualizarContaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/AtualizarConta", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/AtualizarContaResponse")]
         System.Threading.Tasks.Task<bool> AtualizarContaAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta _Conta);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DeletarConta", ReplyAction="http://tempuri.org/ITEECRUDService/DeletarContaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DeletarConta", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DeletarContaResponse")]
         bool DeletarConta(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta _Conta);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DeletarConta", ReplyAction="http://tempuri.org/ITEECRUDService/DeletarContaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DeletarConta", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DeletarContaResponse")]
         System.Threading.Tasks.Task<bool> DeletarContaAsync(Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Conta _Conta);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/GerarSimulacao", ReplyAction="http://tempuri.org/ITEECRUDService/GerarSimulacaoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/GerarSimulacao", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/GerarSimulacaoResponse")]
         bool GerarSimulacao(int fabricaID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/GerarSimulacao", ReplyAction="http://tempuri.org/ITEECRUDService/GerarSimulacaoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/GerarSimulacao", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/GerarSimulacaoResponse")]
         System.Threading.Tasks.Task<bool> GerarSimulacaoAsync(int fabricaID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DadosParaGrafico", ReplyAction="http://tempuri.org/ITEECRUDService/DadosParaGraficoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DadosParaGrafico", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DadosParaGraficoResponse")]
         Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Grafico[] DadosParaGrafico(int FabricaID, int ContratoID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEECRUDService/DadosParaGrafico", ReplyAction="http://tempuri.org/ITEECRUDService/DadosParaGraficoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITEE_BUS_Service1/DadosParaGrafico", ReplyAction="http://tempuri.org/ITEE_BUS_Service1/DadosParaGraficoResponse")]
         System.Threading.Tasks.Task<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.Grafico[]> DadosParaGraficoAsync(int FabricaID, int ContratoID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ITEECRUDServiceChannel : Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.ITEECRUDService, System.ServiceModel.IClientChannel {
+    public interface ITEE_BUS_Service1Channel : Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.ITEE_BUS_Service1, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TEECRUDServiceClient : System.ServiceModel.ClientBase<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.ITEECRUDService>, Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.ITEECRUDService {
+    public partial class TEE_BUS_Service1Client : System.ServiceModel.ClientBase<Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.ITEE_BUS_Service1>, Analise_E_Simulacao_Tarifacao_Energia.ServiceReference1.ITEE_BUS_Service1 {
         
-        public TEECRUDServiceClient() {
+        public TEE_BUS_Service1Client() {
         }
         
-        public TEECRUDServiceClient(string endpointConfigurationName) : 
+        public TEE_BUS_Service1Client(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public TEECRUDServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public TEE_BUS_Service1Client(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public TEECRUDServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public TEE_BUS_Service1Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public TEECRUDServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public TEE_BUS_Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
